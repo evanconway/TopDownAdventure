@@ -1,0 +1,26 @@
+Alright, this project is using the same overall system as the last game. Actors have a controller object that their ai manipulates. The actors states respond to this input, and that's how every actor moves around/attack/whatever. But to stay organized, we need to plan out how the actual controllers work in terms of code. Do we have an enumerator with every possible button? Do we use macros. Let's try and explain this to ourselves:
+
+Ok first, let's suppose this: we use an enumerator to keep track of every button the game will use. It would look like:
+
+INPUT.UP
+INPUT.DOWN
+INPUT.LEFT
+INPUT.RIGHT
+INPUT.ATTACK
+INPUT.INTERACT
+INPUT.WHATEVER
+
+Enumerators are just fancy ways to keep names of things consistent though. The controller itself will have a variable for all of these buttons. Or wait... should it instead have an array? That way if we want to set a button pressed on the controller we could just do: 
+
+buttons[|INPUT.WHATEVER] = true;
+
+And if we wanted to see if an actor was pressing that button, we'd just do:
+
+if (buttons[|INPUT.WHATEVER) // do something
+
+I kinda like that. However we also need to keep track of whether or not the button was "just" pressed. Right now we're keeping track of this with two variables for every input in the controller object. 
+
+controller_input
+controller_input_pressed
+
+And the controller object automaticall sets all "pressed" variables to false at the end of every step. 

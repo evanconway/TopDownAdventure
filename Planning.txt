@@ -1,0 +1,25 @@
+We have begun a new project! We learned a number of things from our last project, one of those being: planning is critical for success. So here we are again in our comfy text document, ready to plan the next big thing.
+
+We just made some comments about this on discord, but we need more control over the timing of event execution. To solve this, we're rarely going to use the built in step events in game maker. Instead, we're going to use the user_events, and call them from a master object. We also need to make better use of room inheritence. This will save us a lot of trouble with keeping things organized as we build the project. Ok, I'm just going to start listing off random things to improve on in no particular order:
+
+master object to control timing of object updates (scripts? User events?)
+all rooms are child of master room
+learn cameras better (position of camera object is not the same as position of gm camera)
+script scope - scripts have scope of object they are called from
+refine previous state system (Add modifiers to state changes, jump is just modified air state for example)
+design better hitbox system that doesn't spaghetti with state code (collision events?)
+learn git 
+Don't create situations that allow actors to be inside walls (had to program two different hurt states)
+
+We've starting writing a bunch of code already and it's becoming clear we don't have a decent strategy to organize script scope. 
+We left off making the walk state. We want to make it so that when you press a new direction, the player changes direction.
+
+We also need to add walls. This is probably better done sooner rather than later since the entire game world will involve walls. 
+
+I'm veeeery tempted to change all the variable names so they're much shorter. In the previous project we really need to have stuff like: 
+
+v_actor_ai
+
+because we didn't understand how scope worked in Game Maker. But we're much more comfortable now so... it would sure make lines of code shorter and maybe even easier to read. Ya know what? Let's do it...
+
+Last thing we did was change input so that all buttons are stored in a ds_grid. It works great. This was done after agonizing over a 2D array for hours. Bleh.
