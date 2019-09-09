@@ -21,3 +21,18 @@ So I think I understand how we're going to get actors responding to hitboxes. An
 Ok, what about this instead... attacks don't actually have lists, array, or any sort of real means to keep track of hitboxes. What if the hitboxes keep track of their own data. By that I mean their own start up lag, exist time, and position. We could use variables for the times, and a grid for the x/y positions for each frame. So the attack object itself, all it does is store the creation code for these hitboxes. It means that each attack would essentially be a bunch of: with (instance_create(hitbox)). The one real thing the attack object would do, is give each hitbox a unifying ID. That way actors could check if the hitbox they're getting hit by is already a part of the same attack. This way we can have lazy hitbox creation, stuff like overlapping hitboxes, and actors won't recieve multiple, undeserved hits. 
 
 I'm just realizing that we'll want to have projectiles, and hitboxes of projectiles won't need complicated position, frame matching nonsense. I'm pretty sure I can just add variables to the hitbox object that makes it behave differently. We could probably make a TYPE enumerator that determines how the hitbox behaves, and a switch statement in the update event that tells it what to do.
+
+We need to remind ourself how our system works... because I think we should implement hurt boxes in this game. Given our interests, fighting game mechanics are likely going to be integral parts of our games for a long time. The basic building blocks of a fighting game are hitboxes and hurtboxes. There's also blocking, and world collision boxes, but I'm not going to worry too much about blocking in this particular game since I think blocking is going to vary from game to game. Hitbox and hurtbox though... those are essentially the same everywhere.
+
+So how to do hurtboxes? Let's review the current plan:
+o_attack creates hitboxes
+hitboxes detect their target, and create a hitbox event if they collide. 
+The hurt state of actors (which always run for actors), detect, process, and respond to the events.
+
+So that makes sense... but how do we make this work with hurtboxes? First we should think about how hurtboxes work in relation to actors. The idea is that there would be a "map" of hurboxes for each sprite, so the actor actually vulnerable where they appear to be in-game. This is kind of tricky because the sprites are dictated by the different states, and for the sake of clean design, we don't want code about getting in states that don't involved getting hurt. Here's one solution. The hurt state contains a map. This map uses sprite IDs as keys, and arrays of hurboxes as values. During hurt state check step, the state checks the map for the actors current sprite, and then uses the hurtbox data at that spot in the map to determine if it's been hit.
+
+Ok, so actually, to keep things more organized, it makes more sense for the actors, or more specifically the hurtboxes, to check for hitboxes than the other way around. That way, we don't need the hitbox to check if the actor even has a hurt state. Also the hitbox would have to iterate over the actors hurtboxes. It makes more sense for so much code relating to the hurtboxes to be stored in the state that deals with them. So let's summarize our new plan:
+
+Actors update positions and states. Always check states run their checks (this includes hurt state). Hurt state uses hurtbox map for current sprite to check for collision with hitbox that targets actor. If there is, set actor to hurt state. 
+
+We should read this later, it was linked by a discord user: https://www.gamasutra.com/blogs/NahuelGladstein/20180514/318031/Hitboxes_and_Hurtboxes_in_Unity.php

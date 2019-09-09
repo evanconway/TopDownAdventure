@@ -1,9 +1,22 @@
-/// @description Change
+/// @description Remain
 
-// Inherit the parent event
-event_inherited();
+remain = true;
 
-actor.image_index = 0;
+with (actor.ai.controller) {
+	if (!down(INPUT.UP) &&
+		!down(INPUT.DOWN) &&
+		!down(INPUT.LEFT) &&
+		!down(INPUT.RIGHT)) other.remain = false;
+	if (down(INPUT.UP) &&
+		down(INPUT.DOWN) &&
+		down(INPUT.LEFT) &&
+		down(INPUT.RIGHT)) other.remain = false;
+	if (down(INPUT.UP) && down(INPUT.DOWN) &&
+		!down(INPUT.LEFT) && down(INPUT.RIGHT)) other.remain = false;
+	if (down(INPUT.LEFT) && down(INPUT.RIGHT) &&
+		!down(INPUT.UP) && !down(INPUT.DOWN)) other.remain = false;
+	if (pressed(INPUT.ATTACK)) other.remain = false;
+	if (pressed(INPUT.ATTACK)) other.remain = false;
+}
 
-walk_x = actor.x;
-walk_y = actor.y;
+if (velx_prev == 0 && vely_prev == 0) other.remain = false;

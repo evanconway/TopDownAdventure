@@ -1,12 +1,7 @@
-/// @description Connect
+/// @description Change
 
-// Inherit the parent event
-event_inherited();
+change = true;
 
-var _connect = true;
+with (actor.ai.controller) if (anypressed()) change = false;
 
-with (actor.ai.controller) {
-	if (anypressed()) _connect = false;
-}
-
-connect = _connect;
+if (change) scr_state_spritechange();

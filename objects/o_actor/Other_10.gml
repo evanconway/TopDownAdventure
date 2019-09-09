@@ -8,10 +8,10 @@ if (!global.actors_freeze && global.actors_freeze_time <= 0 && state != undefine
 	else with (ai.controller) resetcontroller();
 	
 	// check connections
-	if (!scr_state_stayin(state)) {
+	if (!scr_state_remain(state)) {
 		for (var i = 0; i < ds_list_size(state.connections); i++) {
-			if (scr_state_connect(state.connections[|i])) {
-				scr_actor_changestate(state.connections[|i]);
+			if (scr_actor_changestate(state.connections[|i])) {
+				state = state.connections[|i];
 				i = ds_list_size(state.connections);
 			}
 		}

@@ -9,7 +9,15 @@ by a hitbox, the actor actually stores the ID of the o_attack, not the hitbox. A
 actor gets hit by another hitbox in the same o_attack, the actor knows to ignore it. 
 */
 
+// attacks will target an instance or object, not both
+target_ins = undefined; // instance ID this attack affects
+target_obj = undefined; // object this attack affects
+
+
 sprite = undefined;
+
+damage = 1;
+knockback = 0.1;
 
 /*
 Attack objects need a way to know when to delete themselves. By design, we will always put

@@ -2,10 +2,7 @@
 
 // MACROS
 #macro EVENT_LOGIC 0
-#macro STATE_EVENT_LOGIC 0
-#macro STATE_EVENT_CONNECT 1
-#macro STATE_EVENT_CHANGE 2
-#macro STATE_EVENT_STAYIN 3
+
 #macro COLOR_DEBUG c_lime
 #macro ATOZ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -48,8 +45,7 @@ global.actors_list = ds_list_create();
 global.actors_freeze = false;
 global.actors_freeze_time = 0;
 global.ai_active = true;
-global.bboxes = false; // boolean, draw bboxes of game objects
+global.bboxes = true; // boolean, draw bboxes of game objects
 global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible
-global.playerdata = false; // boolean, draws data about player
+global.playerdata = true; // boolean, draws data about player
 global.player = undefined; // this is the ID of the actor that is the player character
-global.hitboxes_list = ds_list_create();

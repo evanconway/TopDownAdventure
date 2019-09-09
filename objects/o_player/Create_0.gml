@@ -26,6 +26,11 @@ with (player_state_walk) {
 	sprite_right = s_plr_walk_right;
 	walkspeed = 1.3;
 }
+player_state_hurt = scr_actor_createstate(o_state_hurt);
+ds_list_add(always_check, player_state_hurt);
 
 scr_state_addconnect(player_state_idle, player_state_walk);
 scr_state_addconnect(player_state_walk, player_state_idle);
+
+scr_state_addconnect(player_state_hurt, player_state_idle);
+scr_state_addconnect(player_state_hurt, player_state_walk);

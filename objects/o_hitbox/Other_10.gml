@@ -1,5 +1,8 @@
 /// @description Hitbox Logic
 
+hitbox_center_x = x + sprite_width/2;
+hitbox_center_y = y + sprite_height/2;
+
 switch (type) {
 	case HITBOX.POSITION:
 		if (attack != undefined) {
@@ -22,29 +25,11 @@ switch (type) {
 	break;
 }
 
-if (time_delay > 0) time_delay--;
-else if (time_active > 0) time_active--;
-else {
-	instance_destroy(id);
-	exit;
-}
-
-// check for hitbox collision
-if (target != undefined && place_meeting(x, y, target)) {
-	var _already = false;
-	for (var i = 0; i < instance_number(o_event); i++) {
-		with (instance_find(o_event, i)) {
-			if (type == EVENT.HITBOX && maker == other.id && target == other.target) {
-				_already = true;
-				i = instance_number(o_event);
-			}
-		}
-	}
-	
-	if (!_already) with (instance_create_layer(0, 0, LAYER_ACTORS, o_event)) {
-		type = EVENT.HITBOX;
-		maker = other.id; 
-		target = other.target;
+if (!permenant) {
+	if (time_delay > 0) time_delay--;
+	else if (time_active > 0) time_active--;
+	else {
+		instance_destroy(id);
+		exit;
 	}
 }
-	

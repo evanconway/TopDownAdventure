@@ -17,6 +17,9 @@ act_y = y;
 
 if (ds_list_find_index(global.actors_list, id) < 0) ds_list_add(global.actors_list, id);
 
+// list of states that are always checked. Beware, order added matters!
+always_check = ds_list_create();
+
 ai = undefined;
 ai_default = o_ai; // ai switched to when resetting ai
 state = undefined; // state actor is currently in/running

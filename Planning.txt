@@ -23,3 +23,7 @@ v_actor_ai
 because we didn't understand how scope worked in Game Maker. But we're much more comfortable now so... it would sure make lines of code shorter and maybe even easier to read. Ya know what? Let's do it...
 
 Last thing we did was change input so that all buttons are stored in a ds_grid. It works great. This was done after agonizing over a 2D array for hours. Bleh.
+
+I'm pretty sure states don't need a separate function for checking if it can be changed, and changing. In fact for some states it's more work to split them out. We're going to merge connect and change into the same thing. If the state change script returns true... then might as well make the change. 
+
+We're currently working through hitboxes and hurtboxes. Looks like hurt state is going well. We left off figuring out how to actually process attacks in the hurt state once we had our list of NEW attacks that collide with the player. This is in the change event. Now comes an important decisions: what exactly will attacks do? Obviously we want them to decrease health and apply knockback velocity. But how do we want to determine knockback? Should attacks simply apply a fixed directional velocity (attacking left always knocks left)? Or perhaps it should be based on the posiiton of the actors? Or perhaps the position of the attack? At the moment I think I'm just going to make it relative to the position of the attack. This is probably going to make projectiles a bit weird... but we'll deal with that later.

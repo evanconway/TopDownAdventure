@@ -1,6 +1,6 @@
-/// @description Reset Connect and Stayin
+/// @description Reset Change and Remain
 
-connect = false;
-stayin = false;
+change = false;
+remain = false;
 
 if (!instance_exists(actor)) instance_destroy(id);

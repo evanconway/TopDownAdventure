@@ -32,20 +32,18 @@ for (var i = 0; i < ds_list_size(global.actors_list); i++) {
 	with (global.actors_list[|i]) event_user(EVENT_LOGIC);
 }
 
-// set actor positions to integers
+// handle always check states
 for (var i = 0; i < ds_list_size(global.actors_list); i++) {
 	with (global.actors_list[|i]) {
-		x = round_int(act_x);
-		y = round_int(act_y);
+		for (var k = 0; k < ds_list_size(always_check); k++) {
+			if (scr_actor_changestate(always_check[|k])) {
+				global.actors_list[|i].state = always_check[|k];
+				k = ds_list_size(always_check);
+			}
+		}
 	}
 }
 
-// update hitboxes
-for (var i = 0; i < ds_list_size(global.hitboxes_list); i++) {
-	with (global.hitboxes_list[|i]) event_user(EVENT_LOGIC);
-}
-
-// handle events
 
 ///////////////////////////////////////////////////////////////////////
 // END MASTER STEP

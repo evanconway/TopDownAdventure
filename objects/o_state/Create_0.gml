@@ -1,5 +1,9 @@
 /// @description read me
 
+#macro STATE_EVENT_LOGIC 0
+#macro STATE_EVENT_CHANGE 1
+#macro STATE_EVENT_REMAIN 2
+
 /*
 Like our previous project, we will use state objects to govern actor behavior. 
 Our implementation of states might be a bit over-engineered, but it worked well
@@ -24,8 +28,8 @@ actor = undefined;
 connections = ds_list_create();
 
 // state change vars, reset in end step
-connect = false; // set true by user event 1 if can connect
-stayin = false; // set true by user event 3 if can stayin
+change = false; // set true by user event 1 if can connect
+remain = false; // set true by user event 3 if can stayin
 
 sprite_front = undefined;
 sprite_right = undefined;

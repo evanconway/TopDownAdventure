@@ -1,9 +1,5 @@
 /// @description 
 
-damage = 1;
-
-target = undefined; // the object or instance ID this hitbox affects
-
 enum HITBOX {
 	POSITION,
 	PROJECTILE
@@ -27,6 +23,7 @@ whatever needs we want.
 image_xscale = 10;
 image_yscale = 10;
 
+permenant = false
 time_delay = 0; // frames before hitbox is active (0 is active same frame as creation)
 time_active = 0; 
 
@@ -40,7 +37,7 @@ positions = ds_grid_create(0, 2); // be sure to delete and make a new one
 // projectile variables.
 hitbox_x = x;
 hitbox_y = y;
+hitbox_center_x = 0; // set to the center of the hitbox by update event
+hitbox_center_y = 0;
 xvel = 0;
 yvel = 0;
-
-ds_list_add(global.hitboxes_list, id);

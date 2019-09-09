@@ -1,8 +1,5 @@
 /// @description Logic
 
-// Inherit the parent event
-event_inherited();
-
 var _dir = actor.actdirection;
 
 with (actor) {
