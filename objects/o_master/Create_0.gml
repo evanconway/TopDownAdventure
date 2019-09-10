@@ -1,5 +1,7 @@
 /// @description 
 
+show_debug_message(" start next line");
+
 // MACROS
 #macro EVENT_LOGIC 0
 
@@ -10,6 +12,7 @@
 #macro LAYER_MASTER "Master"
 #macro LAYER_MENUS "Menus"
 #macro LAYER_ACTORS "Actors"
+#macro LAYER_ATTACKS "Attacks"
 #macro LAYER_WALLS "Walls"
 
 // these functions were in the last project, but I don't understand exactly what they do

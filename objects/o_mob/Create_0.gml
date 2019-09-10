@@ -25,3 +25,6 @@ with (mob_state_walk) {
 
 scr_state_addconnect(mob_state_idle, mob_state_walk);
 scr_state_addconnect(mob_state_walk, mob_state_idle);
+
+scr_state_addconnect(enemy_state_hurt, mob_state_walk);
+scr_state_addconnect(enemy_state_hurt, mob_state_idle);

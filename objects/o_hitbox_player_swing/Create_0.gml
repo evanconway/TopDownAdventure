@@ -3,4 +3,5 @@
 // Inherit the parent event
 event_inherited();
 
-ds_list_destroy(hitboxes_struck);
+target_obj = o_enemy;
+knockback = 1;

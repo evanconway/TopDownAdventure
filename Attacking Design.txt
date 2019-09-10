@@ -36,3 +36,7 @@ Ok, so actually, to keep things more organized, it makes more sense for the acto
 Actors update positions and states. Always check states run their checks (this includes hurt state). Hurt state uses hurtbox map for current sprite to check for collision with hitbox that targets actor. If there is, set actor to hurt state. 
 
 We should read this later, it was linked by a discord user: https://www.gamasutra.com/blogs/NahuelGladstein/20180514/318031/Hitboxes_and_Hurtboxes_in_Unity.php
+
+CHANGE OF PLANS
+
+Although our hitbox design appears to be technically correct, actually designing and coding an attack is such a huge pain, it's not worth it. I'm going to remove the the concept of the o_attack, and have actors just store hitboxes. We'll do the old method where states created, moved around, and destroyed a SINGLE hitbox. 

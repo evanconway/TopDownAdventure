@@ -1,11 +1,6 @@
 /// @description Delete If Attack Undefined
 
-if (attack == undefined) {
+if (target_ins == undefined && target_obj == undefined) {
 	instance_destroy(id);
-	show_debug_message("Deleting Hitbox ID: " + string(id) + " with undefined attack");
-}
-
-if (attack != undefined && !instance_exists(attack)) {
-	instance_destroy(id);
-	show_debug_message("Deleting Hitbox ID: " + string(id) + " with attack that doesn't exist");
+	show_debug_message("Deleting Hitbox ID: " + string(id) + " with no target");
 }
