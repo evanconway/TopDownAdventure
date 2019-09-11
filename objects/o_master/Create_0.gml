@@ -11,6 +11,7 @@ show_debug_message(" start next line");
 // ROOM LAYERS
 #macro LAYER_MASTER "Master"
 #macro LAYER_MENUS "Menus"
+#macro LAYER_EFFECTS "Effects"
 #macro LAYER_ACTORS "Actors"
 #macro LAYER_ATTACKS "Attacks"
 #macro LAYER_WALLS "Walls"

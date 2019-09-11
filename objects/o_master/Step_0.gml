@@ -27,6 +27,8 @@ if (global.debug_active && (keyboard_check_pressed(219) || keyboard_check_presse
 // determine input
 with (o_input) event_user(EVENT_LOGIC);
 
+if (global.actors_freeze_time >= 0) global.actors_freeze_time--;
+
 // run actor logic
 for (var i = 0; i < ds_list_size(global.actors_list); i++) {
 	with (global.actors_list[|i]) event_user(EVENT_LOGIC);

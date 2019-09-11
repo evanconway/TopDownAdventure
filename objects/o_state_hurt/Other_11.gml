@@ -59,11 +59,13 @@ if (ds_list_size(_hits) > 0) {
 	for (var i = 0; i < ds_list_size(_hits); i++) {
 		var _hit = _hits[|i];
 		ds_list_add(hitboxes_struck, _hit);
+		
+		if (_hit.hitbox_fx != undefined) instance_create_layer(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
+		global.actors_freeze_time += _hit.freeze_frames;
 		/*
 		If the hitbox has its actor defined, then the knockback is relative to the
 		actor attacking. If not, the knockback is relative to the hitbox itself.
 		*/
-		
 		var _kx = _hit.x;
 		var _ky = _hit.y;
 		

@@ -7,7 +7,7 @@ name = "Hurt";
 
 hitboxes_struck = ds_list_create();
 
-time_hurt_max = 30; // frames in hurt state
+time_hurt_max = 10; // frames in hurt state
 time_hurt = time_hurt_max;
 velx = 0;
 vely = 0;

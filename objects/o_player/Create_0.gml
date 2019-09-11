@@ -28,17 +28,23 @@ with (player_state_walk) {
 }
 player_state_attack = scr_actor_createstate(o_state_attack);
 with (player_state_attack) {
-	startup = 5;
-	active = 5;
-	endlag = 10;
-	hitbox_x_offsetU = 0;
-	hitbox_y_offsetU = -12;
-	hitbox_x_offsetD = 0;
-	hitbox_y_offsetD = 16;
-	hitbox_x_offsetL = -14;
-	hitbox_y_offsetL = 0;
-	hitbox_x_offsetR = 14;
-	hitbox_y_offsetR = 0;	
+	hitbox = o_hitbox_player_staff;
+	//attackfx = o_fx_sword;
+	startup = 7;
+	active = 8;
+	endlag = 8;
+	hitbox_x_offsetU = -1;
+	hitbox_y_offsetU = -3;
+	hitbox_x_offsetD = 1;
+	hitbox_y_offsetD = 7;
+	hitbox_x_offsetL = -5;
+	hitbox_y_offsetL = 3;
+	hitbox_x_offsetR = 5;
+	hitbox_y_offsetR = 1;	
+	sprite_front = s_plr_cast_front;
+	sprite_back = s_plr_cast_back;
+	sprite_left = s_plr_cast_left;
+	sprite_right = s_plr_cast_right;
 }
 
 player_state_hurt = scr_actor_createstate(o_state_hurt);

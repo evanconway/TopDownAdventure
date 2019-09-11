@@ -5,7 +5,17 @@ event_inherited();
 
 name = "Attack";
 
-hitbox = o_hitbox_player_swing;
+attackfx = undefined;
+attackfx_x_offsetU = 0;
+attackfx_y_offsetU = -10;
+attackfx_x_offsetD = 0;
+attackfx_y_offsetD = 10;
+attackfx_x_offsetL = -10;
+attackfx_y_offsetL = 0;
+attackfx_x_offsetR = 10;
+attackfx_y_offsetR = 0;
+
+hitbox = o_hitbox; //o_hitbox_player_swing;
 hitboxID = undefined;
 
 /*
@@ -28,7 +38,7 @@ enum ATTACK {
 }
 
 stage = ATTACK.STARTUP;
-startup = 1;
-active = 30;
-endlag = 1;
+startup = 20;
+active = 20;
+endlag = 20;
 time = 0;

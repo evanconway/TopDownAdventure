@@ -4,4 +4,5 @@
 event_inherited();
 
 target_obj = o_enemy;
-knockback = 1;
+knockback = 3;
+hitbox_fx = o_fx_smack;

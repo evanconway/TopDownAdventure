@@ -18,3 +18,6 @@ hitbox_x = x;
 hitbox_y = y;
 xvel = 0;
 yvel = 0;
+
+hitbox_fx = undefined;
+freeze_frames = 10;

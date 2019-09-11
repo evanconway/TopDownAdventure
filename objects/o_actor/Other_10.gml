@@ -21,5 +21,4 @@ if (!global.actors_freeze && global.actors_freeze_time <= 0 && state != undefine
 	
 } else {
 	image_speed = 0;
-	if (global.actors_freeze_time > 0) global.actors_freeze_time--;
 }
