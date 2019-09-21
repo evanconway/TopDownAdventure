@@ -31,6 +31,16 @@ for (var i = 0; i < instance_number(o_hitbox); i++) {
 if (ds_list_size(_hitboxes) <= 0) exit; // don't continue if there's nothing targeting actor
 
 /*
+Next, we delete any hitboxes from this list that aren't "active". Active is a variable
+in the hitbox object. We determine if a hitbox is active by checking if its frame 
+counter is less than its active counter.
+*/
+
+for (var i = 0; i < ds_list_size(_hitboxes); i++) {
+	if (_hitboxes[|i].frame >= _hitboxes[|i].active) ds_list_delete(_hitboxes, i--);
+}
+
+/*
 Here we can assume _hitboxes is a list of hitboxes targeting this actor. Now we compare the actors
 collision mask with the each hitbox. We're going to create a list of hitboxes that are colliding
 with the actor called _hits. When checking each hitbox we check to make sure we haven't already
@@ -62,6 +72,14 @@ if (ds_list_size(_hits) > 0) {
 		
 		if (_hit.hitbox_fx != undefined) instance_create_layer(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
 		global.actors_freeze_time += _hit.freeze_frames;
+		
+		// stop miss sound if playing, and play hit sound
+		for (var i = 0; i < ds_list_size(_hit.miss_snd); i++) {
+			if (audio_is_playing(_hit.miss_snd[|i])) audio_stop_sound(_hit.miss_snd[|i]);
+		}
+
+		if (_hit.hit_snd != undefined) scr_play_sfx_rndm(_hit.hit_snd);
+		
 		/*
 		If the hitbox has its actor defined, then the knockback is relative to the
 		actor attacking. If not, the knockback is relative to the hitbox itself.
@@ -87,7 +105,18 @@ if (ds_list_size(_hits) > 0) {
 			velx += _velx; // add instead of set so multiple attacks hitting at once register
 			vely += _vely;
 		}
+		
+		// Kind of lazy programming to check this here. Maybe we'll optimize later.
+		if (--health <= 0) {
+			if (death_snd != undefined) scr_play_sfx(death_snd);
+			ds_list_destroy(_hitboxes);
+			ds_list_destroy(_hits);
+			if (death_fx != undefined) instance_create_layer(x, y, LAYER_EFFECTS, death_fx);
+			actor.killed = true;
+			exit;
+		}
 	}
 }
 
 ds_list_destroy(_hitboxes);
+ds_list_destroy(_hits);

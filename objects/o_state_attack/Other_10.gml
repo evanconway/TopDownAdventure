@@ -13,18 +13,22 @@ switch (stage) {
 				actor = other.actor;
 				switch (other.actor.actdirection) {
 					case DIR.UP:
-						depth += 2;
-						image_angle = 90;
+						depth += 1; // why did we do 2??
+						image_xscale = -1;
+						image_angle = 270;
 						x += other.hitbox_x_offsetU;
 						y += other.hitbox_y_offsetU;
 					break;
 					case DIR.DOWN:
-						image_angle = 270;
+						image_xscale = -1;
+						image_angle = 90;
 						x += other.hitbox_x_offsetD;
 						y += other.hitbox_y_offsetD;
 					break;
 					case DIR.LEFT:
-						image_angle = 180;
+						depth += 1;
+						image_xscale = -1;
+						image_angle = 0;
 						x += other.hitbox_x_offsetL; // note they're switched
 						y += other.hitbox_y_offsetL;
 					break;
@@ -32,30 +36,6 @@ switch (stage) {
 						image_angle = 0;
 						x += other.hitbox_x_offsetR; // note they're switched
 						y += other.hitbox_y_offsetR;
-					break;
-				}
-			}
-			if (attackfx != undefined) with (instance_create_depth(other.x, other.y, LAYER_ATTACKS, attackfx)) {
-				switch (other.actor.actdirection) {
-					case DIR.UP:
-						image_angle = 90;
-						x += other.attackfx_x_offsetU;
-						y += other.attackfx_y_offsetU;
-					break;
-					case DIR.DOWN:
-						image_angle = 270;
-						x += other.attackfx_x_offsetD;
-						y += other.attackfx_y_offsetD;
-					break;
-					case DIR.LEFT:
-						image_angle = 180;
-						x += other.attackfx_x_offsetL;
-						y += other.attackfx_y_offsetL;
-					break;
-					case DIR.RIGHT:
-						image_angle = 0;
-						x += other.attackfx_x_offsetR;
-						y += other.attackfx_y_offsetR;
 					break;
 				}
 			}
@@ -68,7 +48,7 @@ switch (stage) {
 			actor.image_index = 2;
 			stage++;
 			time = endlag;
-			instance_destroy(hitboxID);
+			//instance_destroy(hitboxID);
 		}
 	break;
 	case ATTACK.ENDLAG:

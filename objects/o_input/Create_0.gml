@@ -7,6 +7,8 @@ enum INPUT {
 	RIGHT,
 	ATTACK,
 	INTERACT,
+	START,
+	SELECT,
 	SIZE // not an input, used to create size of button grid
 }
 
@@ -66,6 +68,8 @@ gamepad_assignment[INPUT.LEFT] = GAMEPAD.LS_LEFT;
 gamepad_assignment[INPUT.RIGHT] = GAMEPAD.LS_RIGHT;
 gamepad_assignment[INPUT.ATTACK] = GAMEPAD.FACE1;
 gamepad_assignment[INPUT.INTERACT] = GAMEPAD.FACE2;
+gamepad_assignment[INPUT.START] = GAMEPAD.START;
+gamepad_assignment[INPUT.SELECT] = GAMEPAD.SELECT;
 
 deadzone = 0.5;
 
@@ -77,3 +81,5 @@ keyboard_assignment[INPUT.LEFT] = ord("A");
 keyboard_assignment[INPUT.RIGHT] = ord("D");
 keyboard_assignment[INPUT.ATTACK] = ord("J");
 keyboard_assignment[INPUT.INTERACT] = ord("K");
+keyboard_assignment[INPUT.START] = vk_escape;
+keyboard_assignment[INPUT.SELECT] = vk_enter;

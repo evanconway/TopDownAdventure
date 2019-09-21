@@ -25,6 +25,8 @@ show_debug_message(" start next line");
 window_set_cursor(cr_none);
 randomize();
 
+global.volume_sound = 1;
+
 /*
 NOTES
 - The top room in the room list is the first room game maker runs,
@@ -46,10 +48,12 @@ to. The objects do not have step events, but instead have User Events
 that we can call manually from this master object.
 */
 global.actors_list = ds_list_create();
-global.actors_freeze = false;
+global.actor_freezers = ds_list_create();
 global.actors_freeze_time = 0;
 global.ai_active = true;
 global.bboxes = true; // boolean, draw bboxes of game objects
 global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible
 global.playerdata = true; // boolean, draws data about player
 global.player = undefined; // this is the ID of the actor that is the player character
+
+pause_menu = undefined;

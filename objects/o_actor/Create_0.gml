@@ -34,3 +34,5 @@ actdirection = DIR.DOWN;
 
 bbox_color = c_lime;
 origin_color = c_fuchsia;
+
+killed = false;

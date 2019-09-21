@@ -1,6 +1,6 @@
 /// @description Update Actor
 
-if (!global.actors_freeze && global.actors_freeze_time <= 0 && state != undefined) {
+if (!scr_actors_frozen() && global.actors_freeze_time <= 0 && state != undefined) {
 	image_speed = 1;
 	
 	// update ai (ai determines controller inputs)
