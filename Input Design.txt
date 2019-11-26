@@ -23,4 +23,19 @@ I kinda like that. However we also need to keep track of whether or not the butt
 controller_input
 controller_input_pressed
 
-And the controller object automaticall sets all "pressed" variables to false at the end of every step. 
+And the controller object sets all "pressed" variables to false at the end of every step. So the input array would need to have 2 spots in each index, which means it's a 2D array. 2D arrays in game maker are kind of annoying, so maybe it's better to just stick with variables. Either way, however, we'll need the enumerator as a way to check inputs everywhere. For example, let's say we wanted to set a button to "pressed" on a controller. How do we tell the controller which button we want pressed? The enumerator is how we'll do this. 
+
+Actually, after talking through it with myself, I think we've got a plan. The controller object will have an enumerator for all the buttons, and also a variable (with a pressed version) for all the buttons. Then we'll have a bunch of scripts to set buttons to pressed, get whether they are on/pressed or not, and to reset the whole controller.
+
+Hmm... we started coding and actually, having a ton of variables is annoying. Let's experiment with the 2D array idea first.
+The idea was correct, but to hell with 2D arrays in gml. I couldn't figure out the syntax and it sucked. A grid however, worked great.
+
+Now, we need to sort out how input is going to work for menus and stuff in addition to the game-world. The player ai checks the input devices for input within the game world, so how is the main menu, or the pause menu going to do that? Actually, we should create an object that checks the input devices each step, we'll probably call it o_input_device, and the polluser ai will just check the input device object. Then Menus can just check the input device object as well.
+
+Ok, so we've got a main input object to store inputs. It has 3 arrays. The first is the 2D grid array thing we thought up earlier. The first array is for each button, and the second array is a size of two for down and pressed. We also have an array for gamepad input assignments, and keyboard assignments. What we need to do now is understand how to check/assign everything each step. Let's try and step through this:
+
+First, determine using keyboard or gamepad. Easy, just an if/else statement.
+Then, iterate over each button in the input array (up, down, left, right, attack...)
+check if that button is down/pressed.. except that means doing something different depending on that inputs assignment. 
+
+Ah ha! So we need a switch statement that checks the assignment array at the index we're iterating on. 

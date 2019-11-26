@@ -31,3 +31,5 @@ We're currently working through hitboxes and hurtboxes. Looks like hurt state is
 CHANGE OF PLANS
 
 Although our hitbox design appears to be technically correct, actually designing and coding an attack is such a huge pain, it's not worth it. I'm going to remove the the concept of the o_attack, and have actors just store hitboxes. We'll do the old method where states created, moved around, and destroyed a SINGLE hitbox. 
+
+10004195848690

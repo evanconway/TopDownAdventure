@@ -11,6 +11,7 @@ var _c;
 var _word = "";
 var _line = "";
 
+// this is the loop that creates the lines, character by character
 for (var i = 1; i <= string_length(argument[0]); i++) {
 	_c = string_char_at(argument[0], i);
 	_word += _c;
@@ -20,10 +21,15 @@ for (var i = 1; i <= string_length(argument[0]); i++) {
 			ds_list_add(lines, _line);
 			_line = _word;
 		}
+		_word = "";
 	}
 }
 
-ds_list_add(lines, _line);
+if (string_width(_line + _word) <= _width_max) ds_list_add(lines, _line + _word);
+else {
+	ds_list_add(lines, _line);
+	ds_list_add(lines, _word);
+}
 
 if (ds_list_size(lines) * string_height(ATOZ) > _height_max) {
 	ds_list_clear(lines);

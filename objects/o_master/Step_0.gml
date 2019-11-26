@@ -29,6 +29,12 @@ with (o_input) event_user(EVENT_LOGIC);
 
 if (global.actors_freeze_time >= 0 && !scr_actors_frozen()) global.actors_freeze_time--;
 
+
+// run dialogues
+for (var i = 0; i < instance_number(o_dialogue); i++) {
+	with (instance_find(o_dialogue, i)) event_user(EVENT_LOGIC);
+}
+
 // run actor logic
 for (var i = 0; i < ds_list_size(global.actors_list); i++) {
 	with (global.actors_list[|i]) event_user(EVENT_LOGIC);

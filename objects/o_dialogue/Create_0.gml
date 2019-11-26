@@ -6,7 +6,7 @@ special effects on certain words, and all kinds of stuff, we're going to keep it
 project. Dialogue boxes can type out text, chirp a tone for each character, and... well actually that's
 it. We're not going to bother with different colors or different fonts mid sentence. The dialogue box
 will get a single font for everything. Also... I think we're going to make dialogue boxes one size. 
-None of this automatic resizing crap.  I do, however, want to add portraits into dialogue. I really 
+None of this automatic resizing crap.  I do, however, want to add portraits into dialogues. I really 
 like how much they can add to the experience of the game. We just need to be careful that we don't
 rip off of undertale too much ;)
 */
@@ -21,7 +21,8 @@ lines = ds_list_create();
 width = 100;
 height = 80;
 
-active = false;
+active = false; // not sure why we have this?
+typing = true;
 
 type_time_max = 5; // this is the number of frames between character types
 type_time = 0;
@@ -29,6 +30,6 @@ type_time = 0;
 y_cursor = 0; // line in list
 x_cursor = 1; // char in list, strings are 1 based index!!!!
 
-text_offset = 3;
+text_offset = 3; // distance text is from border
 
 font = f_arial;
