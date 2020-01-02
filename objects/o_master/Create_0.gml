@@ -42,18 +42,15 @@ all kinds of weird problems.
 global.debug_active = true;
 
 /*
-Most objects will need to update in a specific order, we handle that
-by creating different lists of objects and updating them when we need
-to. The objects do not have step events, but instead have User Events
-that we can call manually from this master object.
+To handle what object to update when, we have a object called the "focus".
+There will be a number of objects with their logic stored in user_event0 
+such as gameworld, the menus, etc. Whatever object is the "focus" of the 
+program will be the object updated. This will allow us to stop things from
+getting to confusing with menus, the gameworld, and whatever all trying
+to listen for input. 
 */
-global.actors_list = ds_list_create();
-global.actor_freezers = ds_list_create();
-global.actors_freeze_time = 0;
-global.ai_active = true;
-global.bboxes = true; // boolean, draw bboxes of game objects
-global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible
-global.playerdata = true; // boolean, draws data about player
-global.player = undefined; // this is the ID of the actor that is the player character
+global.focus = undefined; // this is the object updated each frame
 
+gameworld = instance_create_depth(0, 0, 0, o_gameworld);
+global.focus = gameworld;
 pause_menu = undefined;
