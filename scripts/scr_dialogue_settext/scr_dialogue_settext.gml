@@ -33,5 +33,6 @@ else {
 
 if (ds_list_size(lines) * string_height(ATOZ) > _height_max) {
 	ds_list_clear(lines);
-	ds_list_add("ERROR: Too much text!");
+	ds_list_add(lines, "ERROR:");
+	ds_list_add(lines, "Too much text!");
 }

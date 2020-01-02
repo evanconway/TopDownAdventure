@@ -1,8 +1,8 @@
 {
-    "id": "379de6e5-9290-4cb7-8baf-e258677477b6",
+    "id": "870a41da-221c-4466-b405-ad99bdd37c49",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scr_menu_createchoice",
+    "name": "scr_hitbox_frametotal",
     "IsCompatibility": false,
     "IsDnD": false
 }

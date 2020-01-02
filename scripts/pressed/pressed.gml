@@ -1,5 +1,5 @@
 /// @function pressed(input, controller)
-/// @description returns true/falst if input parameter of controller is pressed
+/// @description returns true/false if input parameter of controller is pressed
 /// @param {real} input from enum
 /// @param {o_controller} controller option argument if called outside of controller
 

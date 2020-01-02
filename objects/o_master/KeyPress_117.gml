@@ -1,3 +1,3 @@
 /// @description Restart
 
-game_restart();
+if (global.debug_active) game_restart();

@@ -27,6 +27,7 @@ if (global.debug_active && (keyboard_check_pressed(219) || keyboard_check_presse
 // determine input
 with (o_input) event_user(EVENT_LOGIC);
 
+// decrement freeze time (but only if no other actor freezers are active)
 if (global.actors_freeze_time >= 0 && !scr_actors_frozen()) global.actors_freeze_time--;
 
 
@@ -73,14 +74,8 @@ for (var i = 0; i < instance_number(o_menu); i++) {
 }
 
 // pause menu
-if (pause_menu != undefined && ds_grid_get(global.input, INPUT.START, 1)) {
-	if (pause_menu.active) {
-		pause_menu.active = false;
-		ds_list_delete(global.actor_freezers, ds_list_find_index(global.actor_freezers, pause_menu));
-	} else {
-		pause_menu.active = true;
-		ds_list_add(global.actor_freezers, pause_menu);
-	}
+if (pause_menu != undefined && input_pressed(INPUT.START)) {
+	scr_menu_toggleactivate(pause_menu);
 }
 
 ///////////////////////////////////////////////////////////////////////

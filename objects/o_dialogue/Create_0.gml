@@ -18,18 +18,25 @@ script to see how we're handling line wrapping.
 */
 lines = ds_list_create();
 
+/*
+Our dialogue boxes "open" before typing text. The expand_rate determines how fast the box opens and
+closes.
+*/
 width = 100;
-height = 80;
-
-active = false; // not sure why we have this?
+height = 50;
+width_cur = 0;	
+height_cur = 0;
+expand_rate = 2;
+active = true;
 typing = true;
 
-type_time_max = 5; // this is the number of frames between character types
+type_time_max = 1; // this is the number of frames between character types
 type_time = 0;
 
 y_cursor = 0; // line in list
-x_cursor = 1; // char in list, strings are 1 based index!!!!
+x_cursor = 0; // char in list, strings are 1 based index!!!!
 
 text_offset = 3; // distance text is from border
 
 font = f_arial;
+chirp = snd_chirp_default;

@@ -1,2 +1,2 @@
 active = true;
-scr_dialogue_settext("Here is some example dialogue.");
+scr_dialogue_settext("Here is some example dialogue for us to test with!");

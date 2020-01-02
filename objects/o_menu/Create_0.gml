@@ -10,6 +10,7 @@ objects handle "select" and "back" button presses.
 active = false; // determines whether this state runs code or not
 
 index = 0;
+cursor = " > ";
 choices = ds_list_create(); 
 
 menu_font = f_menu1;
@@ -18,3 +19,10 @@ menu_color = c_red;
 width_min = 50;
 height_min = 50;
 border_width = 1;
+
+// pulse current option
+cur_alpha = 1;
+cur_alpha_time = 0;
+alpha_min = 0.3; // alpha max is 1
+alpha_change_rate = 7;
+alpha_change_amnt = 0.1;

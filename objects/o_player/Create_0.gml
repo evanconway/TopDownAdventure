@@ -29,19 +29,18 @@ with (player_state_walk) {
 player_state_attack = scr_actor_createstate(o_state_attack);
 with (player_state_attack) {
 	hitbox = o_hitbox_player_swing1;
-	//attackfx = o_fx_sword;
-	var _atktime = 7;
+	var _atktime = 7; // note: this is frame time for the attack, not the hitbox
 	startup = _atktime;
 	active = _atktime;
 	endlag = _atktime;
-	hitbox_x_offsetU = 0;
+	hitbox_x_offsetU = 2;
 	hitbox_y_offsetU = -4;
-	hitbox_x_offsetD = 0;
+	hitbox_x_offsetD = -2;
 	hitbox_y_offsetD = 8;
 	hitbox_x_offsetL = -6;
-	hitbox_y_offsetL = 2;
+	hitbox_y_offsetL = 0;
 	hitbox_x_offsetR = 6;
-	hitbox_y_offsetR = 2;	
+	hitbox_y_offsetR = 0;	
 	sprite_front = s_plr_cast_front;
 	sprite_back = s_plr_cast_back;
 	sprite_left = s_plr_cast_left;

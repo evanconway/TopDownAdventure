@@ -12,4 +12,6 @@ if (global.debug_active && global.bboxes) {
 	}
 } else draw_self();
 
-if (!scr_actors_frozen() && global.actors_freeze_time<= 0) frame++;
+if (!scr_actors_frozen() && global.actors_freeze_time <= 0) {
+	frame++;
+}

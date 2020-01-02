@@ -11,6 +11,8 @@ target_ins = undefined;
 target_obj = undefined;
 
 knockback = 1;
+delete_on_hit = false; // hurt state checks this
+marked_for_deletion = false; // hurt state sets this
 actor = undefined;
 
 // snd vars are actually lists so we can have random sounds

@@ -23,6 +23,15 @@ with (mob_state_walk) {
 	walkspeed = 0.7
 }
 
+with (enemy_state_hurt) {
+	sprite_front = s_mob_hurt_front;
+	sprite_left = s_mob_hurt_left;
+	sprite_right = s_mob_hurt_right;
+	sprite_back = s_mob_hurt_back;
+	time_hurt_max = 20;
+	health = 99999;
+}
+
 scr_state_addconnect(mob_state_idle, mob_state_walk);
 scr_state_addconnect(mob_state_walk, mob_state_idle);
 

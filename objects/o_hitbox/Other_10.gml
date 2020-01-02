@@ -1,6 +1,12 @@
 /// @description Hitbox Logic
 
 if (!scr_actors_frozen() && global.actors_freeze_time <= 0) {
+	
+	if (marked_for_deletion) {
+		instance_destroy(id);
+		exit;
+	}
+	
 	image_speed = 0;
 
 	if (ds_list_find_value(sprite_frames, image_index) != undefined && 

@@ -13,7 +13,7 @@ any of those hurtboxes collide with a hitbox targetting this actor.
 
 /*
 The first step is to make a list of all hitboxes targetting this actor.
-No point iterating over everything if nothing's attack this actor right?
+No point iterating over everything if nothing's attacking this actor right?
 */
 var _hitboxes = ds_list_create();
 for (var i = 0; i < instance_number(o_hitbox); i++) {
@@ -66,10 +66,24 @@ Now we have a list of NEW attacks that have struck the actor.
 if (ds_list_size(_hits) > 0) {
 	change = true;
 	time_hurt = time_hurt_max;
+	switch (actor.actdirection) {
+		case DIR.UP:
+		if (sprite_back != undefined) actor.sprite_index = sprite_back;
+		break;
+		case DIR.DOWN:
+		if (sprite_back != undefined) actor.sprite_index = sprite_front;
+		break;
+		case DIR.LEFT:
+		if (sprite_back != undefined) actor.sprite_index = sprite_left;
+		break;
+		case DIR.RIGHT:
+		if (sprite_back != undefined) actor.sprite_index = sprite_right;
+		break;
+	}
 	for (var i = 0; i < ds_list_size(_hits); i++) {
 		var _hit = _hits[|i];
 		ds_list_add(hitboxes_struck, _hit);
-		
+		if (_hit.delete_on_hit) _hit.marked_for_deletion = true;
 		if (_hit.hitbox_fx != undefined) instance_create_layer(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
 		global.actors_freeze_time += _hit.freeze_frames;
 		
@@ -100,7 +114,7 @@ if (ds_list_size(_hits) > 0) {
 			var _vectory = actor.y - _ky;
 			var _magnitude = sqrt(sqr(_vectorx) + sqr(_vectory));
 			var _scale = _hit.knockback/_magnitude;
-			var _velx = _vectorx * _scale; // add instead of set so multiple attacks hitting at once register
+			var _velx = _vectorx * _scale;
 			var _vely = _vectory * _scale;
 			velx += _velx; // add instead of set so multiple attacks hitting at once register
 			vely += _vely;
