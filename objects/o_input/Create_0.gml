@@ -60,7 +60,8 @@ enum GAMEPAD {
 	BUMPER_R,
 	BUMPER_L,
 	START,
-	SELECT
+	SELECT,
+	SIZE
 }
 
 // Assignment of inputs

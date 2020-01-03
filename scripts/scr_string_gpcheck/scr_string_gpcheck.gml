@@ -46,16 +46,16 @@ switch (argument0) {
 	result = "DP_RIGHT";
 	break;
 	case GAMEPAD.FACE1: // A (xbox)
-	result = "FACE1";
+	result = "A";
 	break;
 	case GAMEPAD.FACE2: // B (xbox)
-	result = "FACE2";
+	result = "B";
 	break;
 	case GAMEPAD.FACE3: // X (xbox)
-	result = "FACE3";
+	result = "X";
 	break;
 	case GAMEPAD.FACE4: // Y (xbox)
-	result = "FACE4";
+	result = "Y";
 	break;
 	case GAMEPAD.TRIGGER_R:
 	result = "TRIGGER_R";

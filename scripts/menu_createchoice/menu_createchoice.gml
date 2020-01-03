@@ -1,6 +1,6 @@
 /// @param choice
 var _ID;
-with (instance_create_layer(x, y, LAYER_MENUS, argument[0])) {
+with (instance_create_depth(x, y, depth - 1, argument[0])) {
 	menu = other;
 	_ID = id;
 }

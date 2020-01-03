@@ -16,7 +16,7 @@ with (choices[|i++]) {
 ds_list_set(choices, i, menu_createchoice(o_choice_menu));
 with (choices[|i++]) {
 	name = "Options";
-	submenu = instance_create_depth(0, 0, other.depth - 1, o_menu_options);
+	submenu = instance_create_depth(0, 0, depth - 1, o_menu_options);
 }
 ds_list_set(choices, i, menu_createchoice(o_choice));
 with (choices[|i++]) {
@@ -24,5 +24,5 @@ with (choices[|i++]) {
 }
 ds_list_set(choices, i, menu_createchoice(o_choice_quit));
 with(choices[|i]) {
-	submenu.depth = other.depth - 1;
+	//submenu.depth = other.depth - 1;
 }

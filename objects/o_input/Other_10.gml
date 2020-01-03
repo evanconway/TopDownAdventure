@@ -65,12 +65,12 @@ if (using_gamepad) {
 		var _a1_pressed = false;
 		var _a2_pressed = false;
 		if (_a1 != NOASSIGNMENT) {
-			_a1_down = input_gamepad_down(_a1);
-			_a1_pressed = input_gamepad_pressed(_a1, i);
+			_a1_down = scr_gamepad_down(_a1);
+			_a1_pressed = scr_gamepad_pressed(_a1, i);
 		}
 		if (_a2 != NOASSIGNMENT) {
-			_a2_down = input_gamepad_down(_a2);
-			_a2_pressed = input_gamepad_pressed(_a2, i);
+			_a2_down = scr_gamepad_down(_a2);
+			_a2_pressed = scr_gamepad_pressed(_a2, i);
 		}
 		ds_grid_set(global.input, i, 0, _a1_down || _a2_down);
 		ds_grid_set(global.input, i, 1, _a1_pressed || _a2_pressed);

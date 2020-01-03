@@ -12,7 +12,8 @@ if (title != undefined) _width = string_width(title);
 for (var i = 0; i < ds_list_size(choices); i++) {
 	var _choice = choices[|i];
 	with (_choice) event_user(1); // event_user(1) sets choice width
-	var _choice_width = _choice.width + string_width(cursor)*2; // note below
+	var _choice_width = _choice.width;
+	if (cursor != undefined) _choice_width += string_width(cursor)*2; // note below
 	if (_choice_width > _width) _width = _choice_width;
 }
 

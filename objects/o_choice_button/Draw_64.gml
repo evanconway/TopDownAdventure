@@ -9,7 +9,5 @@ if (menu != undefined && menu.active) {
 	draw_set_color(c_white);
 	draw_text(draw_x_left, draw_y, name);
 	draw_set_halign(fa_right);	
-	var _bstring = choice_button_string(button);
-	draw_text(draw_x_right, draw_y, _bstring);
-
+	draw_text(draw_x_right, draw_y, choice_button_string(button));
 }

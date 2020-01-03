@@ -4,4 +4,4 @@
 event_inherited();
 
 name = "Quit";
-submenu = instance_create_layer(0, 0, LAYER_MENUS, o_menu_confirm);
+submenu = instance_create_depth(0, 0, depth - 1, o_menu_confirm);

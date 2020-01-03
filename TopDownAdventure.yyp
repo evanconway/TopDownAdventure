@@ -151,6 +151,14 @@
             }
         },
         {
+            "Key": "17494b27-63de-46f8-8e43-4926815958f5",
+            "Value": {
+                "id": "10706c81-bef7-420e-b32d-28f18e05f1ce",
+                "resourcePath": "objects\\o_choice_newbutton\\o_choice_newbutton.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "174f8654-f548-4ce9-a33b-2fc8dfaf6ad9",
             "Value": {
                 "id": "81c7b6b4-8667-4478-b95f-fd9a6ee372f6",
@@ -467,6 +475,14 @@
             "Value": {
                 "id": "3bcc248b-293b-453e-aaf4-892962b96b7f",
                 "resourcePath": "objects\\o_choice_button\\o_choice_button.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
+            "Key": "571b3881-212f-4090-b2fa-5d7670c4f1c5",
+            "Value": {
+                "id": "348ba6b4-44cf-4d7b-a0a0-314e03eb5b06",
+                "resourcePath": "objects\\o_menu_newbutton\\o_menu_newbutton.yy",
                 "resourceType": "GMObject"
             }
         },
@@ -1050,7 +1066,7 @@
             "Key": "cea61ee9-33c4-4926-aceb-a86112908310",
             "Value": {
                 "id": "6ee6e7c9-273f-4f01-ba06-d8dab31873c7",
-                "resourcePath": "scripts\\choice_gamepad_string\\choice_gamepad_string.yy",
+                "resourcePath": "scripts\\scr_string_gpcheck\\scr_string_gpcheck.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1138,7 +1154,7 @@
             "Key": "d9c729f6-ca27-47be-b24f-dbbed83ac251",
             "Value": {
                 "id": "1192d270-f088-48c0-a48a-171a54e2c55d",
-                "resourcePath": "scripts\\input_gamepad_pressed\\input_gamepad_pressed.yy",
+                "resourcePath": "scripts\\scr_gamepad_pressed\\scr_gamepad_pressed.yy",
                 "resourceType": "GMScript"
             }
         },
@@ -1386,7 +1402,7 @@
             "Key": "ff4def81-3fc5-4b90-bbca-06d386c19f3d",
             "Value": {
                 "id": "45c0155c-72e9-4260-a287-83be68914f12",
-                "resourcePath": "scripts\\input_gamepad_down\\input_gamepad_down.yy",
+                "resourcePath": "scripts\\scr_gamepad_down\\scr_gamepad_down.yy",
                 "resourceType": "GMScript"
             }
         }

@@ -32,6 +32,8 @@ if (active) {
 	}
 	
 	// draw cursor
-	draw_set_halign(fa_left);
-	draw_text(_leftx - _menu_width/2 + border_width, _topy + string_height(ATOZ) * index, cursor);
+	if (cursor != undefined) {
+		draw_set_halign(fa_left);
+		draw_text(_leftx - _menu_width/2 + border_width, _topy + string_height(ATOZ) * index, cursor);
+	}
 }

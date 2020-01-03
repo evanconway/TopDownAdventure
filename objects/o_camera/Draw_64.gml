@@ -7,6 +7,7 @@ and 3 respectively.
 */
 
 if (global.debug_active) {
+	draw_set_font(f_arial);
 	draw_set_color(COLOR_DEBUG);
 	draw_set_alpha(1);
 	if (showdims) {

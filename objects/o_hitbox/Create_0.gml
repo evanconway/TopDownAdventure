@@ -17,14 +17,13 @@ actor = undefined;
 
 // snd vars are actually lists so we can have random sounds
 hit_snd = ds_list_create();
-ds_list_set(hit_snd, 0, snd_hit1);
-ds_list_set(hit_snd, 1, snd_hit2);
-ds_list_set(hit_snd, 2, snd_hit3);
+//ds_list_set(hit_snd, 0, snd_hit1);
+ds_list_set(hit_snd, 0, snd_hit2);
+ds_list_set(hit_snd, 1, snd_hit3);
 miss_snd = ds_list_create();
 ds_list_set(miss_snd, 0, snd_miss1);
 ds_list_set(miss_snd, 1, snd_miss2);
 ds_list_set(miss_snd, 2, snd_miss3);
-
 
 // projectile variables
 hitbox_x = x;

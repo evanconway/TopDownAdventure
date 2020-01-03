@@ -18,7 +18,8 @@ if (active) {
 	for (var i = 0; i < ds_list_size(choices); i++) {
 		var _choice = choices[|i];
 		_choice.draw_x = _leftx;
-		_choice.draw_x_left = _leftx - _menu_width/2 + border_width + string_width(cursor);
+		_choice.draw_x_left = _leftx - _menu_width/2 + border_width;
+		if (cursor != undefined) _choice.draw_x_left += string_width(cursor);
 		_choice.draw_x_right = _leftx + _menu_width/2 - border_width;
 		_choice.draw_y = _topy + string_height(ATOZ) * i;
 		if (index == i) _choice.draw_alpha = cur_alpha;
