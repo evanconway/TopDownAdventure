@@ -1,6 +1,7 @@
 /// @description 
 
+event_inherited();
+
 if (input_pressed(INPUT.SELECT) || input_pressed(INPUT.INTERACT)) {
-	focus_pop();
-	menu.active = false;
+	yes_pressed = true;
 }

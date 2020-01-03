@@ -1,6 +1,8 @@
 /// @description 
 
 if (input_pressed(INPUT.SELECT) || input_pressed(INPUT.INTERACT)) {
-	focus_pop();
-	menu.active = false;
+	focus_push(confirm);
+	confirm.active = true;
 }
+
+if (confirm.yes_pressed) game_end();

@@ -58,113 +58,41 @@ if (keyboard_check_pressed(vk_anykey)) using_gamepad = false;
 // here is where we determine player input
 if (using_gamepad) {
 	for (var i = 0; i < INPUT.SIZE; i++) {
-		
-		var _axison = -1; // -1 for no axis found, 0 for axis found but false, 1 for found and on
-		var _down = ds_grid_get(global.input, i, 0); // set pressed if already down
-		
-		// switch for just axis
-		switch (gamepad_assignment[i]) {
-			case GAMEPAD.LS_UP:
-				_axison = gamepad_axis_value(gamepadID, gp_axislv) < deadzone * -1;
-			break;
-			case GAMEPAD.LS_DOWN:
-				_axison = gamepad_axis_value(gamepadID, gp_axislv) > deadzone;
-			break;
-			case GAMEPAD.LS_LEFT:
-				_axison = gamepad_axis_value(gamepadID, gp_axislh) < deadzone * -1;
-			break;
-			case GAMEPAD.LS_RIGHT:
-				_axison = gamepad_axis_value(gamepadID, gp_axislh) > deadzone;
-			break;
-			case GAMEPAD.RS_UP:
-				_axison = gamepad_axis_value(gamepadID, gp_axisrv) < deadzone * -1;
-			break;
-			case GAMEPAD.RS_DOWN:
-				_axison = gamepad_axis_value(gamepadID, gp_axisrv) > deadzone;
-			break;
-			case GAMEPAD.RS_LEFT:
-				_axison = gamepad_axis_value(gamepadID, gp_axisrh) < deadzone * -1;
-			break;
-			case GAMEPAD.RS_RIGHT:
-				_axison = gamepad_axis_value(gamepadID, gp_axisrh) > deadzone;
-			break;
+		var _a1 = ds_grid_get(gamepad_assignment, i, 0);
+		var _a2 = ds_grid_get(gamepad_assignment, i, 1);
+		var _a1_down = false;
+		var _a2_down = false;
+		var _a1_pressed = false;
+		var _a2_pressed = false;
+		if (_a1 != NOASSIGNMENT) {
+			_a1_down = input_gamepad_down(_a1);
+			_a1_pressed = input_gamepad_pressed(_a1, i);
 		}
-		if (_axison >= 0) {
-			if (!_down && _axison) ds_grid_set(global.input, i, 1, true);
-			if (_down && _axison) ds_grid_set(global.input, i, 1, false);
-			ds_grid_set(global.input, i, 0, _axison);	
+		if (_a2 != NOASSIGNMENT) {
+			_a2_down = input_gamepad_down(_a2);
+			_a2_pressed = input_gamepad_pressed(_a2, i);
 		}
-		
-		switch (gamepad_assignment[i]) {
-			case GAMEPAD.DP_UP:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_padu));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_padu));
-			break;
-			case GAMEPAD.DP_DOWN:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_padd));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_padd));
-			break;
-			case GAMEPAD.DP_LEFT:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_padl));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_padl));
-			break;
-			case GAMEPAD.DP_RIGHT:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_padr));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_padr));
-			break;
-			case GAMEPAD.FACE1:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_face1));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_face1));
-			break;
-			case GAMEPAD.FACE2:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_face2));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_face2));
-			break;
-			case GAMEPAD.FACE3:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_face3));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_face3));
-			break;
-			case GAMEPAD.FACE4:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_face4));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_face4));
-			break;
-			case GAMEPAD.TRIGGER_L: // ( guess game maker doesn't see triggers as axis???
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_shoulderlb));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_shoulderlb));
-			break;
-			case GAMEPAD.TRIGGER_R:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_shoulderrb));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_shoulderrb));
-			break;
-			case GAMEPAD.BUMPER_L:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_shoulderl));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_shoulderl));
-			break;
-			case GAMEPAD.BUMPER_R:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_shoulderr));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_shoulderr));
-			break;
-			case GAMEPAD.LS_CLICK:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_stickl));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_stickl));
-			break;
-			case GAMEPAD.RS_CLICK:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_stickr));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_stickr));
-			break;
-			case GAMEPAD.SELECT:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_select));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_select));
-			break;
-			case GAMEPAD.START:
-				ds_grid_set(global.input, i, 0, gamepad_button_check(gamepadID, gp_start));
-				ds_grid_set(global.input, i, 1, gamepad_button_check_pressed(gamepadID, gp_start));
-			break;
-		}
+		ds_grid_set(global.input, i, 0, _a1_down || _a2_down);
+		ds_grid_set(global.input, i, 1, _a1_pressed || _a2_pressed);
 	}
 } else {
 	for (var i = 0; i < INPUT.SIZE; i++) {
-		ds_grid_set(global.input, i, 0, keyboard_check(keyboard_assignment[i]));
-		ds_grid_set(global.input, i, 1, keyboard_check_pressed(keyboard_assignment[i]));
+		// if down or pressed are true for either assignment, then down/pressed are set true
+		var _a1 = ds_grid_get(keyboard_assignment, i, 0);
+		var _a2 = ds_grid_get(keyboard_assignment, i, 1);
+		var _a1_down = false;
+		var _a2_down = false;
+		var _a1_pressed = false;
+		var _a2_pressed = false;
+		if (_a1 != NOASSIGNMENT) {
+			_a1_down = keyboard_check(_a1);
+			_a1_pressed = keyboard_check_pressed(_a1);
+		}
+		if (_a2 != NOASSIGNMENT) {
+			_a2_down = keyboard_check(_a2);
+			_a2_pressed = keyboard_check_pressed(_a2);
+		}
+		ds_grid_set(global.input, i, 0, _a1_down || _a2_down);
+		ds_grid_set(global.input, i, 1, _a1_pressed || _a2_pressed);
 	}
 }

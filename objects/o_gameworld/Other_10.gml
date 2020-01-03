@@ -64,3 +64,7 @@ for (var i = 0; i < instance_number(o_actor); i++) {
 }
 
 // pause menu
+if (input_pressed(INPUT.START)) {
+	focus_push(pause_menu);
+	pause_menu.active = true;
+}

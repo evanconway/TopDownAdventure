@@ -42,15 +42,13 @@ all kinds of weird problems.
 global.debug_active = true;
 
 /*
-To handle what object to update when, we have a object called the "focus".
-There will be a number of objects with their logic stored in user_event0 
-such as gameworld, the menus, etc. Whatever object is the "focus" of the 
-program will be the object updated. This will allow us to stop things from
-getting to confusing with menus, the gameworld, and whatever all trying
-to listen for input. 
+To handle what object to update when, we have a stack of objects called
+"focus". The master object will only ever update the top object. When 
+something no longer needs to be the focus (like a confirmation box), it's
+simply popped off the top of the stack. 
 */
-global.focus = undefined; // this is the object updated each frame
+global.focus = ds_stack_create(); // this is the object updated each frame
 
 gameworld = instance_create_depth(0, 0, 0, o_gameworld);
-global.focus = gameworld;
+focus_push(gameworld);
 pause_menu = undefined;

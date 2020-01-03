@@ -7,6 +7,8 @@ enum INPUT {
 	RIGHT,
 	ATTACK,
 	INTERACT,
+	BACK,
+	MAP,
 	START,
 	SELECT,
 	SIZE // not an input, used to create size of button grid
@@ -61,25 +63,52 @@ enum GAMEPAD {
 	SELECT
 }
 
-gamepad_assignment = array_create(INPUT.SIZE);
-gamepad_assignment[INPUT.UP] = GAMEPAD.LS_UP;
-gamepad_assignment[INPUT.DOWN] = GAMEPAD.LS_DOWN;
-gamepad_assignment[INPUT.LEFT] = GAMEPAD.LS_LEFT;
-gamepad_assignment[INPUT.RIGHT] = GAMEPAD.LS_RIGHT;
-gamepad_assignment[INPUT.ATTACK] = GAMEPAD.FACE1;
-gamepad_assignment[INPUT.INTERACT] = GAMEPAD.FACE2;
-gamepad_assignment[INPUT.START] = GAMEPAD.START;
-gamepad_assignment[INPUT.SELECT] = GAMEPAD.SELECT;
+// Assignment of inputs
+// every input is allowed 2 button/keys options
+#macro NOASSIGNMENT -1
+gamepad_assignment = ds_grid_create(INPUT.SIZE, 2);
+ds_grid_set(gamepad_assignment, INPUT.UP, 0, GAMEPAD.LS_UP);
+ds_grid_set(gamepad_assignment, INPUT.UP, 1, GAMEPAD.DP_UP);
+ds_grid_set(gamepad_assignment, INPUT.DOWN, 0, GAMEPAD.LS_DOWN);
+ds_grid_set(gamepad_assignment, INPUT.DOWN, 1, GAMEPAD.DP_DOWN);
+ds_grid_set(gamepad_assignment, INPUT.LEFT, 0, GAMEPAD.LS_LEFT);
+ds_grid_set(gamepad_assignment, INPUT.LEFT, 1, GAMEPAD.DP_LEFT);
+ds_grid_set(gamepad_assignment, INPUT.RIGHT, 0, GAMEPAD.LS_RIGHT);
+ds_grid_set(gamepad_assignment, INPUT.RIGHT, 1, GAMEPAD.DP_RIGHT);
+ds_grid_set(gamepad_assignment, INPUT.ATTACK, 0, GAMEPAD.FACE3);
+ds_grid_set(gamepad_assignment, INPUT.ATTACK, 1, NOASSIGNMENT);
+ds_grid_set(gamepad_assignment, INPUT.INTERACT, 0, GAMEPAD.FACE1);
+ds_grid_set(gamepad_assignment, INPUT.INTERACT, 1, NOASSIGNMENT);
+ds_grid_set(gamepad_assignment, INPUT.BACK, 0, GAMEPAD.FACE2);
+ds_grid_set(gamepad_assignment, INPUT.BACK, 1, NOASSIGNMENT);
+ds_grid_set(gamepad_assignment, INPUT.MAP, 0, GAMEPAD.FACE4);
+ds_grid_set(gamepad_assignment, INPUT.MAP, 1, NOASSIGNMENT);
+ds_grid_set(gamepad_assignment, INPUT.START, 0, GAMEPAD.START);
+ds_grid_set(gamepad_assignment, INPUT.START, 1, NOASSIGNMENT);
+ds_grid_set(gamepad_assignment, INPUT.SELECT, 0, GAMEPAD.SELECT);
+ds_grid_set(gamepad_assignment, INPUT.SELECT, 1, NOASSIGNMENT);
 
 deadzone = 0.5;
 
 // keyboard inputs stored as key codes
-keyboard_assignment = array_create(INPUT.SIZE);
-keyboard_assignment[INPUT.UP] = ord("W");
-keyboard_assignment[INPUT.DOWN] = ord("S");
-keyboard_assignment[INPUT.LEFT] = ord("A");
-keyboard_assignment[INPUT.RIGHT] = ord("D");
-keyboard_assignment[INPUT.ATTACK] = ord("J");
-keyboard_assignment[INPUT.INTERACT] = ord("K");
-keyboard_assignment[INPUT.START] = vk_escape;
-keyboard_assignment[INPUT.SELECT] = vk_enter;
+keyboard_assignment = ds_grid_create(INPUT.SIZE, 2);
+ds_grid_set(keyboard_assignment, INPUT.UP, 0, ord("W"));
+ds_grid_set(keyboard_assignment, INPUT.UP, 1, vk_up);
+ds_grid_set(keyboard_assignment, INPUT.DOWN, 0, ord("S"));
+ds_grid_set(keyboard_assignment, INPUT.DOWN, 1, vk_down);
+ds_grid_set(keyboard_assignment, INPUT.LEFT, 0, ord("A"));
+ds_grid_set(keyboard_assignment, INPUT.LEFT, 1, vk_left);
+ds_grid_set(keyboard_assignment, INPUT.RIGHT, 0, ord("D"));
+ds_grid_set(keyboard_assignment, INPUT.RIGHT, 1, vk_right);
+ds_grid_set(keyboard_assignment, INPUT.ATTACK, 0, ord("J"));
+ds_grid_set(keyboard_assignment, INPUT.ATTACK, 1, NOASSIGNMENT);
+ds_grid_set(keyboard_assignment, INPUT.INTERACT, 0, ord("K"));
+ds_grid_set(keyboard_assignment, INPUT.INTERACT, 1, NOASSIGNMENT);
+ds_grid_set(keyboard_assignment, INPUT.BACK, 0, ord("L"));
+ds_grid_set(keyboard_assignment, INPUT.BACK, 1, vk_backspace);
+ds_grid_set(keyboard_assignment, INPUT.MAP, 0, ord("M"));
+ds_grid_set(keyboard_assignment, INPUT.MAP, 1, vk_tab);
+ds_grid_set(keyboard_assignment, INPUT.START, 0, vk_escape);
+ds_grid_set(keyboard_assignment, INPUT.START, 1, NOASSIGNMENT);
+ds_grid_set(keyboard_assignment, INPUT.SELECT, 0, vk_enter);
+ds_grid_set(keyboard_assignment, INPUT.SELECT, 1, NOASSIGNMENT);

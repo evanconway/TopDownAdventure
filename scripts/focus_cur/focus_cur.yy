@@ -1,8 +1,8 @@
 {
-    "id": "d24d74bb-4e19-41d6-afa3-0e2dcaeee4a4",
+    "id": "87e6cfae-e8f4-4ec0-a721-42aad6ca89a2",
     "modelName": "GMScript",
     "mvc": "1.0",
-    "name": "scr_menu_toggleactivate",
+    "name": "focus_cur",
     "IsCompatibility": false,
     "IsDnD": false
 }

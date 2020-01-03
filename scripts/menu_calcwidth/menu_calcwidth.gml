@@ -7,6 +7,7 @@ of choices, font size, etc.
 
 draw_set_font(menu_font);
 var _width = 0;
+if (title != undefined) _width = string_width(title);
 
 for (var i = 0; i < ds_list_size(choices); i++) {
 	var _choice = choices[|i];
