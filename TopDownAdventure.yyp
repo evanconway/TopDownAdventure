@@ -31,6 +31,14 @@
     },
     "resources": [
         {
+            "Key": "004b400f-611b-4a0e-a21b-eb4f41dcf6e6",
+            "Value": {
+                "id": "0072a13d-408c-497c-be8a-b07d7275d491",
+                "resourcePath": "scripts\\choice_button_string\\choice_button_string.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "0152147d-dead-4a5f-9748-044014bd86a8",
             "Value": {
                 "id": "32cdf2f3-9076-4494-851e-e779f84174ef",
@@ -455,6 +463,14 @@
             }
         },
         {
+            "Key": "5662c365-b4ee-4043-909b-414e5ed09bed",
+            "Value": {
+                "id": "3bcc248b-293b-453e-aaf4-892962b96b7f",
+                "resourcePath": "objects\\o_choice_button\\o_choice_button.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "584be564-3a60-4815-9530-7ce763e00de5",
             "Value": {
                 "id": "9ac019db-7493-41c3-9658-0b61662174cd",
@@ -631,6 +647,14 @@
             }
         },
         {
+            "Key": "84bf0305-7a1c-4af2-80bf-2cbbc72516e6",
+            "Value": {
+                "id": "8efd1ac8-a743-4d3a-9c1d-c35b277a645d",
+                "resourcePath": "objects\\o_menu_controls\\o_menu_controls.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "85119490-d35a-4d52-b766-796ff80a7eb2",
             "Value": {
                 "id": "3560adfa-3685-413d-a618-f5fe7aaf2088",
@@ -724,6 +748,14 @@
                 "id": "e4e01492-5063-4a30-aa2f-d9fd44e8f991",
                 "resourcePath": "sounds\\snd_hit3\\snd_hit3.yy",
                 "resourceType": "GMSound"
+            }
+        },
+        {
+            "Key": "9580afdc-9d79-4187-bd48-9fcd6f065b62",
+            "Value": {
+                "id": "fecb3098-9324-4045-899d-36dec149bb13",
+                "resourcePath": "fonts\\f_menu2_small\\f_menu2_small.yy",
+                "resourceType": "GMFont"
             }
         },
         {
@@ -1015,6 +1047,14 @@
             }
         },
         {
+            "Key": "cea61ee9-33c4-4926-aceb-a86112908310",
+            "Value": {
+                "id": "6ee6e7c9-273f-4f01-ba06-d8dab31873c7",
+                "resourcePath": "scripts\\choice_gamepad_string\\choice_gamepad_string.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "cefe93db-eee0-4db6-8a13-17b332984289",
             "Value": {
                 "id": "8d52a4ae-1ed8-4571-a96c-48f7b3e8ace8",
@@ -1135,6 +1175,14 @@
             }
         },
         {
+            "Key": "dca3a05a-b29a-4670-b4d1-1f304add4606",
+            "Value": {
+                "id": "c0cb8f76-c54b-4828-ab0c-e696163bb019",
+                "resourcePath": "objects\\o_choice_menu\\o_choice_menu.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "e2f8d981-5b6d-4bdc-9f9b-918da570a0c6",
             "Value": {
                 "id": "06e84723-dc32-426b-8a36-64d1b28a8dd1",
@@ -1199,6 +1247,14 @@
             }
         },
         {
+            "Key": "f25b3231-8811-42b5-9d66-2c3403085af6",
+            "Value": {
+                "id": "7d5acb23-f337-43d1-8248-4509b1c0d763",
+                "resourcePath": "scripts\\scr_string_keycheck\\scr_string_keycheck.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "f26bee50-503d-4c6a-adf2-b1ae15988985",
             "Value": {
                 "id": "8ebd4b20-12dc-422b-97f2-24612153c6bc",
@@ -1252,6 +1308,14 @@
                 "id": "b09265a1-dc08-4e7c-b630-226e2261208f",
                 "resourcePath": "sprites\\s_mob_hurt_back\\s_mob_hurt_back.yy",
                 "resourceType": "GMSprite"
+            }
+        },
+        {
+            "Key": "f80a9cc4-2e19-48f2-bca4-e448b058402b",
+            "Value": {
+                "id": "eb3adc8e-065e-4f17-8eb6-46f3e80c93ef",
+                "resourcePath": "objects\\o_menu_options\\o_menu_options.yy",
+                "resourceType": "GMObject"
             }
         },
         {
@@ -1355,6 +1419,9 @@
         "870a41da-221c-4466-b405-ad99bdd37c49",
         "379de6e5-9290-4cb7-8baf-e258677477b6",
         "896633d3-b286-40d6-8e29-c5c690b4ea1a",
+        "004b400f-611b-4a0e-a21b-eb4f41dcf6e6",
+        "cea61ee9-33c4-4926-aceb-a86112908310",
+        "f25b3231-8811-42b5-9d66-2c3403085af6",
         "da4108b9-4f1e-4213-a581-f6e34717f03c",
         "fa909451-5059-4bc0-b1e4-65fd57b50455",
         "ff4def81-3fc5-4b90-bbca-06d386c19f3d",

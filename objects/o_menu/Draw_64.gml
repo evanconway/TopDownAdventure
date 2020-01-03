@@ -4,7 +4,7 @@ if (active) {
 	draw_set_alpha(1);
 	draw_set_font(menu_font);
 
-	var _menu_height = string_height(ATOZ) * ds_list_size(choices); // +1 for menu title
+	var _menu_height = string_height(ATOZ) * (ds_list_size(choices) + 1); // +1 for buffer
 	if (title != undefined) _menu_height += (1 + title_space) * string_height(ATOZ);
 	if (_menu_height < height_min) _menu_height = height_min;
 	
@@ -19,9 +19,9 @@ if (active) {
 	draw_rectangle(VIEW_W/2 - _menu_width/2, VIEW_H/2 - _menu_height/2, 
 		VIEW_W/2 + _menu_width/2, VIEW_H/2 + _menu_height/2, false);
 
-	var _topy = VIEW_H/2 - _menu_height/2;
+	var _topy = VIEW_H/2 - _menu_height/2 + string_height(ATOZ)/2;
 	var _leftx = VIEW_W/2;
-	draw_set_halign(fa_center); // right aligned text to deal with cursor
+	draw_set_halign(fa_center);
 	draw_set_valign(fa_top);
 	draw_set_color(c_white);
 	
@@ -31,17 +31,7 @@ if (active) {
 		_topy += (1 + title_space) * string_height(ATOZ);
 	}
 	
-	for (var i = 0; i < ds_list_size(choices); i++) {
-		var _choice = choices[|i];
-		if (index == i) {
-			draw_set_halign(fa_left);
-			draw_text(_leftx - _menu_width/2 + border_width, _topy + string_height(ATOZ) * i, cursor);
-			draw_set_halign(fa_center);
-			draw_set_alpha(cur_alpha);
-		}
-		draw_text(_leftx, _topy + string_height(ATOZ) * i, _choice.name);
-		draw_set_alpha(1);
-	}
-} else {
-	
+	// draw cursor
+	draw_set_halign(fa_left);
+	draw_text(_leftx - _menu_width/2 + border_width, _topy + string_height(ATOZ) * index, cursor);
 }

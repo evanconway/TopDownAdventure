@@ -18,9 +18,9 @@ We need to explain how these functions/values all interact with one another.
 
 Firstly, the window_set_size() function determines the dimensions of the
 application window. When the application is set to fullscreen, anything
-that window_set_size() trys to overwrite is ignored. I'm 100% sure, but
-I'm pretty sure full size just locks the dimensions of your window to
-the native resolution of the computer monitor.
+that window_set_size() trys to overwrite is ignored. I'm pretty sure full 
+size just locks the dimensions of your window to the native resolution of 
+the computer monitor.
 
 Now surface_resize() is the thing that totally threw us off last time. It
 scales, not stretches, scales to the window size. This means that if the
