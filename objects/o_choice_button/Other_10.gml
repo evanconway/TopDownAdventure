@@ -1,9 +1,11 @@
 /// @description 
 
 event_inherited();
+/*
 if (input_pressed(INPUT.SELECT) || input_pressed(INPUT.INTERACT)) {
 	submenu.name = choice_button_string(button);
 }
+*/
 
 if (submenu.newassignment != undefined) {
 	var _newa = submenu.newassignment;
