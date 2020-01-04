@@ -9,12 +9,16 @@ show_debug_message(" start next line");
 #macro ATOZ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 // ROOM LAYERS
-#macro LAYER_MASTER "Master"
-#macro LAYER_MENUS "Menus"
-#macro LAYER_EFFECTS "Effects"
-#macro LAYER_ACTORS "Actors"
-#macro LAYER_ATTACKS "Attacks"
-#macro LAYER_WALLS "Walls"
+#macro LAYER_MASTER 0
+#macro LAYER_MENUS 100
+#macro LAYER_DIALOGUES 200
+#macro LAYER_SCENES 300
+#macro LAYER_EFFECTS 400
+#macro LAYER_ATTACKS 500
+#macro LAYER_PLAYER 600
+#macro LAYER_ACTORS 700
+#macro LAYER_INTERACTS 800
+#macro LAYER_WALLS 900
 
 // these functions were in the last project, but I don't understand exactly what they do
 //game_set_speed(60, gamespeed_fps);
@@ -49,6 +53,6 @@ simply popped off the top of the stack.
 */
 global.focus = ds_stack_create(); // this is the object updated each frame
 
-gameworld = instance_create_depth(0, 0, 0, o_gameworld);
+gameworld = instance_create_depth(0, 0, LAYER_MASTER, o_gameworld);
 focus_push(gameworld);
 pause_menu = undefined;

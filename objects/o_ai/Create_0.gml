@@ -1,4 +1,4 @@
 /// @description 
 
 actor = undefined;
-controller = instance_create_layer(0, 0, "Actors", o_controller);
+controller = instance_create_depth(0, 0, LAYER_ACTORS, o_controller);

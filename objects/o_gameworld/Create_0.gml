@@ -14,4 +14,3 @@ global.bboxes = true; // boolean, draw bboxes of game objects
 global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible
 global.playerdata = true; // boolean, draws data about player
 global.player = undefined; // this is the ID of the actor that is the player character
-pause_menu = undefined;

@@ -84,7 +84,7 @@ if (ds_list_size(_hits) > 0) {
 		var _hit = _hits[|i];
 		ds_list_add(hitboxes_struck, _hit);
 		if (_hit.delete_on_hit) _hit.marked_for_deletion = true;
-		if (_hit.hitbox_fx != undefined) instance_create_layer(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
+		if (_hit.hitbox_fx != undefined) instance_create_depth(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
 		global.actors_freeze_time += _hit.freeze_frames;
 		
 		// stop miss sound if playing, and play hit sound
@@ -125,7 +125,7 @@ if (ds_list_size(_hits) > 0) {
 			if (death_snd != undefined) scr_play_sfx(death_snd);
 			ds_list_destroy(_hitboxes);
 			ds_list_destroy(_hits);
-			if (death_fx != undefined) instance_create_layer(x, y, LAYER_EFFECTS, death_fx);
+			if (death_fx != undefined) instance_create_depth(x, y, LAYER_EFFECTS, death_fx);
 			actor.killed = true;
 			exit;
 		}

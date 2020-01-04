@@ -1,14 +1,8 @@
 /// @description Update Gameworld
 
-// create pause menu once we're past initializer room
-if (room != 0 && pause_menu == undefined) {
-	pause_menu = instance_create_layer(x, y, LAYER_MENUS, o_menu_pause);
-}
-
 // this section deals with allowing us to change with actor the user controls. 
 // assign player if possible
-if (global.player == undefined && instance_number(o_actor) > 0) 
-	global.player = instance_find(o_actor, 0);
+findplayer();
 
 // cycle controllable actors
 // "[" == 219, "]" == 221
@@ -29,7 +23,6 @@ if (global.debug_active && (keyboard_check_pressed(219) || keyboard_check_presse
 
 // decrement freeze time (but only if no other actor freezers are active)
 if (global.actors_freeze_time >= 0 && !scr_actors_frozen()) global.actors_freeze_time--;
-
 
 // run dialogues
 for (var i = 0; i < instance_number(o_dialogue); i++) {
@@ -58,13 +51,12 @@ for (var i = 0; i < instance_number(o_actor); i++) {
 	}
 }
 
+// interacts (does it matter where I put this??)
+for (var i = 0; i < instance_number(o_interact); i++) {
+	with (instance_find(o_interact, i)) event_user(0);
+}
+
 // destroy killed actors
 for (var i = 0; i < instance_number(o_actor); i++) {
 	if (instance_find(o_actor, i).killed) instance_destroy(instance_find(o_actor, i));
-}
-
-// pause menu
-if (input_pressed(INPUT.START)) {
-	focus_push(pause_menu);
-	pause_menu.active = true;
 }
