@@ -1,6 +1,7 @@
 /// @description Inherit Parent
 
 event_inherited();
+menu_font = f_menu2_small;
 title = "Are you sure?";
 width_min = 100;
 ds_list_add(choices, menu_createchoice(o_choice_yes));

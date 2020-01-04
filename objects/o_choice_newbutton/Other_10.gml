@@ -12,7 +12,10 @@ if (input_pressed(INPUT.START)) {
 } else {
 	if (o_input.using_gamepad) {
 		for (var i = 0; i < GAMEPAD.SIZE; i++) {
-			if (scr_gamepad_pressed(i, button)) newbutton = i;
+			if (scr_gamepad_pressed(i, button)) {
+				newbutton = i;
+				i = GAMEPAD.SIZE;
+			}
 		}
 	} else {
 		if (keyboard_key != 0) newbutton = keyboard_key;

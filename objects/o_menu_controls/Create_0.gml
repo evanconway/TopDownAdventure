@@ -19,9 +19,7 @@ runs logic to remap the new button to the action.
 event_inherited();
 menu_font = f_menu2_small;
 title = "Controls";
-
 menu_color = c_green;
-border_width = 2;
 
 var i = 0;
 ds_list_set(choices, i, menu_createchoice(o_choice_button));

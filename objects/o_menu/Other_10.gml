@@ -41,9 +41,9 @@ Note that since many choices require different inputs, input checking is
 handled by choice logic, not the menu. That's why you don't see something 
 like: "if select pressed execute choice logic"
 */
-var _choice = ds_list_find_value(choices, index);
-if (_choice != undefined && !_dirpressed) {
-	with (_choice) event_user(0);
+cur_choice = ds_list_find_value(choices, index);
+if (cur_choice != undefined && !_dirpressed) {
+	with (cur_choice) event_user(0);
 }
 
 // return to previous focus on start press

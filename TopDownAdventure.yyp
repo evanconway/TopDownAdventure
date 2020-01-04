@@ -439,6 +439,14 @@
             }
         },
         {
+            "Key": "3edacf05-84ca-4ac4-b623-b8c0f6a15984",
+            "Value": {
+                "id": "dc81fe19-3a65-426c-acc5-a544966f9877",
+                "resourcePath": "scripts\\menu_calcheight\\menu_calcheight.yy",
+                "resourceType": "GMScript"
+            }
+        },
+        {
             "Key": "41356861-0921-426f-b442-f306b3044773",
             "Value": {
                 "id": "2b01a903-daad-4ea7-b854-e12e62f48587",
@@ -1700,6 +1708,7 @@
         "870a41da-221c-4466-b405-ad99bdd37c49",
         "379de6e5-9290-4cb7-8baf-e258677477b6",
         "896633d3-b286-40d6-8e29-c5c690b4ea1a",
+        "3edacf05-84ca-4ac4-b623-b8c0f6a15984",
         "004b400f-611b-4a0e-a21b-eb4f41dcf6e6",
         "cea61ee9-33c4-4926-aceb-a86112908310",
         "f25b3231-8811-42b5-9d66-2c3403085af6",
