@@ -21,12 +21,14 @@ for (var i = 0; i < ds_list_size(choices); i++) {
 
 // width of toolbar
 if (tooltips) {
-	var _toolwidth = _buffer + 10; // 10 is magic number
+	var _toolwidth = string_width(tool_select + tool_back) + _buffer + 10; // 10 is magic number
 	if (o_input.using_gamepad) {
-		var _spr_s = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.INTERACT, 0));
-		var _spr_b = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.BACK, 0));
-		if (_spr_s != undefined) _toolwidth += string_width(tool_select) + sprite_get_width(_spr_s);
-		if (_spr_b != undefined) _toolwidth += string_width(tool_back) + sprite_get_width(_spr_b);
+		var _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.INTERACT, 0));
+		if (_spr == undefined) _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.SELECT, 0));
+		_toolwidth += sprite_get_width(_spr);
+		_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.BACK, 0));
+		if (_spr == undefined) _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.START, 0));
+		_toolwidth += sprite_get_width(_spr);
 	} else {
 		
 	}

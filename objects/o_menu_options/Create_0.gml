@@ -20,4 +20,4 @@ ds_list_set(choices, i, menu_createchoice(o_choice));
 with (choices[|i++]) {
 	name = "Sound";
 }
-ds_list_set(choices, i, menu_createchoice(o_choice_back));
+//ds_list_set(choices, i, menu_createchoice(o_choice_back));

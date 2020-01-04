@@ -70,6 +70,7 @@ m_view_h = _start_m;
 
 window_set_size(WINDOW_W, WINDOW_H);
 surface_resize(application_surface, RESOLUTION_W, RESOLUTION_H);
+display_reset(0, true);
 
 enum CAMFOLLOW {
 	RIGID,

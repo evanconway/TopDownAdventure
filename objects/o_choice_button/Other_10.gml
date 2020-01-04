@@ -1,11 +1,16 @@
 /// @description 
 
 event_inherited();
-/*
-if (input_pressed(INPUT.SELECT) || input_pressed(INPUT.INTERACT)) {
-	submenu.name = choice_button_string(button);
+
+if (input_pressed(INPUT.ATTACK) && submenu.newassignment == undefined) {
+	if (o_input.using_gamepad) {
+		ds_grid_set(o_input.gamepad_assignment, button, 0, NOASSIGNMENT);
+		ds_grid_set(o_input.gamepad_assignment, button, 1, NOASSIGNMENT);
+	} else {
+		ds_grid_set(o_input.keyboard_assignment, button, 0, NOASSIGNMENT);
+		ds_grid_set(o_input.keyboard_assignment, button, 1, NOASSIGNMENT);
+	}
 }
-*/
 
 if (submenu.newassignment != undefined) {
 	var _newa = submenu.newassignment;

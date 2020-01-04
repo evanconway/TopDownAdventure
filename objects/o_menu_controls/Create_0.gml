@@ -86,4 +86,4 @@ with (choices[|i++]) {
 	submenu.button = button;
 	submenu.choices[|0].button = button;
 }
-ds_list_set(choices, i, menu_createchoice(o_choice_back));
+//ds_list_set(choices, i, menu_createchoice(o_choice_back));
