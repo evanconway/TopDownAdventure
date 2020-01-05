@@ -18,6 +18,6 @@ if (input_pressed(INPUT.START)) {
 			}
 		}
 	} else {
-		if (keyboard_key != 0) newbutton = keyboard_key;
+		if (keyboard_key != 0 && keyboard_check_pressed(keyboard_key)) newbutton = keyboard_key;
 	}
 }

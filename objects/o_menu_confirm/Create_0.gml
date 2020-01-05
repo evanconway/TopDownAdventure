@@ -1,7 +1,6 @@
 /// @description Inherit Parent
 
 event_inherited();
-menu_font = f_menu2_small;
 title = "Are you sure?";
 ds_list_add(choices, menu_createchoice(o_choice_yes));
 with (choices[|0]) name = "Yes";

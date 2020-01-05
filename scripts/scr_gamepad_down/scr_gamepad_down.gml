@@ -1,5 +1,7 @@
 /// @param assignment
 
+if (o_input.gamepadID == undefined) exit;
+
 // returns true if given assignment is down
 
 var result = false;

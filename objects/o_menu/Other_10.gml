@@ -3,13 +3,13 @@
 var _dirpressed = false;
 var _indexprev = index;
 
-if (input_pressed(INPUT.UP) && !input_pressed(INPUT.DOWN)) {
+if (input_pressed(INPUT.UI_UP) && !input_pressed(INPUT.UI_DOWN)) {
 	index--;
 	index = clamp(index, 0, ds_list_size(choices) - 1);
 	if (index != _indexprev) _dirpressed = true;
 }
 
-if (input_pressed(INPUT.DOWN) && !input_pressed(INPUT.UP)) {
+if (input_pressed(INPUT.UI_DOWN) && !input_pressed(INPUT.UI_UP)) {
 	index++;
 	index = clamp(index, 0, ds_list_size(choices) - 1);
 	if (index != _indexprev) _dirpressed = true;
@@ -48,7 +48,7 @@ if (cur_choice != undefined && !_dirpressed) {
 
 // return to previous focus on start press
 // (but only if this menu is still the current focus)
-if  (id == focus_cur() && (input_pressed(INPUT.START) || input_pressed(INPUT.BACK))) {
+if  (id == focus_cur() && (input_pressed(INPUT.START) || input_pressed(INPUT.UI_CANCEL))) {
 	focus_pop();
 	active = false;
 }

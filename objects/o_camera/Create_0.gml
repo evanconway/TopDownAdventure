@@ -26,8 +26,7 @@ Now surface_resize() is the thing that totally threw us off last time. It
 scales, not stretches, scales to the window size. This means that if the
 window has dimensions of 16:9, and the surface has dimensions of 4:3, then
 you will get a 4:3 game with black bars on the side inside of the 16:9 
-window. And if you have a 16:9 surface with a 4:3 window, you'll get 
-a 16:9 game with black bars on the top and bottom of a 4:3 window.
+window.
 
 Finally, the view is STRETCHED to the surface. This is an important 
 difference. If the view has 4:3 dimensions, and the surface has 16:9,
@@ -46,27 +45,56 @@ above), the view and resolution will be identical, and the window
 will be an integer multiplication of those dimensions.
 */
 
-// multipliers
-m_min = 20;
-m_max = 120;
-var _start_m = 20;
-window_multiplier = 4;
-m_window_w = _start_m * window_multiplier;
-m_window_h = _start_m * window_multiplier;
-m_resolution_w = _start_m;
-m_resolution_h = _start_m;
-m_view_w = _start_m;
-m_view_h = _start_m;
-
+/*
+I'm expecting we'll use 16:9 for our game ratio, however, should we decide
+to try 4:3, we have to use the values 12:9. This is because it keeps the
+values similar to 16:9 when multiplied by the same multipliers. 
+*/
 #macro SCREEN_RATIO_WIDTH 16
 #macro SCREEN_RATIO_HEIGHT 9
 
-#macro WINDOW_W o_camera.m_window_w * SCREEN_RATIO_WIDTH
-#macro WINDOW_H o_camera.m_window_h * SCREEN_RATIO_HEIGHT
-#macro RESOLUTION_W o_camera.m_resolution_w * SCREEN_RATIO_WIDTH
-#macro RESOLUTION_H o_camera.m_resolution_h * SCREEN_RATIO_HEIGHT
-#macro VIEW_W o_camera.m_view_w * SCREEN_RATIO_WIDTH
-#macro VIEW_H o_camera.m_view_h * SCREEN_RATIO_HEIGHT
+// multipliers (m short of multiplier for all these variables)
+/*
+Our screen ratio values are multiplied by these multipliers to create the
+dimensions of the resolution, view, and window. There are also many places
+in our code that will change these multipliers, so we're going to establish
+min and max values for these multipliers so that things never get too far out of hand. 
+*/
+m_min = 20;
+m_max = 120;
+
+/*
+If we're going with a 16:9 res, I feel 320x180 looks really good. The pixels
+are huge (which I love), but it's juuuuuust barely detailed enough to have
+some creative freedom. So to do this, we have to multiply our starting ratio
+values by 20. The only thing that will ever change the resolution of the game
+is changing the aspect ratio in the settings. 
+*/
+m_resolution = 20;
+#macro RESOLUTION_W o_camera.m_resolution * SCREEN_RATIO_WIDTH
+#macro RESOLUTION_H o_camera.m_resolution * SCREEN_RATIO_HEIGHT
+
+/*
+The view is the dimensions of the game world drawn to the surface. Recall that
+the view is STRETCHED to the dimensions of the surface. So, if we want pixel
+perfection, the view must be the exact same dimensions as the resolution. And
+if we want to play around with the view, like zoom in on something, the ratio
+of the view dimensions must be identical. For starters, we will use the same
+multiplier as the resolution
+*/
+m_view = m_resolution;
+#macro VIEW_W o_camera.m_view * SCREEN_RATIO_WIDTH
+#macro VIEW_H o_camera.m_view * SCREEN_RATIO_HEIGHT
+
+/*
+By our desgin, the window will only ever be a multiplication of the game
+resolultion. By having a game resolution of 320x180, we can easily get
+common resolutions like 720p and 1080p by multiplying the game res by 4
+and 6 respectively. 
+*/
+m_window = 4;
+#macro WINDOW_W o_camera.m_window * RESOLUTION_W
+#macro WINDOW_H o_camera.m_window * RESOLUTION_H
 
 window_set_size(WINDOW_W, WINDOW_H);
 surface_resize(application_surface, RESOLUTION_W, RESOLUTION_H);

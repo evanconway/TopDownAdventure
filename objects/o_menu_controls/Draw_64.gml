@@ -17,7 +17,7 @@ if (active) {
 	var _t2 = " to clear)";
 	var _as = undefined;
 	if (o_input.using_gamepad) {
-		_as = ds_grid_get(o_input.gamepad_assignment, INPUT.ATTACK, 0);
+		_as = ds_grid_get(o_input.gamepad_assignment, INPUT.UI_CLEAR, 0);
 		if (_as != NOASSIGNMENT) {
 			draw_set_halign(fa_left);
 			_x -= (string_width(_t1 + _t2) + sprite_get_width(scr_controller_icon(_as)))/2;
@@ -27,10 +27,10 @@ if (active) {
 			draw_text(_x, _topy, _t2);
 		}
 	} else {
-		_as = ds_grid_get(o_input.keyboard_assignment, INPUT.ATTACK, 0);
+		_as = ds_grid_get(o_input.keyboard_assignment, INPUT.UI_CLEAR, 0);
 		if (_as != NOASSIGNMENT) {
 			draw_set_halign(fa_center); 
-			draw_text(_x, _topy, _t1 + choice_button_string(INPUT.ATTACK) + _t2);
+			draw_text(_x, _topy, _t1 + scr_string_keycheck(_as) + _t2);
 		}
 	}
 }

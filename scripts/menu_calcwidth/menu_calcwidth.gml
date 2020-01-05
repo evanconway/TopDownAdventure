@@ -20,16 +20,15 @@ for (var i = 0; i < ds_list_size(choices); i++) {
 
 // width of toolbar
 if (tooltips) {
-	var _toolwidth = string_width(tool_select + tool_back) + menu_buffer() * 2; // *2 is magic, arbitrary number
+	var _toolwidth = string_width(tool_select + tool_back) + menu_buffer(); // *2 is magic, arbitrary number
 	if (o_input.using_gamepad) {
-		var _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.INTERACT, 0));
-		if (_spr == undefined) _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.SELECT, 0));
+		var _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.UI_SELECT, 0));
 		_toolwidth += sprite_get_width(_spr);
-		_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.BACK, 0));
-		if (_spr == undefined) _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.START, 0));
+		_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.UI_CANCEL, 0));
 		_toolwidth += sprite_get_width(_spr);
 	} else {
-		
+		_toolwidth += string_width(scr_string_keycheck(ds_grid_get(o_input.keyboard_assignment, INPUT.UI_SELECT, 0)));
+		_toolwidth += string_width(scr_string_keycheck(ds_grid_get(o_input.keyboard_assignment, INPUT.UI_CANCEL, 0)));
 	}
 	if (_width < _toolwidth) _width = _toolwidth;
 }

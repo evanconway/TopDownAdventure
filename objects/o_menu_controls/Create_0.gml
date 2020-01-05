@@ -23,7 +23,6 @@ custom code it for this menu.
 
 // Inherit the parent event
 event_inherited();
-menu_font = f_menu2_small;
 title = "Controls";
 title_lines = 2; // extra space at the top
 border_color = c_green;

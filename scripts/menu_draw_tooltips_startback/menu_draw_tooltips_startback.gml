@@ -5,34 +5,25 @@ var _menu_height = menu_calcheight();
 var _menu_width = menu_calcwidth();
 var _boty = VIEW_H/2 + _menu_height/2;
 var _cenx = VIEW_W/2;
-var _lefx = _cenx  - _menu_width/2 + MENU_SPACER;
+var _lefx = _cenx;
 var _ritx = _cenx + _menu_width/2 - MENU_SPACER;
 var _spr = undefined;
+var _c = "Cancel:";
 draw_set_valign(fa_bottom);
 if (o_input.using_gamepad) {
-	// select
-	_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.UI_SELECT, 0));
+	// Start
+	_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.START, 0));
 	draw_set_halign(fa_left);
-	draw_text(_lefx, _boty, tool_select);
-	_lefx += string_width(tool_select) + sprite_get_width(_spr);
+	_lefx -= (string_width(_c) + sprite_get_width(_spr))/2;
+	draw_text(_lefx, _boty, _c);
+	_lefx += string_width(_c) + sprite_get_width(_spr);
 	draw_sprite(_spr, 0, _lefx, _boty - string_height(ATOZ));
-	// back
-	_spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.UI_CANCEL, 0));
-	draw_sprite(_spr, 0, _ritx, _boty - string_height(ATOZ));
-	_ritx -= sprite_get_width(_spr);
-	draw_set_halign(fa_right);
-	draw_text(_ritx, _boty, tool_back);
 } else {
-	// select
-	_spr = ds_grid_get(o_input.keyboard_assignment, INPUT.UI_SELECT, 0);
+	// Start
+	_spr = ds_grid_get(o_input.keyboard_assignment, INPUT.START, 0);
 	_spr = scr_string_keycheck(_spr);
-	draw_set_halign(fa_left);
-	draw_text(_lefx, _boty, tool_select + _spr);
-	// back
-	_spr = ds_grid_get(o_input.keyboard_assignment, INPUT.UI_CANCEL, 0);
-	_spr = scr_string_keycheck(_spr);
-	draw_set_halign(fa_right);
-	draw_text(_ritx, _boty, tool_back + _spr);
+	draw_set_halign(fa_center);
+	draw_text(_cenx, _boty, _c + _spr);
 }
 
 /*

@@ -2,7 +2,6 @@
 
 // Inherit the parent event
 event_inherited();
-menu_font = f_menu2;
 title = "Options";
 border_color = c_blue;
 

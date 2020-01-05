@@ -2,7 +2,6 @@
 
 // Inherit the parent event
 event_inherited();
-menu_font = f_menu2;
 title = "Game Paused";
 border_color = c_red;
 
@@ -18,9 +17,6 @@ with (choices[|i++]) {
 }
 ds_list_set(choices, i, menu_createchoice(o_choice));
 with (choices[|i++]) {
-	name = "option 3";
+	name = "Main Menu";
 }
 ds_list_set(choices, i, menu_createchoice(o_choice_quit));
-with(choices[|i]) {
-	//submenu.depth = other.depth - 1;
-}

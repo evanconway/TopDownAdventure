@@ -28,7 +28,7 @@ index = 0;
 cursor = ">";
 choices = ds_list_create(); 
 
-menu_font = f_menu1;
+menu_font = f_menu3;
 menu_color = c_white;
 border_color = c_white;
 

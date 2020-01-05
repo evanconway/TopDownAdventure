@@ -34,7 +34,7 @@ switch (argument[0]) {
 		_axison = gamepad_axis_value(o_input.gamepadID, gp_axisrh) > o_input.deadzone;
 	break;
 }
-if (_axison > 0 && !ds_grid_get(global.input, argument[1], 0)) result = true;
+if (_axison > 0 && !ds_list_find_value(o_input.gamepad_axisprev, argument[0])) result = true;
 
 switch (argument[0]) {
 	case GAMEPAD.DP_UP:

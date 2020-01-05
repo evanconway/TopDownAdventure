@@ -21,6 +21,9 @@ if (global.player != undefined && instance_exists(global.player)) {
 			while (global.player.y > _y + follow_bound_y) _y++;
 		break;
 	}
+} else {
+	_x = 0;
+	_y = 0;
 }
 
 // change _x/y from center to upper left (how it actually works)

@@ -30,7 +30,7 @@ if (active) {
 	}
 
 	// draw cursor
-	if (cursor != undefined) {
+	if (cursor != undefined && focus_cur() == id) {
 		draw_set_halign(fa_left);
 		draw_text(_lefx + menu_buffer()/2, _topy + string_height(ATOZ) * index, cursor);
 	}

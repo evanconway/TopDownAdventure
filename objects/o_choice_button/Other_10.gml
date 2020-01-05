@@ -2,7 +2,7 @@
 
 event_inherited();
 
-if (input_pressed(INPUT.ATTACK) && submenu.newassignment == undefined) {
+if (input_pressed(INPUT.UI_CLEAR) && submenu.newassignment == undefined) {
 	if (o_input.using_gamepad) {
 		ds_grid_set(o_input.gamepad_assignment, button, 0, NOASSIGNMENT);
 		ds_grid_set(o_input.gamepad_assignment, button, 1, NOASSIGNMENT);
@@ -41,7 +41,13 @@ if (submenu.newassignment != undefined) {
 	// case 3
 	if (_newa != ds_grid_get(_as, button, 0) && _newa != ds_grid_get(_as, button, 1)) {
 		// delete conflicts
-		for (var i = 0; i < INPUT.SIZE; i++) {
+		/*
+		Since we redid how we read input in menus, we can't use "size" as our final
+		marker for iterating over inputs anymore. We can't have the game check,
+		and overwrite the ui inputs. So now, to only iterate over all normal game
+		inputs, we have to stop at the first ui input in the enum, which is up. 
+		*/
+		for (var i = 0; i < INPUT.UI_UP; i++) {
 			if (ds_grid_get(_as, i, 0) == _newa) {
 				ds_grid_set(_as, i, 0, ds_grid_get(_as, i, 1));
 				ds_grid_set(_as, i, 1, NOASSIGNMENT);

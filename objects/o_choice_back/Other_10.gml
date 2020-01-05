@@ -1,6 +1,6 @@
 /// @description 
 
-if (input_pressed(INPUT.SELECT) || input_pressed(INPUT.INTERACT)) {
+if (input_pressed(INPUT.UI_SELECT)) {
 	focus_pop();
 	menu.active = false;
 }
