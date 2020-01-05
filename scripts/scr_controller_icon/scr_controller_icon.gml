@@ -1,4 +1,4 @@
-/// @param input_enum
+/// @param gamepad_enum
 
 // returns appropriate sprite icon for given input enum
 

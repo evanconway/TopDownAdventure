@@ -1,6 +1,9 @@
 /// @param button_enum
 
+// this script doesn't make sense anymore because we no longer use strings for controller icons
+
 var result = "No assignment";
+
 if (argument0 >= 0 && argument0 < INPUT.SIZE) {
 	if (o_input.using_gamepad) {
 		var _gpID = ds_grid_get(o_input.gamepad_assignment, argument0, 0);
@@ -18,4 +21,5 @@ if (argument0 >= 0 && argument0 < INPUT.SIZE) {
 		}
 	}
 }
+
 return result;

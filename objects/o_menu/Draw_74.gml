@@ -3,20 +3,16 @@
 if (active) {
 	draw_set_alpha(1);
 	draw_set_font(menu_font);
-	var _buffer = string_height(ATOZ) / 2; // for space from border
 	var _menu_height = menu_calcheight();
 	var _menu_width = menu_calcwidth();
-	var _topy = VIEW_H/2 - _menu_height/2 + _buffer;
+	var _topy = VIEW_H/2 - _menu_height/2;
 	var _cenx = VIEW_W/2;
-	var _lefx = _cenx  - _menu_width/2 + _buffer;
-	var _ritx = _cenx + _menu_width/2 - _buffer;
-	draw_set_halign(fa_center);
-	draw_set_valign(fa_top);
-	draw_set_color(c_white);
+	var _lefx = _cenx  - _menu_width/2 + menu_buffer();
+	var _ritx = _cenx + _menu_width/2 - menu_buffer();
 	
 	// account for title space
-	_topy += (1 + title_space) * string_height(ATOZ);
-	
+	// spacer is above and below
+	if (title != undefined) _topy += string_height(ATOZ) * title_lines + MENU_SPACER * 2;
 	for (var i = 0; i < ds_list_size(choices); i++) {
 		var _choice = choices[|i];
 		_choice.draw_x = _cenx;

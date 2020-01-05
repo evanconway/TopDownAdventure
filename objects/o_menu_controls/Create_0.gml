@@ -13,13 +13,20 @@ in the newbutton choice. Next, the newbutton menu checks to see if the choices
 choice of the control menu which started this whole process checks to see
 if the submenu "new button" variable has been defined. If it has, the choice
 runs logic to remap the new button to the action. 
+
+We made a system for simple tool tips, but it only works for select and back
+at the bottom. We need to inform the user they can clear an assignment by
+pressing the attack button. So... rather than developing a whole system
+for adding and removing custom tool tips to menus, we're just going to
+custom code it for this menu.
 */
 
 // Inherit the parent event
 event_inherited();
 menu_font = f_menu2_small;
 title = "Controls";
-menu_color = c_green;
+title_lines = 2; // extra space at the top
+border_color = c_green;
 
 var i = 0;
 ds_list_set(choices, i, menu_createchoice(o_choice_button));
@@ -86,4 +93,3 @@ with (choices[|i++]) {
 	submenu.button = button;
 	submenu.choices[|0].button = button;
 }
-//ds_list_set(choices, i, menu_createchoice(o_choice_back));

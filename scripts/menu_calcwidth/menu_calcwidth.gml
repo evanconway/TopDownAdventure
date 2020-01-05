@@ -6,22 +6,21 @@ of choices, font size, etc.
 // for now, we're just using the choice name as its width
 
 draw_set_font(menu_font);
-var _buffer = string_height(ATOZ);
 var _width = 0;
-if (title != undefined) _width = string_width(title);
+if (title != undefined) _width = string_width(title) + menu_buffer()*2; // one buffer on either side
 
 // width of choices
 for (var i = 0; i < ds_list_size(choices); i++) {
 	var _choice = choices[|i];
 	with (_choice) event_user(1); // event_user(1) sets choice width
-	var _choice_width = _choice.width + _buffer;
+	var _choice_width = _choice.width + menu_buffer()*2; // one buffer on either side
 	if (cursor != undefined) _choice_width += string_width(cursor)*2; // note below
 	if (_choice_width > _width) _width = _choice_width;
 }
 
 // width of toolbar
 if (tooltips) {
-	var _toolwidth = string_width(tool_select + tool_back) + _buffer + 10; // 10 is magic number
+	var _toolwidth = string_width(tool_select + tool_back) + menu_buffer() * 2; // *2 is magic, arbitrary number
 	if (o_input.using_gamepad) {
 		var _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.INTERACT, 0));
 		if (_spr == undefined) _spr = scr_controller_icon(ds_grid_get(o_input.gamepad_assignment, INPUT.SELECT, 0));
