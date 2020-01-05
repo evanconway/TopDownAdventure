@@ -1,6 +1,5 @@
 /// @description Reposition Camera
 
-#macro VIEW_CAMERA view_camera[0]
 camera_set_view_size(VIEW_CAMERA, VIEW_W, VIEW_H);
 
 var _x = camera_get_view_x(VIEW_CAMERA) + RESOLUTION_W/2; // treated as center of view
@@ -35,3 +34,6 @@ _x = clamp(_x, 0, room_width);
 _y = clamp(_y, 0, room_height);
 
 camera_set_view_pos(VIEW_CAMERA, _x, _y);
+display_set_gui_size(RESOLUTION_W, RESOLUTION_H); // this line does not appear to have done anything
+view_set_wport(VIEW_CAMERA, RESOLUTION_W);
+view_set_hport(VIEW_CAMERA, RESOLUTION_H);

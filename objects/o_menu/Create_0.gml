@@ -14,6 +14,15 @@ project, the 3 places we need to look are Draw GUI Begin, Draw GUI, and the
 menu calc width/height scripts. The actions these pieces take have to be the
 same. So, if there's a _topy + menu_buffer()/3 in one, it should be in all
 of them, and in the same spot. 
+
+A note about the gui layer and sub-pixels:
+I was having a problem where the menus were not actually drawing to the 
+resolution I specified. It turns out I was drawing at non-integer locaitons.
+According to ygg from the game maker discord:
+"The GUI always take advantage of all the subpixels due to the way it works"
+So, when drawing to the gui layer, we can never draw non-integer values. 
+Frankly the more I use gamemaker the more it becomes clear you can just never
+ever predict the drawing behavior if you use non-integer values. 
 */
 
 active = false; // determines whether this state runs code or not

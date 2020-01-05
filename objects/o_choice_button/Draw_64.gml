@@ -13,12 +13,12 @@ if (menu != undefined && menu.active) {
 		var _as1 = ds_grid_get(o_input.gamepad_assignment, button, 0);
 		var _as2 = ds_grid_get(o_input.gamepad_assignment, button, 1);
 		if (_as2 != NOASSIGNMENT) {
-			draw_sprite(scr_controller_icon(_as2), 0, draw_x_right, draw_y);
+			draw_sprite_floor(scr_controller_icon(_as2), 0, draw_x_right, draw_y);
 			draw_x_right -= ICON_WIDTH;
-			draw_text(draw_x_right, draw_y, DIVIDER);
+			draw_text_floor(draw_x_right, draw_y, DIVIDER);
 			draw_x_right -= string_width(DIVIDER);
 		}
-		if (_as1 != NOASSIGNMENT) draw_sprite(scr_controller_icon(_as1), 0, draw_x_right, draw_y);
+		if (_as1 != NOASSIGNMENT) draw_sprite_floor(scr_controller_icon(_as1), 0, draw_x_right, draw_y);
 	}
-	else draw_text(draw_x_right, draw_y, choice_button_string(button));
+	else draw_text_floor(draw_x_right, draw_y, choice_button_string(button));
 }

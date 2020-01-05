@@ -1,6 +1,7 @@
 /// @description GameMaker Camera Explained
 
 showdims = false;
+#macro VIEW_CAMERA view_camera[0]
 
 /*
 It is critical to understand that this camera object is NOT the Game Maker 

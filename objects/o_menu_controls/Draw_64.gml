@@ -21,16 +21,16 @@ if (active) {
 		if (_as != NOASSIGNMENT) {
 			draw_set_halign(fa_left);
 			_x -= (string_width(_t1 + _t2) + sprite_get_width(scr_controller_icon(_as)))/2;
-			draw_text(_x, _topy, _t1);
+			draw_text_floor(_x, _topy, _t1);
 			_x += string_width(_t1) + sprite_get_width(scr_controller_icon(_as));
-			draw_sprite(scr_controller_icon(_as), 0, _x, _topy);
-			draw_text(_x, _topy, _t2);
+			draw_sprite_floor(scr_controller_icon(_as), 0, _x, _topy);
+			draw_text_floor(_x, _topy, _t2);
 		}
 	} else {
 		_as = ds_grid_get(o_input.keyboard_assignment, INPUT.UI_CLEAR, 0);
 		if (_as != NOASSIGNMENT) {
 			draw_set_halign(fa_center); 
-			draw_text(_x, _topy, _t1 + scr_string_keycheck(_as) + _t2);
+			draw_text_floor(_x, _topy, _t1 + scr_string_keycheck(_as) + _t2);
 		}
 	}
 }

@@ -27,6 +27,14 @@ if (global.debug_active) {
 		i += _texth;
 		draw_text_bo(RESOLUTION_W - 1, i, "view_h: " + string(VIEW_H));
 		i += _texth;
+		draw_text_bo(RESOLUTION_W - 1, i, "gui_w: " + string(display_get_gui_width()));
+		i += _texth;
+		draw_text_bo(RESOLUTION_W - 1, i, "gui_h: " + string(display_get_gui_height()));
+		i += _texth;
+		draw_text_bo(RESOLUTION_W - 1, i, "viewport_w: " + string(view_get_wport(VIEW_CAMERA)));
+		i += _texth;
+		draw_text_bo(RESOLUTION_W - 1, i, "viewport_h: " + string(view_get_hport(VIEW_CAMERA)));
+		i += _texth;
 		draw_text_bo(RESOLUTION_W - 1, i , 
 			"X: " + string(camera_get_view_x(VIEW_CAMERA)) + "  Y: " + string(camera_get_view_y(VIEW_CAMERA)));
 	}

@@ -7,5 +7,5 @@ if (menu != undefined && menu.active) {
 	draw_set_valign(fa_top);
 	if (menu.cur_choice == id) draw_set_color(menu.choice_color_sel);
 	else draw_set_color(menu.choice_color_def);
-	draw_text(draw_x, draw_y, name);
+	draw_text_floor(draw_x, draw_y, name);
 }
