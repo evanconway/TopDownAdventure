@@ -25,9 +25,16 @@ if (global.debug_active && (keyboard_check_pressed(219) || keyboard_check_presse
 if (global.actors_freeze_time >= 0 && !scr_actors_frozen()) global.actors_freeze_time--;
 
 // run dialogues
+/*
+We ran into a bug where, once an interact object takes focus, the dialogues can't 
+update if their logic is here. We're trying a radical idea. Dialogues are updated
+discretly by whatever object needs them. Most of the time that will be interact 
+objects
+
 for (var i = 0; i < instance_number(o_dialogue); i++) {
 	with (instance_find(o_dialogue, i)) event_user(EVENT_LOGIC);
 }
+*/
 
 // run actor logic
 for (var i = 0; i < instance_number(o_actor); i++) {
@@ -51,9 +58,14 @@ for (var i = 0; i < instance_number(o_actor); i++) {
 	}
 }
 
-// interacts (does it matter where I put this??)
+// interacts 
+/*
+Does it matter where interacts do their checks and run logic? To avoid conflicts
+interact will only check for activation when the gameworld is the focus object
+*/
 for (var i = 0; i < instance_number(o_interact); i++) {
-	with (instance_find(o_interact, i)) event_user(0);
+	var _interact = instance_find(o_interact, i);
+	if (focus_cur() == id) with (_interact) event_user(1);
 }
 
 // destroy killed actors

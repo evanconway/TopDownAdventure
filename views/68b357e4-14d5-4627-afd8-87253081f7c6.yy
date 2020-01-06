@@ -11,7 +11,8 @@
         "e8110d06-7b97-4358-aa24-b31b253c48ea",
         "d3e67e20-a22b-4787-8da1-b15e6f079ba9",
         "d67d4ba7-b7a4-423e-842d-146cf652d1e0",
-        "870a41da-221c-4466-b405-ad99bdd37c49"
+        "870a41da-221c-4466-b405-ad99bdd37c49",
+        "3c5a214f-ba42-452e-ba58-26e863d8f7a7"
     ],
     "filterType": "GMScript",
     "folderName": "gameworld",

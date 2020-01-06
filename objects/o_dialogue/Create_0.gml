@@ -19,22 +19,46 @@ script to see how we're handling line wrapping.
 lines = ds_list_create();
 
 /*
+Ok, we're revisiting these dialogue objects after some time away, and the current code isn't going 
+to work, so we're redoing it. The fundamental design, however, is sound. We're still using the 
+set text script. We need more control over what the box is doing, and access to more information
+about the box at any given time. We're going to use enum, states, and a series of scripts to 
+accomplish this.
+Also, we should redo how the typing and chirping works. Currently we wait a certain number of frames
+before advancing the cursor one position and making the chirp noise. Well, even at the fastest setting
+(1 cursor advancement per frame), the typing is still fairly slow. And the chirping sounds like a 
+machine gun. So we're going to do it differently. The cursor will still advance after a certain number 
+of frames, but we will allow the value to be non-integer values, and we'll round correctly at draw time.
+We're not going to worry about different speeds for different characters. We'll call that a stretch 
+goal. 
+*/
+
+enum DIALOGUE {
+	OFF,
+	OPENING,
+	TYPING,
+	STATIC,
+	CLOSING
+}
+state = DIALOGUE.OFF;
+
+/*
 Our dialogue boxes "open" before typing text. The expand_rate determines how fast the box opens and
 closes.
 */
 width = 100;
 height = 50;
-width_cur = 0;	
+width_cur = 0;
 height_cur = 0;
-expand_rate = 2;
-active = true;
-typing = true;
+expand_rate = 4;
 
-type_time_max = 1; // this is the number of frames between character types
+
+type_time_max = 5; // this is the number of frames between character types
 type_time = 0;
+type_cursor_adv = 2; // number of chars advanced per "type"
 
-y_cursor = 0; // line in list
-x_cursor = 0; // char in list, strings are 1 based index!!!!
+cursor_y = 0; // line in list
+cursor_x = 0; // char in list, strings are 1 based index!!!!
 
 text_offset = 3; // distance text is from border
 

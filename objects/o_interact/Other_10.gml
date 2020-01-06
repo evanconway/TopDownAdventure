@@ -1,4 +1,4 @@
-/// @description 
+/// @description Focus Logic
 
 /*
 Any logic we want an interact to execute, like listening for
