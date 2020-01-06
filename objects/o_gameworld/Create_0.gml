@@ -7,8 +7,6 @@ objects or whatever. It's not stuff like menus.
 */
 
 global.actors_list = ds_list_create();
-global.actor_freezers = ds_list_create();
-global.actors_freeze_time = 0;
 global.ai_active = true;
 global.bboxes = true; // boolean, draw bboxes of game objects
 global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible

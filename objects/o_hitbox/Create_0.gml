@@ -13,7 +13,9 @@ target_obj = undefined;
 knockback = 1;
 delete_on_hit = false; // hurt state checks this
 marked_for_deletion = false; // hurt state sets this
+permenant = false; // ignores frame data and remains forever
 actor = undefined;
+invisible = false;
 
 // snd vars are actually lists so we can have random sounds
 hit_snd = ds_list_create();
@@ -60,4 +62,6 @@ These lists will have to be setup manually for each hitbox.
 frames_counted = 0; // incremented by frame value of sprite_frames
 sprite_frames = ds_list_create(); // we'll use the image_index as 
 
-scr_play_sfx_rndm(miss_snd)
+// this must be called from individual hitboxes, otherwise ALL 
+// hitboxes play these miss sounds
+//scr_play_sfx_rndm(miss_snd)

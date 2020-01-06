@@ -20,6 +20,6 @@ actors sprite is not in the map, then the actors collision mask is used
 instead.
 */
 hurtboxes = ds_map_create();
-health = 3;
+hurt_health = 3;
 death_fx = undefined;
 death_snd = snd_death1;

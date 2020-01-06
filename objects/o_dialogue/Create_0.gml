@@ -50,7 +50,7 @@ width = 100;
 height = 50;
 width_cur = 0;
 height_cur = 0;
-expand_rate = 4;
+expand_rate = 8;
 
 
 type_time_max = 5; // this is the number of frames between character types

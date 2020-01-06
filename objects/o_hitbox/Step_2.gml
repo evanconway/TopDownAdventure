@@ -5,4 +5,4 @@ if (target_ins == undefined && target_obj == undefined) {
 	show_debug_message("Deleting Hitbox ID: " + string(id) + " with no target");
 }
 
-if (frame >= scr_hitbox_frametotal() && frame >= active) instance_destroy(id);
+if (!permenant && frame >= scr_hitbox_frametotal() && frame >= active) instance_destroy(id);

@@ -48,6 +48,10 @@ with (player_state_attack) {
 }
 
 player_state_hurt = scr_actor_createstate(o_state_hurt);
+with (player_state_hurt) {
+	time_hurt_max = 10;
+	hurt_health = 9999;
+}
 ds_list_add(always_check, player_state_hurt);
 
 scr_state_addconnect(player_state_idle, player_state_walk);

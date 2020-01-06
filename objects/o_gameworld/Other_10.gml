@@ -21,9 +21,6 @@ if (global.debug_active && (keyboard_check_pressed(219) || keyboard_check_presse
 	scr_actor_setplayer(global.player);
 }
 
-// decrement freeze time (but only if no other actor freezers are active)
-if (global.actors_freeze_time >= 0 && !scr_actors_frozen()) global.actors_freeze_time--;
-
 // run dialogues
 /*
 We ran into a bug where, once an interact object takes focus, the dialogues can't 
@@ -44,6 +41,11 @@ for (var i = 0; i < instance_number(o_actor); i++) {
 // update hitboxes
 for (var i = 0; i < instance_number(o_hitbox); i++) {
 	with (instance_find(o_hitbox, i)) event_user(EVENT_LOGIC);
+}
+
+// fx 
+for (var i = 0; i < instance_number(o_fx); i++) {
+	with (instance_find(o_fx, i)) event_user(EVENT_LOGIC);
 }
 
 // handle always check states
