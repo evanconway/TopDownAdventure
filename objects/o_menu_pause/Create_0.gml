@@ -3,7 +3,7 @@
 // Inherit the parent event
 event_inherited();
 title = "Game Paused";
-border_color = c_red;
+border_color = c_purple;
 
 var i = 0;
 ds_list_set(choices, i, menu_createchoice(o_choice_back));

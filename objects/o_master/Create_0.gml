@@ -29,8 +29,6 @@ show_debug_message(" start next line");
 window_set_cursor(cr_none);
 randomize();
 
-global.volume_sound = 1;
-
 /*
 NOTES
 - The top room in the room list is the first room game maker runs,

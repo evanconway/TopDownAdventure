@@ -26,7 +26,7 @@ event_inherited();
 title = "Controls";
 title_lines = 2; // extra space at the top
 border_color = c_green;
-
+menu_font = f_menu_control;
 var i = 0;
 ds_list_set(choices, i, menu_createchoice(o_choice_button));
 with (choices[|i++]) {
