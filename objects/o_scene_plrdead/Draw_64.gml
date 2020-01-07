@@ -1,7 +1,5 @@
 /// @description 
 
-draw_set_halign(fa_left);
-draw_set_valign(fa_top);
-draw_set_alpha(1);
-draw_set_color(c_white);
-draw_text(0, 0, "Player has died");
+draw_set_alpha(fade_alpha);
+draw_set_color(c_black);
+draw_rectangle(0, 0, window_get_width(), window_get_height(), false);

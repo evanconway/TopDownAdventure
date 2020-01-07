@@ -3,6 +3,8 @@
 // Inherit the parent event
 event_inherited();
 
+draw_black_box = false; // literally just used for death scene
+
 /*
 We're not setting a default ai for the player because we don't want it doing 
 anything if we cycle global.player to different actors.
@@ -48,6 +50,7 @@ with (player_state_attack) {
 
 player_state_hurt = scr_actor_createstate(o_state_hurt);
 with (player_state_hurt) {
+	death_snd = undefined;
 	time_hurt_max = 10;
 	hurt_health = 3;
 	hurt_shader = sh_red;

@@ -71,10 +71,19 @@ for (var i = 0; i < instance_number(o_interact); i++) {
 }
 
 // destroy killed actors
+
 for (var i = 0; i < instance_number(o_actor); i++) {
 	var _ka = instance_find(o_actor, i);
 	if (_ka.killed) {
 		if (_ka != global.player) instance_destroy(_ka);
-		else playerdied();
+		else if (focus_cur() == id) playerdied();
+		/* We to explain that ^^^
+		We want our player death scene to start after the hitstun and shader effects
+		have finished. The code that removes those effects are in the actor update
+		and the fx update. If we want those effects to go away, we have to wait
+		for the game focus to finish with the actor freezer object, and return to
+		the game world.
+		*/
 	}
 }
+
