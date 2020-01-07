@@ -1,5 +1,15 @@
 /// @description 
 
+/*
+We're trying an experiment here. Instead of attacks creating and 
+deleting hitboxes, we're going to treat hitboxes like "spells". 
+What I mean by that is the player "attack" animation is really more
+of a "cast", and all the actual practical data about the attack is
+stored in the hitbox. That includes sprite animation. So the only 
+thing the actor actually determines is the orientation of the hitbox
+relative to the actor. And when it appears.
+*/
+
 enum HITBOX {
 	POSITION,
 	PROJECTILE
@@ -14,14 +24,15 @@ knockback = 1;
 delete_on_hit = false; // hurt state checks this
 marked_for_deletion = false; // hurt state sets this
 permenant = false; // ignores frame data and remains forever
-actor = undefined;
-invisible = false;
+actor = undefined; // the actor "wielding" this hitbox
+invisible = false; // needed for enemy body hitboxes
 
 // snd vars are actually lists so we can have random sounds
 hit_snd = ds_list_create();
-//ds_list_set(hit_snd, 0, snd_hit1);
 ds_list_set(hit_snd, 0, snd_hit2);
 ds_list_set(hit_snd, 1, snd_hit3);
+//ds_list_set(hit_snd, 2, snd_hit1); // I hate this sound lol
+
 miss_snd = ds_list_create();
 ds_list_set(miss_snd, 0, snd_miss1);
 ds_list_set(miss_snd, 1, snd_miss2);
@@ -33,34 +44,35 @@ hitbox_y = y;
 xvel = 0;
 yvel = 0;
 
-hitbox_fx = undefined;
+hitbox_fx = o_fx_smack;
 freeze_frames = 10;
-
-/*
-We're trying an experiment here. Instead of attacks creating and 
-deleting hitboxes, we're going to treat hitboxes like "spells". 
-What I mean by that is the player "attack" animation is really more
-of a "cast", and all the actual practical data about the attack is
-stored in the hitbox. That includes sprite animation. So the only 
-thing the actor actually determines is the orientation of the hitbox
-relative to the actor. And when it appears.
-*/
-
-
-frame = 0; // keep track of frames this hitbox has existed.
 active = 10; // frames this hitbox can hurt something. 
+
 /*
-This next variable, sprite_frames, needs some explaining. We're going
-to manually animate hitbox sprites. In this list, we're going to 
-store the number of frames each image_index should exist. For 
-example, let's say we image_index0 to last 2 frames. So we'd do:
-ds_list_set(sprite_frames, 0, 2)
-Our logic event will only increment the image_index once the frame
-counter is greater than the list value for the current image_index.
-These lists will have to be setup manually for each hitbox. 
+These next few variables need some explaining. We're going to manually
+animate hitboxes. This will give us much greater control over how
+long each frame is visible. To do this, we have a list called
+"hitbox_frames". This list will contain the number of frames we want
+each sub image in the hitbox sprite to be visible. We use the 
+image_index of the hitbox as the index. 
+
+As an example. Let's say we had a 3 frame animation (sprite) for the hitbox,
+and we wanted the first sub_image to last 3 frames, the second to last 6, 
+and the third to last 9. These are the calls we'd make to do that:
+ds_list_add(hitbox_frames, 3);
+ds_list_add(hitbox_frames, 6);
+ds_list_add(hitbox_frames, 9);
+Use add instead of set because the code uses the size of the list to 
+determine if the animation is over, not the subimage count of the sprite.
+This lets us be lazier with our sprites. 
 */
-frames_counted = 0; // incremented by frame value of sprite_frames
-sprite_frames = ds_list_create(); // we'll use the image_index as 
+hitbox_frames = ds_list_create(); // image_index is used as index for values 
+/*
+In our logic, we will use frame_count to keep track of how many frames
+we've displayed a sub_image. 
+*/
+frame_count = 0;
+
 
 // this must be called from individual hitboxes, otherwise ALL 
 // hitboxes play these miss sounds

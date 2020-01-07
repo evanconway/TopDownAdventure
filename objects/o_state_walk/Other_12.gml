@@ -19,4 +19,6 @@ with (actor.ai.controller) {
 	if (pressed(INPUT.ATTACK)) other.remain = false;
 }
 
-if (velx_prev == 0 && vely_prev == 0) other.remain = false;
+if (velx_prev == 0 && vely_prev == 0) {
+	remain = false;
+}

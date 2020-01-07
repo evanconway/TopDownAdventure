@@ -72,5 +72,9 @@ for (var i = 0; i < instance_number(o_interact); i++) {
 
 // destroy killed actors
 for (var i = 0; i < instance_number(o_actor); i++) {
-	if (instance_find(o_actor, i).killed) instance_destroy(instance_find(o_actor, i));
+	var _ka = instance_find(o_actor, i);
+	if (_ka.killed) {
+		if (_ka != global.player) instance_destroy(_ka);
+		else playerdied();
+	}
 }

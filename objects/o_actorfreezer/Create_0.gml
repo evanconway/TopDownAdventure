@@ -10,5 +10,4 @@ during their update. Ideally, nothing would ever check global vars.
 Use the script to create these objects. The game will always freeze a 
 minimum of 1 frame, so there's no point in trying to create a 0 frame freeze.
 */
-
 freeze_time = 1;

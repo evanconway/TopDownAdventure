@@ -1,19 +1,31 @@
 /// @description Hitbox Logic
 
+// Delete If Attack Undefined
+if (target_ins == undefined && target_obj == undefined) {
+	instance_destroy(id);
+	show_debug_message("Deleting Hitbox ID: " + string(id) + " with no target");
+	exit
+}
+
+// hitbox animation is done manually, see create event for details
+if (permenant) image_speed = 1;
+else {
+	image_speed = 0;
+	frame_count++;
+	if (frame_count > ds_list_find_value(hitbox_frames, image_index)) {
+		frame_count = 0;
+		image_index++;
+		if (image_index >= ds_list_size(hitbox_frames)) {
+			//image_index;
+			marked_for_deletion = true;
+		}
+	}
+}
+
+// marked_for_deletion is set by various other game elements
 if (marked_for_deletion) {
 	instance_destroy(id);
 	exit;
-}
-	
-image_speed = 0;
-
-if (!permenant &&
-	ds_list_find_value(sprite_frames, image_index) != undefined && 
-	image_index < image_number - 1 &&
-	frame >= ds_list_find_value(sprite_frames, image_index) + frames_counted &&
-	ds_list_find_value(sprite_frames, image_index + 1) != undefined) {
-	frames_counted = frame;
-	image_index++;
 }
 
 switch (type) {
@@ -29,5 +41,3 @@ switch (type) {
 	break;
 }
 
-//frame++; this is updated in the draw event
-// wait... why were we updating this in the draw event??

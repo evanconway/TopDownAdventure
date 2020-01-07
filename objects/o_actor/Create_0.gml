@@ -36,3 +36,5 @@ bbox_color = c_lime;
 origin_color = c_fuchsia;
 
 killed = false;
+
+shader = undefined;

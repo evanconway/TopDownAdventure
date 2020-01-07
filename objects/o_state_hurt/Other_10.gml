@@ -3,6 +3,7 @@
 time_hurt--;
 
 with (actor) {
+	shader = undefined;
 	x = act_x;
 	y = act_y;
 	x += approach_wall_x(other.velx);

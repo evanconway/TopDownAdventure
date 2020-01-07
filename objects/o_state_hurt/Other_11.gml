@@ -33,11 +33,10 @@ if (ds_list_size(_hitboxes) <= 0) exit; // don't continue if there's nothing tar
 /*
 Next, we delete any hitboxes from this list that aren't "active". Active is a variable
 in the hitbox object. We determine if a hitbox is active by checking if its frame 
-counter is less than its active counter.
+count is less than its active counter.
 */
-
 for (var i = 0; i < ds_list_size(_hitboxes); i++) {
-	if (_hitboxes[|i].frame >= _hitboxes[|i].active) ds_list_delete(_hitboxes, i--);
+	if (hitbox_frames_displayed(_hitboxes[|i]) >= _hitboxes[|i].active) ds_list_delete(_hitboxes, i--);
 }
 
 /*
@@ -66,6 +65,7 @@ Now we have a list of NEW attacks that have struck the actor.
 if (ds_list_size(_hits) > 0) {
 	change = true;
 	time_hurt = time_hurt_max;
+	if (hurt_shader != undefined) actor.shader = hurt_shader; // check user_event 0
 	switch (actor.actdirection) {
 		case DIR.UP:
 		if (sprite_back != undefined) actor.sprite_index = sprite_back;
