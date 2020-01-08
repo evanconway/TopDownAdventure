@@ -1,36 +1,43 @@
 /// @description GAME STEP
 
-///////////////////////////////////////////////////////////////////////
-// THE MASTER STEP
-///////////////////////////////////////////////////////////////////////
-
-// determine input
+// calculate user input
 with (o_input) event_user(EVENT_LOGIC);
 
-// pause menu
 /*
-We used a janky if else for the pause menu here because it closes 
-itself regardless of being placed before or after the logic update.
-It has to do with the fact that the pause menu checks for start
-getting pressed to both open or close. 
+For no reason other than because we want it, we will make the game pauseable at almost
+any time in the game. This includes cutscenes, hitstun, in dialogue, etc. There will be
+just a few cases where we can't pause, and all of them are related to the main menu.
+So, all code that prevents pausing will be here.
 */
-if (input_pressed(INPUT.START) && pause_menu != undefined && !pause_menu.active) {
-	focus_push(pause_menu);
-	pause_menu.active = true;
-} else with (ds_stack_top(global.focus)) event_user(EVENT_LOGIC);
+var canpause = true;
 
-// we will have to create other menus once we're passed the init room.. I think?
+if (room == room_mainmenu) canpause = false;
+if (instance_exists(o_scene_newgame)) canpause = false;
+if (instance_exists(o_scene_goto_mainmenu)) canpause = false; // not needed, but want to make intended behavior clear, see event for details
 
-///////////////////////////////////////////////////////////////////////
-// END MASTER STEP
-///////////////////////////////////////////////////////////////////////
+if (input_pressed(INPUT.START) && !pausemenu.active && canpause) {
+	with (instance_create_depth(0, 0, LAYER_MASTER, o_event_menu_open)) menu = other.pausemenu;
+} 
 
-// exit first room
-if (room == 0) {
-	room_goto(room_test);
+// THE GAME UPDATE
+with (ds_stack_top(global.focus)) event_user(EVENT_LOGIC);
+
+// pause menu logic
+with (o_event_menu_open) if (menu == other.pausemenu) {
+	audio_pause_all();
+}
+with (o_event_menu_close) if (menu == other.pausemenu) {
+	audio_resume_all();
 }
 
-// create pause menu once we're past initializer room
-if (room != 0 && pause_menu == undefined) {
-	pause_menu = instance_create_depth(x, y, LAYER_MENUS, o_menu_pause);
-}
+// resolve menus
+with (o_menu) event_user(EVENT_LOGICEND)
+
+// update camera position
+with (o_camera) event_user(EVENT_LOGIC);
+
+// set previous asix values for input
+with (o_input) event_user(EVENT_LOGICEND);
+
+// delete all events
+with (o_event) instance_destroy(id);

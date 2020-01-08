@@ -1,5 +1,5 @@
 {
-    "id": "f4c1d8ba-e22a-4a1c-af22-e73564645fe1",
+    "id": "8e589cc7-7fef-4649-aa14-1645496209c5",
     "modelName": "GMScript",
     "mvc": "1.0",
     "name": "focus_push",

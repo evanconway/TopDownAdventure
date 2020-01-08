@@ -25,8 +25,12 @@ Frankly the more I use gamemaker the more it becomes clear you can just never
 ever predict the drawing behavior if you use non-integer values. 
 */
 
+offset_x = 0;
+offset_y = 0;
+
 active = false; // determines whether this state runs code or not
 title = undefined; // set undefined for no menu title
+closeable = true; // we really only need this for the main menu
  
 //for adjusting menu height calculations when we need a more than 1 line title
 title_lines = 1;
@@ -39,6 +43,7 @@ choices = ds_list_create();
 
 menu_font = f_menu3;
 menu_color = c_white;
+menu_background_color = c_black
 border_color = c_white;
 
 cur_choice = undefined;

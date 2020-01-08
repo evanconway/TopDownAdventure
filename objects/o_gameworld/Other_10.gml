@@ -34,49 +34,40 @@ for (var i = 0; i < instance_number(o_dialogue); i++) {
 */
 
 // run actor logic
-for (var i = 0; i < instance_number(o_actor); i++) {
-	with (instance_find(o_actor, i)) event_user(EVENT_LOGIC);
-}
+with (o_actor) event_user(EVENT_LOGIC);
+
+// reset state values
+with (o_state) event_user(EVENT_LOGICEND);
 
 // update hitboxes
-for (var i = 0; i < instance_number(o_hitbox); i++) {
-	with (instance_find(o_hitbox, i)) event_user(EVENT_LOGIC);
-}
+with (o_hitbox) event_user(EVENT_LOGIC);
 
 // fx 
-for (var i = 0; i < instance_number(o_fx); i++) {
-	with (instance_find(o_fx, i)) event_user(EVENT_LOGIC);
-}
+with (o_fx) event_user(EVENT_LOGIC);
 
 // handle always check states
-for (var i = 0; i < instance_number(o_actor); i++) {
-	with (instance_find(o_actor, i)) {
-		for (var k = 0; k < ds_list_size(always_check); k++) {
-			if (scr_actor_changestate(always_check[|k])) {
-				state = always_check[|k];
-				k = ds_list_size(always_check);
-			}
+with (o_actor) {
+	for (var k = 0; k < ds_list_size(always_check); k++) {
+		if (scr_actor_changestate(always_check[|k])) {
+			state = always_check[|k];
+			k = ds_list_size(always_check);
 		}
 	}
 }
 
 // interacts 
 /*
-Does it matter where interacts do their checks and run logic? To avoid conflicts
+Does it matter where interacts do their checks and run logic? To avoid conflicts,
 interact will only check for activation when the gameworld is the focus object
 */
-for (var i = 0; i < instance_number(o_interact); i++) {
-	var _interact = instance_find(o_interact, i);
-	if (focus_cur() == id) with (_interact) event_user(1);
-}
+if (focus_cur() == global.gameworld) with (o_interact) event_user(1);
 
 // destroy killed actors
 
-for (var i = 0; i < instance_number(o_actor); i++) {
-	var _ka = instance_find(o_actor, i);
-	if (_ka.killed) {
-		if (_ka != global.player) instance_destroy(_ka);
-		else if (focus_cur() == id) playerdied();
+with(o_actor) {
+	if (killed) {
+		if (id != global.player) instance_destroy(id);
+		else if (focus_cur() == other) playerdied();
 		/* We to explain that ^^^
 		We want our player death scene to start after the hitstun and shader effects
 		have finished. The code that removes those effects are in the actor update
@@ -86,4 +77,3 @@ for (var i = 0; i < instance_number(o_actor); i++) {
 		*/
 	}
 }
-

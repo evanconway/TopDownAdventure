@@ -24,4 +24,4 @@ hurt_health = 3;
 death_fx = undefined;
 death_snd = snd_death1;
 
-hurt_shader = sh_white;
+hurt_shader = undefined;

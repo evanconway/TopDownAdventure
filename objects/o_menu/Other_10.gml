@@ -48,7 +48,12 @@ if (cur_choice != undefined && !_dirpressed) {
 
 // return to previous focus on start press
 // (but only if this menu is still the current focus)
-if  (id == focus_cur() && (input_pressed(INPUT.START) || input_pressed(INPUT.UI_CANCEL))) {
-	focus_pop();
-	active = false;
+/*
+I'm revisting this code later... I'm pretty sure the reason we check to make sure the menu is 
+still the current focus object is because there is choice logic that changes the current focus
+on start or cancel press. However, we'll still get to this line of code after running the choice
+code... so we don't want the menu popping focus when it's not actually the focus object anymore. 
+*/
+if  (id == focus_cur() && closeable && (input_pressed(INPUT.START) || input_pressed(INPUT.UI_CANCEL))) {
+	with (instance_create_depth(0, 0, LAYER_MASTER, o_event_menu_close)) menu = other;
 }

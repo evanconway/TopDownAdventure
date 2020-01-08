@@ -4,6 +4,7 @@ show_debug_message(" start next line");
 
 // MACROS
 #macro EVENT_LOGIC 0
+#macro EVENT_LOGICEND 3
 
 #macro COLOR_DEBUG c_lime
 #macro ATOZ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -51,6 +52,9 @@ simply popped off the top of the stack.
 */
 global.focus = ds_stack_create(); // this is the object updated each frame
 
-gameworld = instance_create_depth(0, 0, LAYER_MASTER, o_gameworld);
-focus_push(gameworld);
-pause_menu = undefined;
+global.gameworld = instance_create_depth(0, 0, LAYER_MASTER, o_gameworld);
+pausemenu = instance_create_depth(0, 0, LAYER_MENUS, o_menu_pause);
+global.mainmenu = instance_create_depth(0, 0, LAYER_MENUS, o_menu_main);
+focus_push(global.gameworld);
+
+alarm_set(0, 1);

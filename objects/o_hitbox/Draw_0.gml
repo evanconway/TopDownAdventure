@@ -1,7 +1,7 @@
 /// @description Draw BBoxes
 
 // bandaid solution to sprites animating when game is paused.
-if (focus_cur() != o_master.gameworld) image_speed = 0;
+if (focus_cur() != global.gameworld) image_speed = 0;
 
 if (global.debug_active && global.bboxes) {
 	image_alpha = global.bboxes_sprite_alpha;

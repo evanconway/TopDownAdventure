@@ -12,22 +12,24 @@ if (active) {
 	var _y2;
 
 	// draw menu box
-	draw_set_color(border_color);
-	_x1 = VIEW_W/2 - _menu_width/2 - border_width;
-	_y1 = VIEW_H/2 - _menu_height/2 - border_width;
-	_x2 = VIEW_W/2 + _menu_width/2 + border_width;
-	_y2 = VIEW_H/2 + _menu_height/2 + border_width;
-	draw_rectangle(floor(_x1), floor(_y1), floor(_x2), floor(_y2), false);
-
-	draw_set_color(c_black);
-	_x1 = VIEW_W/2 - _menu_width/2;
-	_y1 = VIEW_H/2 - _menu_height/2;
-	_x2 = VIEW_W/2 + _menu_width/2;
-	_y2 = VIEW_H/2 + _menu_height/2;
-	draw_rectangle(floor(_x1), floor(_y1), floor(_x2), floor(_y2), false);
-
-	var _topy = VIEW_H/2 - _menu_height/2 + MENU_SPACER;
-	var _cenx = VIEW_W/2;
+	if (border_color != undefined) {
+		draw_set_color(border_color);
+		_x1 = VIEW_W/2 - _menu_width/2 - border_width + offset_x;
+		_y1 = VIEW_H/2 - _menu_height/2 - border_width + offset_y;
+		_x2 = VIEW_W/2 + _menu_width/2 + border_width + offset_x;
+		_y2 = VIEW_H/2 + _menu_height/2 + border_width + offset_y;
+		draw_rectangle(floor(_x1), floor(_y1), floor(_x2), floor(_y2), false);
+	}
+	if (menu_background_color != undefined) {
+		draw_set_color(menu_background_color);
+		_x1 = VIEW_W/2 - _menu_width/2 + offset_x;
+		_y1 = VIEW_H/2 - _menu_height/2 + offset_y;
+		_x2 = VIEW_W/2 + _menu_width/2 + offset_x;
+		_y2 = VIEW_H/2 + _menu_height/2 + offset_y;
+		draw_rectangle(floor(_x1), floor(_y1), floor(_x2), floor(_y2), false);
+	}
+	var _topy = VIEW_H/2 - _menu_height/2 + MENU_SPACER + offset_y;
+	var _cenx = VIEW_W/2 + offset_x;
 	var _lefx = _cenx  - _menu_width/2;
 	//var _ritx = _cenx + _menu_width/2;
 

@@ -13,3 +13,4 @@ global.bboxes_sprite_alpha = 0.3; // alpha of sprites when bboxes visible
 global.playerdata = false; // boolean, draws data about player
 global.player = undefined; // this is the ID of the actor that is the player character
 global.spawn_room = room_test;
+firstroom = room_test;

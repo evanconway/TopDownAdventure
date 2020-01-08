@@ -25,3 +25,10 @@ if (!scr_state_remain(state)) {
 	}
 }
 scr_state_run(state);
+
+// reset pressed values
+/*
+we should probably be calling this stuff in the ai? I'm sure there's a
+cleaner way to do it, but we'll worry about it for the next project.
+*/
+with (ai.controller) event_user(EVENT_LOGICEND);

@@ -2,7 +2,6 @@
 
 if (input_pressed(INPUT.UI_SELECT)) {
 	if (submenu != undefined) {
-		focus_push(submenu);
-		submenu.active = true;
+		with (instance_create_depth(0, 0, LAYER_MASTER, o_event_menu_open)) menu = other.submenu;
 	}
 }

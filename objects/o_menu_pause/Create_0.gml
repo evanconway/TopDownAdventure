@@ -15,7 +15,7 @@ with (choices[|i++]) {
 	name = "Options";
 	submenu = instance_create_depth(0, 0, depth - 1, o_menu_options);
 }
-ds_list_set(choices, i, menu_createchoice(o_choice));
+ds_list_set(choices, i, menu_createchoice(o_choice_mainmenu));
 with (choices[|i++]) {
 	name = "Main Menu";
 }

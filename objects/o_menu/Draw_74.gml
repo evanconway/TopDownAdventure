@@ -5,8 +5,8 @@ if (active) {
 	draw_set_font(menu_font);
 	var _menu_height = menu_calcheight();
 	var _menu_width = menu_calcwidth();
-	var _topy = VIEW_H/2 - _menu_height/2;
-	var _cenx = VIEW_W/2;
+	var _topy = VIEW_H/2 - _menu_height/2 + offset_y;
+	var _cenx = VIEW_W/2 + offset_x;
 	var _lefx = _cenx  - _menu_width/2 + menu_buffer();
 	var _ritx = _cenx + _menu_width/2 - menu_buffer();
 	

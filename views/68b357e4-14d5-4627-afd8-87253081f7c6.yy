@@ -4,9 +4,10 @@
     "mvc": "1.1",
     "name": "68b357e4-14d5-4627-afd8-87253081f7c6",
     "children": [
-        "f4c1d8ba-e22a-4a1c-af22-e73564645fe1",
-        "bd097d3d-fbf7-4e94-8187-f2e22f3ccc8e",
-        "87e6cfae-e8f4-4ec0-a721-42aad6ca89a2",
+        "8e589cc7-7fef-4649-aa14-1645496209c5",
+        "6ded9130-fd0d-4308-92a6-8e6134557967",
+        "40d0aca9-cf16-4c77-b293-7f8313161d89",
+        "168b9646-1e83-49ae-9930-b25255eab9b3",
         "a947ca1f-152a-42fb-a7af-27cdcbe2396c",
         "e8110d06-7b97-4358-aa24-b31b253c48ea",
         "d3e67e20-a22b-4787-8da1-b15e6f079ba9",
@@ -15,7 +16,7 @@
         "006777e8-262d-41f9-a33c-f7d8c905eae7"
     ],
     "filterType": "GMScript",
-    "folderName": "gameworld",
+    "folderName": "game",
     "isDefaultView": false,
     "localisedFolderName": ""
 }
