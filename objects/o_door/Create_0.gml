@@ -11,5 +11,8 @@ door is placed in, otherwise it won't work!
 target_door = undefined;
 target_room = undefined;
 
-exit_x = x + sprite_width/2;
-exit_y = y + sprite_height; // magic number lol
+exit_x = undefined;
+exit_y = undefined;
+
+// for direction actor should face when exiting
+door_dir = undefined;

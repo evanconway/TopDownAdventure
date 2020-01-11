@@ -30,8 +30,8 @@ _x = _x - RESOLUTION_W/2;
 _y = _y - RESOLUTION_H/2;
 
 // keep camera in bounds
-_x = clamp(_x, 0, room_width);
-_y = clamp(_y, 0, room_height);
+_x = clamp(_x, 0, room_width - RESOLUTION_W);
+_y = clamp(_y, 0, room_height - RESOLUTION_H);
 
 camera_set_view_pos(VIEW_CAMERA, _x, _y);
 display_set_gui_size(RESOLUTION_W, RESOLUTION_H); // this line does not appear to have done anything

@@ -1,7 +1,7 @@
 /// @description Update Actor
 
 image_speed = 1;
-	
+
 // update ai (ai determines controller inputs)
 with (ai) if (global.ai_active) event_user(0);
 else with (ai.controller) resetcontroller();

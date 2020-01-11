@@ -84,9 +84,9 @@ with (actor) {
 	
 
 	// check against walls
-	_velx = approach_wall_x(_velx);
+	_velx = approach_solid_x(_velx);
 	x += _velx;	
-	_vely = approach_wall_y(_vely);
+	_vely = approach_solid_y(_vely);
 	y += _vely;
 	
 	// the x/y value switch mentioned above

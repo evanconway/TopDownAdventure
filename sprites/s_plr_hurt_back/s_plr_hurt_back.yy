@@ -1,5 +1,5 @@
 {
-    "id": "7d76a87e-867c-4c86-a7ce-ecaf172d35eb",
+    "id": "45384729-5aa2-4d13-bb44-075bdecce7f3",
     "modelName": "GMSprite",
     "mvc": "1.12",
     "name": "s_plr_hurt_back",
@@ -16,24 +16,24 @@
     "edgeFiltering": false,
     "frames": [
         {
-            "id": "a7417c65-fd2a-4a37-85c6-56fe7b364c25",
+            "id": "80469ad2-95a6-44c4-b803-a78095bcf058",
             "modelName": "GMSpriteFrame",
             "mvc": "1.0",
-            "SpriteId": "7d76a87e-867c-4c86-a7ce-ecaf172d35eb",
+            "SpriteId": "45384729-5aa2-4d13-bb44-075bdecce7f3",
             "compositeImage": {
-                "id": "475ab446-32e4-408e-9998-457f6ae9ab36",
+                "id": "34ee28d0-43fa-409d-a136-0e4111036f24",
                 "modelName": "GMSpriteImage",
                 "mvc": "1.0",
-                "FrameId": "a7417c65-fd2a-4a37-85c6-56fe7b364c25",
+                "FrameId": "80469ad2-95a6-44c4-b803-a78095bcf058",
                 "LayerId": "00000000-0000-0000-0000-000000000000"
             },
             "images": [
                 {
-                    "id": "6253a166-ffbd-496e-8cc0-9d34abc1825e",
+                    "id": "bf321ee6-fc9b-45af-b3a9-5572e896d1da",
                     "modelName": "GMSpriteImage",
                     "mvc": "1.0",
-                    "FrameId": "a7417c65-fd2a-4a37-85c6-56fe7b364c25",
-                    "LayerId": "40ac5a70-c8fd-4d7d-8e78-1172e782c82f"
+                    "FrameId": "80469ad2-95a6-44c4-b803-a78095bcf058",
+                    "LayerId": "5fe3d8ba-0206-47ea-806e-1f1d43532133"
                 }
             ]
         }
@@ -43,10 +43,10 @@
     "height": 16,
     "layers": [
         {
-            "id": "40ac5a70-c8fd-4d7d-8e78-1172e782c82f",
+            "id": "5fe3d8ba-0206-47ea-806e-1f1d43532133",
             "modelName": "GMImageLayer",
             "mvc": "1.0",
-            "SpriteId": "7d76a87e-867c-4c86-a7ce-ecaf172d35eb",
+            "SpriteId": "45384729-5aa2-4d13-bb44-075bdecce7f3",
             "blendMode": 0,
             "isLocked": false,
             "name": "default",
@@ -56,7 +56,7 @@
     ],
     "origin": 4,
     "originLocked": false,
-    "playbackSpeed": 4,
+    "playbackSpeed": 15,
     "playbackSpeedType": 0,
     "premultiplyAlpha": false,
     "sepmasks": false,

@@ -62,8 +62,10 @@ interact will only check for activation when the gameworld is the focus object
 */
 if (focus_cur() == global.gameworld) with (o_interact) event_user(1);
 
-// destroy killed actors
+// doors
+if (focus_cur() == global.gameworld) with (o_door) event_user(1);
 
+// destroy killed actors
 with(o_actor) {
 	if (killed) {
 		if (id != global.player) instance_destroy(id);
