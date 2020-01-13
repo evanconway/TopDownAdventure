@@ -1,8 +1,8 @@
 {
-    "id": "bf7d0fad-16d1-4fdb-b864-d700e05b8491",
+    "id": "4d4cd752-c7d3-4ad9-ae1f-8c3664be1fb3",
     "modelName": "GMObject",
     "mvc": "1.0",
-    "name": "o_fx_smokepoof",
+    "name": "o_fx_magicpoof",
     "eventList": [
         
     ],
@@ -24,6 +24,6 @@
     "physicsStartAwake": true,
     "properties": null,
     "solid": false,
-    "spriteId": "1c5d4787-935b-4a2e-be84-938a0ae844b7",
+    "spriteId": "7e220a9b-6922-46f4-a7db-4d6d5066c931",
     "visible": true
 }

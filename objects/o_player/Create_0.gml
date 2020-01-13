@@ -57,12 +57,11 @@ with (player_state_attack2) {
 	sprite_left = s_plr_cast_left;
 	sprite_right = s_plr_cast_right;
 }
-player_state_dodge = scr_actor_createstate(o_state_dodge_rigid);
+player_state_dodge = scr_actor_createstate(o_state_dodge_smooth);
 with (player_state_dodge) {
-	sprite_front = s_plr_fly_front;
-	sprite_back = s_plr_fly_back;
-	sprite_left = s_plr_fly_left;
-	sprite_right = s_plr_fly_right;
+	dodge_speed = 1.2;
+	dodge_fx_vanish = o_fx_robevanish;
+	dodge_snd = snd_wobble5;
 }
 player_state_hurt = scr_actor_createstate(o_state_hurt);
 with (player_state_hurt) {

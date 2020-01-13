@@ -2,7 +2,7 @@
     "id": "1c5d4787-935b-4a2e-be84-938a0ae844b7",
     "modelName": "GMSprite",
     "mvc": "1.12",
-    "name": "s_smokepoof",
+    "name": "s_smokepoof1",
     "For3D": false,
     "HTile": false,
     "VTile": false,
