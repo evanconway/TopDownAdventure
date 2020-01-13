@@ -18,7 +18,10 @@
         "20ac7842-a8f2-4db6-8f8f-84db2aa11bff",
         "92eb2275-2040-4593-b852-f43493933e8a",
         "66237938-4b65-4e78-be05-dd2dadd5099c",
-        "38f66557-3079-4443-a05c-f43284d1e383"
+        "38f66557-3079-4443-a05c-f43284d1e383",
+        "cac00db3-30fd-4181-a78d-9c74d52a41e4",
+        "9c54faf4-6826-4e78-b652-c1cef5716ae9",
+        "e9a5bb09-7fbe-4adc-8aac-9c669deb7163"
     ],
     "filterType": "GMObject",
     "folderName": "statics",

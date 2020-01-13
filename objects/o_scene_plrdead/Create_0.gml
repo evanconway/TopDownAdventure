@@ -16,3 +16,5 @@ fade_alpha = 0;
 
 global.player.draw_black_box = true;
 global.player.sprite_index = s_plr_idle_front;
+
+with (o_fx) instance_destroy(id);

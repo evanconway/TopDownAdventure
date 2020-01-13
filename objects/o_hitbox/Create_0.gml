@@ -8,44 +8,44 @@ of a "cast", and all the actual practical data about the attack is
 stored in the hitbox. That includes sprite animation. So the only 
 thing the actor actually determines is the orientation of the hitbox
 relative to the actor. And when it appears.
+
+To keep things simple, we will make all hiboxes so that the origin
+is middle center. The hitboxes don't have to be perfect squares, 
+but they should be made with the expectation that they'll be centered
+no matter how they're rotated. Also, they should be made with the 
+default direction being "down". This will make it easier to test
+that the box is centered later. And with that said, dimensions of
+hitboxes should be even numbers. This is because we're having all 
+actor sprite dimensions use even numbers, so by using middle center
+origin on everything, we can be sure everything will always be lined
+up. 
 */
-
-enum HITBOX {
-	POSITION,
-	PROJECTILE
-}
-
-type = HITBOX.POSITION;
 
 target_ins = undefined;
 target_obj = undefined;
 
 knockback = 1;
 delete_on_hit = false; // hurt state checks this
+delete_on_solid = false; // main loop does this.
 marked_for_deletion = false; // hurt state sets this
 permenant = false; // ignores frame data and remains forever
 actor = undefined; // the actor "wielding" this hitbox
 invisible = false; // needed for enemy body hitboxes
 
-// snd vars are actually lists so we can have random sounds
-hit_snd = ds_list_create();
-ds_list_set(hit_snd, 0, snd_hit2);
-ds_list_set(hit_snd, 1, snd_hit3);
-//ds_list_set(hit_snd, 2, snd_hit1); // I hate this sound lol
-
-miss_snd = ds_list_create();
-ds_list_set(miss_snd, 0, snd_miss1);
-ds_list_set(miss_snd, 1, snd_miss2);
-ds_list_set(miss_snd, 2, snd_miss3);
+hit_snd = snd_hit2;
+miss_snd = snd_miss4;
+delete_snd = undefined; // played when hitbox deleted on wall
 
 // projectile variables
 hitbox_x = x;
 hitbox_y = y;
-xvel = 0;
-yvel = 0;
+hitbox_vel_x = 0;
+hitbox_vel_y = 0;
 
 hitbox_fx = o_fx_smack;
-freeze_frames = 10;
+delete_fx = undefined;
+freeze_frames = global.hitfreezeframes;
+freeze_targetonly = false; 
 active = 10; // frames this hitbox can hurt something. 
 
 /*
@@ -76,4 +76,4 @@ frame_count = 0;
 
 // this must be called from individual hitboxes, otherwise ALL 
 // hitboxes play these miss sounds
-//scr_play_sfx_rndm(miss_snd)
+//scr_play_sfx(miss_snd)

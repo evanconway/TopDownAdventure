@@ -46,7 +46,7 @@ state = DIALOGUE.OFF;
 Our dialogue boxes "open" before typing text. The expand_rate determines how fast the box opens and
 closes.
 */
-width = 100;
+width = 130;
 height = 50;
 width_cur = 0;
 height_cur = 0;

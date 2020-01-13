@@ -11,7 +11,7 @@ var _velx = 0;
 with (actor) {
 	
 	/*
-	Since movement and collisions calculations have to made in 
+	Since movement and collisions calculations have to be made in 
 	this, we're going to set the actors game maker x/y to its 
 	true x/y. This will allow us to use the game maker collision
 	scripts like place meeting to check against walls. So for this

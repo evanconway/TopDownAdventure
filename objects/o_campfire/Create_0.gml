@@ -3,4 +3,4 @@
 // Inherit the parent event
 event_inherited();
 
-message = "A crackling, warm fire.";
+message = "A warm, crackling fire.";

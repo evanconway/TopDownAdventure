@@ -22,6 +22,6 @@ instead.
 hurtboxes = ds_map_create();
 hurt_health = 3;
 death_fx = undefined;
-death_snd = snd_death1;
+death_snd = undefined;
 
 hurt_shader = undefined;

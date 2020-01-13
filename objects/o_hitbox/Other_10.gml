@@ -7,6 +7,12 @@ if (target_ins == undefined && target_obj == undefined) {
 	exit
 }
 
+// we use separate x/y to account for game makers issues with non-integers
+hitbox_x += hitbox_vel_x;
+hitbox_y += hitbox_vel_y;
+x = round_int(hitbox_x);
+y = round_int(hitbox_y);
+
 // hitbox animation is done manually, see create event for details
 if (permenant) image_speed = 1;
 else {
@@ -21,23 +27,3 @@ else {
 		}
 	}
 }
-
-// marked_for_deletion is set by various other game elements
-if (marked_for_deletion) {
-	instance_destroy(id);
-	exit;
-}
-
-switch (type) {
-	case HITBOX.POSITION:
-
-	break;
-	case HITBOX.PROJECTILE:
-		// we use separate x/y to account for game makers issues with non-integers
-		hitbox_x += xvel;
-		hitbox_y += yvel;
-		x = round_int(hitbox_x);
-		y = round_int(hitbox_y);
-	break;
-}
-

@@ -33,6 +33,9 @@ for (var i = 0; i < instance_number(o_dialogue); i++) {
 }
 */
 
+// delete hitboxes (marked for deletion from previous frame)
+//if (focus_cur() == global.gameworld)with (o_hitbox) event_user(2);
+
 // run actor logic
 with (o_actor) event_user(EVENT_LOGIC);
 
@@ -55,11 +58,10 @@ with (o_actor) {
 	}
 }
 
+// delete hitboxes
+if (focus_cur() == global.gameworld)with (o_hitbox) event_user(2);
+
 // interacts 
-/*
-Does it matter where interacts do their checks and run logic? To avoid conflicts,
-interact will only check for activation when the gameworld is the focus object
-*/
 if (focus_cur() == global.gameworld) with (o_interact) event_user(1);
 
 // doors

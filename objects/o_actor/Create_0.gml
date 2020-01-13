@@ -37,4 +37,12 @@ origin_color = c_fuchsia;
 
 killed = false;
 
+// set by hurt states after getting hit. 
+invul_time = 0;
+invul_time_max = 0; // leave 0 if you want actor to never be invulnerable
+
 shader = undefined;
+
+act_freezetime = 0;
+
+act_alpha = 1;

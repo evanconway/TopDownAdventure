@@ -35,3 +35,9 @@ sprite_front = undefined;
 sprite_right = undefined;
 sprite_left = undefined;
 sprite_back = undefined;
+
+/*
+Determines if the actor can be hit by hitboxes while in this state.
+Checked by the hurt state.
+*/
+invulnerable = false;

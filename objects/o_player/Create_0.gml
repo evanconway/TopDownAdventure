@@ -3,22 +3,25 @@
 // Inherit the parent event
 event_inherited();
 
-draw_black_box = false; // literally just used for death scene
-
+draw_black_box = false; // literally only used for death scene
+invul_time_max = 60;
 /*
 We're not setting a default ai for the player because we don't want it doing 
 anything if we cycle global.player to different actors.
 */
 ai = scr_actor_createai(o_ai_polluser);
-state = scr_actor_createstate(o_state_idle);
 
-player_state_idle = state;
+// starting state
+player_state_idle = scr_actor_createstate(o_state_idle);
 with (player_state_idle) {
 	sprite_front = s_plr_idle_front;
 	sprite_back = s_plr_idle_back;
 	sprite_left = s_plr_idle_left;
 	sprite_right = s_plr_idle_right;
 }
+state = player_state_idle;
+
+// all other states
 player_state_walk = scr_actor_createstate(o_state_walk);
 with (player_state_walk) {
 	sprite_front = s_plr_walk_front;
@@ -29,25 +32,38 @@ with (player_state_walk) {
 }
 player_state_attack = scr_actor_createstate(o_state_attack);
 with (player_state_attack) {
-	hitbox = o_hitbox_player_swing;
+	target_obj = o_enemy;
+	hitbox = o_hitbox_slash;
 	var _atktime = 7; // note: this is frame time for the attack, not the hitbox
 	startup = _atktime;
 	active = _atktime;
 	endlag = _atktime;
-	hitbox_x_offsetU = 2;
-	hitbox_y_offsetU = -4;
-	hitbox_x_offsetD = -2;
-	hitbox_y_offsetD = 8;
-	hitbox_x_offsetL = -6;
-	hitbox_y_offsetL = 0;
-	hitbox_x_offsetR = 6;
-	hitbox_y_offsetR = 0;	
 	sprite_front = s_plr_cast_front;
 	sprite_back = s_plr_cast_back;
 	sprite_left = s_plr_cast_left;
 	sprite_right = s_plr_cast_right;
 }
-
+player_state_attack2 = scr_actor_createstate(o_state_attack);
+with (player_state_attack2) {
+	attack_button = INPUT.MAP;
+	target_obj = o_enemy;
+	hitbox = o_hitbox_fireball;
+	var _atktime = 7; // note: this is frame time for the attack, not the hitbox
+	startup = _atktime;
+	active = _atktime;
+	endlag = _atktime;
+	sprite_front = s_plr_cast_front;
+	sprite_back = s_plr_cast_back;
+	sprite_left = s_plr_cast_left;
+	sprite_right = s_plr_cast_right;
+}
+player_state_dodge = scr_actor_createstate(o_state_dodge_rigid);
+with (player_state_dodge) {
+	sprite_front = s_plr_fly_front;
+	sprite_back = s_plr_fly_back;
+	sprite_left = s_plr_fly_left;
+	sprite_right = s_plr_fly_right;
+}
 player_state_hurt = scr_actor_createstate(o_state_hurt);
 with (player_state_hurt) {
 	death_snd = undefined;
@@ -63,12 +79,26 @@ ds_list_add(always_check, player_state_hurt);
 
 scr_state_addconnect(player_state_idle, player_state_walk);
 scr_state_addconnect(player_state_idle, player_state_attack);
+scr_state_addconnect(player_state_idle, player_state_attack2);
+scr_state_addconnect(player_state_idle, player_state_dodge);
 
 scr_state_addconnect(player_state_walk, player_state_idle);
 scr_state_addconnect(player_state_walk, player_state_attack);
+scr_state_addconnect(player_state_walk, player_state_attack2);
+scr_state_addconnect(player_state_walk, player_state_dodge);
 
 scr_state_addconnect(player_state_attack, player_state_idle);
 scr_state_addconnect(player_state_attack, player_state_walk);
+scr_state_addconnect(player_state_attack, player_state_dodge);
+
+scr_state_addconnect(player_state_attack2, player_state_idle);
+scr_state_addconnect(player_state_attack2, player_state_walk);
+scr_state_addconnect(player_state_attack2, player_state_dodge);
+
+scr_state_addconnect(player_state_dodge, player_state_idle);
+scr_state_addconnect(player_state_dodge, player_state_walk);
+scr_state_addconnect(player_state_dodge, player_state_attack);
+scr_state_addconnect(player_state_dodge, player_state_attack2);
 
 scr_state_addconnect(player_state_hurt, player_state_idle);
 scr_state_addconnect(player_state_hurt, player_state_walk);

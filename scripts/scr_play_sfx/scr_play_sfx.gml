@@ -16,6 +16,8 @@ if (argument[0] == undefined) return;
 
 var _id = undefined;
 
+audio_stop_sound(argument[0]); // stops multiple versions of sound playing over eachother
+
 if (argument_count == 1) _id = audio_play_sound(argument[0], 1, false);
 else _id = audio_play_sound(argument[0], 1, argument[1]);
 

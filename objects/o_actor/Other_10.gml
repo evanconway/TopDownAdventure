@@ -1,6 +1,11 @@
 /// @description Update Actor
 
-image_speed = 1;
+if (act_freezetime-- > 0) {
+	image_speed = 0;
+	exit;
+} else image_speed = 1;
+
+if (invul_time > 0) invul_time--;
 
 // update ai (ai determines controller inputs)
 with (ai) if (global.ai_active) event_user(0);

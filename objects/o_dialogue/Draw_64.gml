@@ -27,6 +27,12 @@ if (state != DIALOGUE.OFF) {
 		for (var i = 0; i <= cursor_y; i++) {
 			if (i != cursor_y) _text = lines[|i];
 			else _text = string_copy(lines[|i], 1, floor(cursor_x)); // strings are 1 based index!!!!!
+			/*  ^^^ explanation for that line:
+			Strings are 1 based, yet at the start of every dialog we get to this line with a cursor_x
+			value of 0. Why does it still work? It's because the script "string_copy" returns a sub
+			string of lines[|i] from index 1 to cursor_x. The script is designed so that it returns an 
+			empty string if the second index (cursor_x) is less than the first. 
+			*/
 			draw_text(_xstart, _ystart + i*_text_height, _text);
 		}
 	}

@@ -3,9 +3,7 @@
 // Inherit the parent event
 event_inherited();
 
-/*
-This object is an example of how to add text to an interact_multi
-*/
+//This object is an example of how to add text to an interact_multi
 
 var _t = ds_list_create();
 ds_list_add(_t, "Hello!");

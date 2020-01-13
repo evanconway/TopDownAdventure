@@ -11,6 +11,12 @@ all the hurtboxes assigned to the actors current sprite and check if
 any of those hurtboxes collide with a hitbox targetting this actor.
 */
 
+// skip this step if actor has invulnerable time
+if (actor.invul_time > 0) exit;
+
+// skip this if actor state is invulnerable
+if (actor.state.invulnerable) exit;
+
 /*
 The first step is to make a list of all hitboxes targetting this actor.
 No point iterating over everything if nothing's attacking this actor right?
@@ -58,13 +64,13 @@ for (var i = 0; i < ds_list_size(_hitboxes); i++) {
 	}
 }
 
-
 /*
 Now we have a list of NEW attacks that have struck the actor. 
 */
 if (ds_list_size(_hits) > 0) {
 	change = true;
 	time_hurt = time_hurt_max;
+	actor.invul_time = actor.invul_time_max;
 	if (hurt_shader != undefined) actor.shader = hurt_shader; // check user_event 0
 	switch (actor.actdirection) {
 		case DIR.UP:
@@ -85,14 +91,18 @@ if (ds_list_size(_hits) > 0) {
 		ds_list_add(hitboxes_struck, _hit);
 		if (_hit.delete_on_hit) _hit.marked_for_deletion = true;
 		if (_hit.hitbox_fx != undefined) instance_create_depth(actor.x, actor.y, LAYER_EFFECTS, _hit.hitbox_fx);
-		scr_freezetime(_hit.freeze_frames);
+		
+		// we check to ensure the game hasn't already been frozen this same frame before freezing
+		if (focus_cur() == global.gameworld) {
+			with (_hit) {
+				if (freeze_targetonly) other.actor.act_freezetime = freeze_frames;
+				else scr_freezetime(freeze_frames);
+			}
+		}
 		
 		// stop miss sound if playing, and play hit sound
-		for (var i = 0; i < ds_list_size(_hit.miss_snd); i++) {
-			if (audio_is_playing(_hit.miss_snd[|i])) audio_stop_sound(_hit.miss_snd[|i]);
-		}
-
-		if (_hit.hit_snd != undefined) scr_play_sfx_rndm(_hit.hit_snd);
+		if (audio_is_playing(_hit.miss_snd)) audio_stop_sound(_hit.miss_snd);
+		if (_hit.hit_snd != undefined) scr_play_sfx(_hit.hit_snd);
 		
 		/*
 		If the hitbox has its actor defined, then the knockback is relative to the
