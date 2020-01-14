@@ -6,4 +6,6 @@ with (actor.ai.controller) if (anypressed()) {
 	other.change = false;
 }
 
-if (change) scr_state_spritechange();
+if (change) {
+	scr_state_spritechange();
+}

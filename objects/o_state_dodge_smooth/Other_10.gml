@@ -2,7 +2,6 @@
 
 switch (stage) {
 	case DODGE.ACTIVE:
-	actor.act_alpha = 0;
 	// this movement code is take from the walk state
 	var _speed = dodge_speed;
 	var _vely = 0;
@@ -67,18 +66,28 @@ switch (stage) {
 	velx_prev = _velx;
 	vely_prev = _vely;
 	
+	// create dodge effect
 	if (++effect_time >= effect_time_max) {
 		effect_time = 0;
-		instance_create_depth(actor.x, actor.y, LAYER_PLAYER + 1, dodge_effect);
+		if (dodge_fx_move != undefined) instance_create_depth(actor.x, actor.y, LAYER_PLAYER + 1, dodge_fx_move);
+	}
+	// log button presses
+	for (var i = 0; i < ds_list_size(dodge_buffer_buttons); i++) {
+		var _button = ds_list_find_value(dodge_buffer_buttons, i);
+		if (pressed(_button, actor.ai.controller)) {
+			ds_list_set(dodge_buffer_pressed, i, true);
+		}
 	}
 	// if dodge time finished, reset variables
 	if (++dodge_time >= dodge_time_max) {
 		stage++;
 		dodge_cooldown = dodge_cooldown_max;
 		//shader = undefined;
-		actor.act_alpha = 1;
+		if (dodge_fx_appear != undefined) instance_create_depth(actor.x, actor.y, LAYER_PLAYER - 1, dodge_fx_appear);
 	}
+	
 	break;
 	case DODGE.DONE:
+	
 	break;
 }

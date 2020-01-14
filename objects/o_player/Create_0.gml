@@ -61,7 +61,12 @@ player_state_dodge = scr_actor_createstate(o_state_dodge_smooth);
 with (player_state_dodge) {
 	dodge_speed = 1.2;
 	dodge_fx_vanish = o_fx_robevanish;
+	//dodge_fx_appear = o_fx_whiteexplode;
+	dodge_fx_move = o_fx_magicpoof;
 	dodge_snd = snd_wobble5;
+	// bufferable buttons
+	ds_list_add(dodge_buffer_buttons, INPUT.ATTACK);
+	ds_list_add(dodge_buffer_buttons, INPUT.MAP);
 }
 player_state_hurt = scr_actor_createstate(o_state_hurt);
 with (player_state_hurt) {
@@ -76,28 +81,28 @@ with (player_state_hurt) {
 }
 ds_list_add(always_check, player_state_hurt);
 
-scr_state_addconnect(player_state_idle, player_state_walk);
 scr_state_addconnect(player_state_idle, player_state_attack);
 scr_state_addconnect(player_state_idle, player_state_attack2);
 scr_state_addconnect(player_state_idle, player_state_dodge);
+scr_state_addconnect(player_state_idle, player_state_walk);
 
-scr_state_addconnect(player_state_walk, player_state_idle);
 scr_state_addconnect(player_state_walk, player_state_attack);
 scr_state_addconnect(player_state_walk, player_state_attack2);
 scr_state_addconnect(player_state_walk, player_state_dodge);
+scr_state_addconnect(player_state_walk, player_state_idle);
 
-scr_state_addconnect(player_state_attack, player_state_idle);
 scr_state_addconnect(player_state_attack, player_state_walk);
 scr_state_addconnect(player_state_attack, player_state_dodge);
+scr_state_addconnect(player_state_attack, player_state_idle);
 
-scr_state_addconnect(player_state_attack2, player_state_idle);
 scr_state_addconnect(player_state_attack2, player_state_walk);
 scr_state_addconnect(player_state_attack2, player_state_dodge);
+scr_state_addconnect(player_state_attack2, player_state_idle);
 
-scr_state_addconnect(player_state_dodge, player_state_idle);
-scr_state_addconnect(player_state_dodge, player_state_walk);
 scr_state_addconnect(player_state_dodge, player_state_attack);
 scr_state_addconnect(player_state_dodge, player_state_attack2);
+scr_state_addconnect(player_state_dodge, player_state_walk);
+scr_state_addconnect(player_state_dodge, player_state_idle);
 
-scr_state_addconnect(player_state_hurt, player_state_idle);
 scr_state_addconnect(player_state_hurt, player_state_walk);
+scr_state_addconnect(player_state_hurt, player_state_idle);

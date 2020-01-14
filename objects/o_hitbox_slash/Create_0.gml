@@ -2,6 +2,7 @@
 
 // Inherit the parent event
 event_inherited();
+miss_snd = snd_swing;
 scr_play_sfx(miss_snd);
 knockback = 1.7;
 //delete_on_hit = true;
