@@ -32,9 +32,10 @@ with (player_state_walk) {
 }
 player_state_attack = scr_actor_createstate(o_state_attack);
 with (player_state_attack) {
+	//attack_oneonly = true;
 	target_obj = o_enemy;
-	hitbox = o_hitbox_slash;
-	var _atktime = 7; // note: this is frame time for the attack, not the hitbox
+	hitbox = o_hitbox_magicmissle;
+	var _atktime = 12; // note: this is frame time for the attack, not the hitbox
 	startup = _atktime;
 	active = _atktime;
 	endlag = _atktime;
@@ -43,19 +44,12 @@ with (player_state_attack) {
 	sprite_left = s_plr_cast_left;
 	sprite_right = s_plr_cast_right;
 }
-player_state_attack2 = scr_actor_createstate(o_state_attack);
-with (player_state_attack2) {
-	attack_button = INPUT.MAP;
-	target_obj = o_enemy;
-	hitbox = o_hitbox_fireball;
-	var _atktime = 7; // note: this is frame time for the attack, not the hitbox
-	startup = _atktime;
-	active = _atktime;
-	endlag = _atktime;
-	sprite_front = s_plr_cast_front;
-	sprite_back = s_plr_cast_back;
-	sprite_left = s_plr_cast_left;
-	sprite_right = s_plr_cast_right;
+player_state_defend = scr_actor_createstate(o_state_defend);
+with (player_state_defend) {
+	block_button = INPUT.MAP;
+	block_sprite = s_plr_defend;
+	block_stun_sprite = s_plr_defend_stun;
+	block_barrier_fx = o_fx_magicbarrier;
 }
 player_state_dodge = scr_actor_createstate(o_state_dodge_smooth);
 with (player_state_dodge) {
@@ -82,12 +76,12 @@ with (player_state_hurt) {
 ds_list_add(always_check, player_state_hurt);
 
 scr_state_addconnect(player_state_idle, player_state_attack);
-scr_state_addconnect(player_state_idle, player_state_attack2);
+scr_state_addconnect(player_state_idle, player_state_defend);
 scr_state_addconnect(player_state_idle, player_state_dodge);
 scr_state_addconnect(player_state_idle, player_state_walk);
 
 scr_state_addconnect(player_state_walk, player_state_attack);
-scr_state_addconnect(player_state_walk, player_state_attack2);
+scr_state_addconnect(player_state_walk, player_state_defend);
 scr_state_addconnect(player_state_walk, player_state_dodge);
 scr_state_addconnect(player_state_walk, player_state_idle);
 
@@ -95,12 +89,12 @@ scr_state_addconnect(player_state_attack, player_state_walk);
 scr_state_addconnect(player_state_attack, player_state_dodge);
 scr_state_addconnect(player_state_attack, player_state_idle);
 
-scr_state_addconnect(player_state_attack2, player_state_walk);
-scr_state_addconnect(player_state_attack2, player_state_dodge);
-scr_state_addconnect(player_state_attack2, player_state_idle);
+scr_state_addconnect(player_state_defend, player_state_walk);
+scr_state_addconnect(player_state_defend, player_state_dodge);
+scr_state_addconnect(player_state_defend, player_state_idle);
 
 scr_state_addconnect(player_state_dodge, player_state_attack);
-scr_state_addconnect(player_state_dodge, player_state_attack2);
+scr_state_addconnect(player_state_dodge, player_state_defend);
 scr_state_addconnect(player_state_dodge, player_state_walk);
 scr_state_addconnect(player_state_dodge, player_state_idle);
 

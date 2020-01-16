@@ -27,8 +27,6 @@ with (enemy_state_hurt) {
 	sprite_left = s_mob_hurt_left;
 	sprite_right = s_mob_hurt_right;
 	sprite_back = s_mob_hurt_back;
-	time_hurt_max = 20;
-	hurt_health = 3;
 }
 
 scr_state_addconnect(mob_state_idle, mob_state_walk);

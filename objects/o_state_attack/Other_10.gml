@@ -16,6 +16,9 @@ switch (stage) {
 			stage++;
 			time = active;
 			with (instance_create_depth(actor.x, actor.y, actor.depth-1, hitbox)) {
+				
+				if (other.attack_oneonly) other.attack_one_id = id;
+				
 				target_ins = other.target_ins;
 				target_obj = other.target_obj;
 				other.hitboxID = id;
@@ -26,16 +29,16 @@ switch (stage) {
 					case DIR.UP:
 						depth += 1; // puts hitbox below actor sprite
 						image_angle = 180;
-						y -= _act_h/2 + sprite_height/2 - 1;
+						y -= _act_h/2 + sprite_height/2 - 1 + hitbox_actor_offset;
 						hitbox_vel_y *= -1;
 					break;
 					case DIR.DOWN: // default hitbox direction
-						y += _act_h/2 + sprite_height/2 - 2;
+						y += _act_h/2 + sprite_height/2 - 2 + hitbox_actor_offset;
 						// no velocity changes needed
 					break;
 					case DIR.LEFT:
 						image_angle = -90;
-						x -= _act_w/2 + sprite_height/2 - 1;
+						x -= _act_w/2 + sprite_height/2 - 1 + hitbox_actor_offset;
 						hitbox_vel_x = hitbox_vel_y * -1;
 						hitbox_vel_y = 0;
 					break;
@@ -49,7 +52,7 @@ switch (stage) {
 						*/
 						image_xscale = -1;
 						image_angle = 90;
-						x += _act_w/2 + sprite_height/2 - 2;
+						x += _act_w/2 + sprite_height/2 - 2 + hitbox_actor_offset;
 						hitbox_vel_x = hitbox_vel_y;
 						hitbox_vel_y = 0;
 					break;

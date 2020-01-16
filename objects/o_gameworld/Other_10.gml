@@ -45,8 +45,18 @@ with (o_state) event_user(EVENT_LOGICEND);
 // update hitboxes
 with (o_hitbox) event_user(EVENT_LOGIC);
 
-// fx 
+// fx (this should go before anything that creates them)
 with (o_fx) event_user(EVENT_LOGIC);
+
+// the defend state
+/*
+Normally we want actors to update all their positions before everything else, which
+happens in the actor update. However the defend state is unique in that we want it
+to update after the hitboxes have updated. We can't have hitboxes update after 
+states, because there are states that create hitboxes. So the defend state is 
+uniquely updated here.
+*/
+with (o_actor) if (state.object_index == o_state_defend) scr_state_run(state);
 
 // handle always check states
 with (o_actor) {

@@ -30,20 +30,20 @@ if (++cur_time >= time_max) {
 if (room == room_end && room_prev == room_start) {
 	findplayer();
 	scr_actor_setposition(global.player, door_end.exit_x, door_end.exit_y);
-	global.player.actdirection = door_end.door_dir;
-	with (global.player.state) {
-		switch (global.player.actdirection) {
+	with (global.player) {
+		actdirection = other.door_end.door_dir;
+		switch (actdirection) {
 			case DIR.UP:
-			if (sprite_back != undefined) global.player.sprite_index = sprite_back;
+			actor_setsprite(state.sprite_back);
 			break;
 			case DIR.DOWN:
-			if (sprite_front != undefined) global.player.sprite_index = sprite_front;
+			actor_setsprite(state.sprite_front);
 			break;
 			case DIR.LEFT:
-			if (sprite_left != undefined) global.player.sprite_index = sprite_left;
+			actor_setsprite(state.sprite_left);
 			break;
 			case DIR.RIGHT:
-			if (sprite_right != undefined) global.player.sprite_index = sprite_right;
+			actor_setsprite(state.sprite_right);
 			break;
 		}
 	}

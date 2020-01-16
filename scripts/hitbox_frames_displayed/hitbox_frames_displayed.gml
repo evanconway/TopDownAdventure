@@ -1,10 +1,14 @@
 /// @param hitbox
 // returns the total number of frames a hitbox has been displayed
 
+var result = 0;
+
 // trick for calling outside of hitboxes
 if (argument_count > 0) {
-	with (argument[0]) hitbox_frames_displayed();
-	exit;
+	with (argument[0]) {
+		result = hitbox_frames_displayed();
+	}
+	return result;
 }
 
 if (permenant) return 0; // useful for comparisons we may need

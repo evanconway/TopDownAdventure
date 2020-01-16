@@ -26,7 +26,7 @@ switch (stage) {
 	}
 	if (++effect_time >= effect_time_max) {
 		effect_time = 0;
-		instance_create_depth(actor.x, actor.y, LAYER_PLAYER + 1, dodge_effect);
+		scr_fx_create(actor.x, actor.y, dodge_effect, LAYER_PLAYER+1);
 	}
 	// if dodge time finished, reset variables
 	if (++dodge_time >= dodge_time_max) {

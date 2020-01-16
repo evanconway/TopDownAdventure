@@ -30,7 +30,12 @@ delete_on_solid = false; // main loop does this.
 marked_for_deletion = false; // hurt state sets this
 permenant = false; // ignores frame data and remains forever
 actor = undefined; // the actor "wielding" this hitbox
-invisible = false; // needed for enemy body hitboxes
+invisible = false;
+
+/* This offset variable determines how much further or closer the 
+hitbox spawns from the actor. Positive values add distance, negative
+decrease distance. This variable is used in the attack state.*/
+hitbox_actor_offset = 0;
 
 hit_snd = snd_hit2;
 miss_snd = snd_miss4;
@@ -47,6 +52,12 @@ delete_fx = undefined;
 freeze_frames = global.hitfreezeframes;
 freeze_targetonly = false; 
 active = 10; // frames this hitbox can hurt something. 
+
+hitbox_fx_trail = undefined;
+hitbox_fx_trail_time = 0;
+hitbox_fx_trail_time_max = 10;
+
+hitbox_fx_created = ds_list_create();
 
 /*
 These next few variables need some explaining. We're going to manually
@@ -72,7 +83,6 @@ In our logic, we will use frame_count to keep track of how many frames
 we've displayed a sub_image. 
 */
 frame_count = 0;
-
 
 // this must be called from individual hitboxes, otherwise ALL 
 // hitboxes play these miss sounds

@@ -10,6 +10,10 @@ hitboxID = undefined;
 
 attack_button = INPUT.ATTACK;
 
+// determines if you can create more than one hitbox 
+attack_oneonly = false;
+attack_one_id = undefined;
+
 enum ATTACK {
 	STARTUP,
 	ACTIVE,
@@ -24,6 +28,9 @@ startup = 20;
 active = 20;
 endlag = 20;
 time = 0;
+
+attack_cooldown = 0;
+attack_cooldown_max = 40;
 
 // these variables may not be needed
 attackfx = undefined;
