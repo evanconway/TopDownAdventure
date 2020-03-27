@@ -1,4 +1,4 @@
-/// @description 
+/// @description Logic While Active
 
 /*
 We're setting the dialogue text here instead of in the creation code, so that

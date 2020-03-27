@@ -4,4 +4,5 @@
 
 var _ai = instance_create_depth(0, 0, LAYER_ACTORS, argument[0]);
 _ai.actor = id;
+_ai.controller.actor = id;
 return _ai;

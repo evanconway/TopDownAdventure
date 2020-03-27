@@ -9,7 +9,6 @@ if (!convos_set) {
 	convos_set = true;
 }
 
-
 with (dialogue) dialogue_update();
 if (input_pressed(INPUT.INTERACT) || input_pressed(INPUT.BACK)) {
 	switch (dialogue.state) {
@@ -36,4 +35,3 @@ if (input_pressed(INPUT.INTERACT) || input_pressed(INPUT.BACK)) {
 	}
 }
 if (dialogue.state == DIALOGUE.OFF) focus_pop();
-

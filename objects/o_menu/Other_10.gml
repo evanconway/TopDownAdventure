@@ -17,6 +17,7 @@ if (input_pressed(INPUT.UI_DOWN) && !input_pressed(INPUT.UI_UP)) {
 	
 // set alpha values for current choice
 if (_dirpressed) {
+	scr_play_sfx(global.sfx_ui_nav);
 	cur_alpha = 1;
 	alpha_change_amnt = abs(alpha_change_amnt);
 } else {
@@ -56,4 +57,5 @@ code... so we don't want the menu popping focus when it's not actually the focus
 */
 if  (id == focus_cur() && closeable && (input_pressed(INPUT.START) || input_pressed(INPUT.UI_CANCEL))) {
 	with (instance_create_depth(0, 0, LAYER_MASTER, o_event_menu_close)) menu = other;
+	scr_play_sfx(global.sfx_ui_back);
 }

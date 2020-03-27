@@ -17,6 +17,7 @@ if (instance_exists(o_scene_goto_mainmenu)) canpause = false; // not needed, but
 
 if (input_pressed(INPUT.START) && !pausemenu.active && canpause) {
 	with (instance_create_depth(0, 0, LAYER_MASTER, o_event_menu_open)) menu = other.pausemenu;
+	scr_play_sfx(global.sfx_ui_pause);
 } 
 
 // THE GAME UPDATE
@@ -25,6 +26,7 @@ with (ds_stack_top(global.focus)) event_user(EVENT_LOGIC);
 // pause menu logic
 with (o_event_menu_open) if (menu == other.pausemenu) {
 	audio_pause_all();
+	scr_play_sfx(global.sfx_ui_pause);
 }
 with (o_event_menu_close) if (menu == other.pausemenu) {
 	audio_resume_all();

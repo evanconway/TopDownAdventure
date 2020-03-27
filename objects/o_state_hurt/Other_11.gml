@@ -122,18 +122,16 @@ if (ds_list_size(_hits) > 0) {
 			vely += _vely;
 		}
 		
-		// sound
-		if (death_snd != undefined) scr_play_sfx(death_snd);
-		else scr_play_sfx(_hit.hit_snd);
-		
 		// death
 		if (--hurt_health <= 0) {
+			if (death_snd != undefined) scr_play_sfx(death_snd);
+			else scr_play_sfx(_hit.hit_snd);
 			ds_list_destroy(_hitboxes);
 			ds_list_destroy(_hits);
 			scr_fx_create(actor.x, actor.y, death_fx);
 			actor.killed = true;
 			exit;
-		}
+		} else scr_play_sfx(_hit.hit_snd);
 	}
 }
 

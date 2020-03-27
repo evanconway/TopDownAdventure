@@ -10,9 +10,11 @@ if (input_pressed(INPUT.UI_CLEAR) && submenu.newassignment == undefined) {
 		ds_grid_set(o_input.keyboard_assignment, button, 0, NOASSIGNMENT);
 		ds_grid_set(o_input.keyboard_assignment, button, 1, NOASSIGNMENT);
 	}
+	scr_play_sfx(global.sfx_ui_confirm);
 }
 
 if (submenu.newassignment != undefined) {
+	scr_play_sfx(global.sfx_ui_confirm);
 	var _newa = submenu.newassignment;
 	/*
 	Here we will remap the control. By our design, every remap will

@@ -1,4 +1,10 @@
 /// @param text
+/// @param dialogue(optional)
+
+if (argument_count > 1) {
+	with (argument[1]) dialogue_settext(argument[0]);
+	return;
+}
 
 ds_list_clear(lines);
 

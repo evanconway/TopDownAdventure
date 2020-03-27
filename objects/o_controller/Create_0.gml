@@ -10,3 +10,4 @@ when.
 
 // grid to store buttons, 2 slots are down(0) and pressed(1)
 buttons = ds_grid_create(INPUT.SIZE, 2);
+actor = undefined;

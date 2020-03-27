@@ -1,6 +1,6 @@
-/// @description Focus Logic
+/// @description Logic While Active
 
 /*
-Any logic we want an interact to execute, like listening for
-the player interacting with it, we will place here.
+Interact objects can become the focus, so any logic we want them
+to execute during that time, we'll put here. 
 */

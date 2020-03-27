@@ -4,7 +4,7 @@
 event_inherited();
 //invisible = true;
 hit_snd = snd_explosion2;
-miss_snd = snd_laser1;
+miss_snd = snd_firecast3;
 scr_play_sfx(miss_snd);
 permenant = true;
 hitbox_vel_y = 1.7;

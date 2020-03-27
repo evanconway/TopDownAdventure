@@ -13,3 +13,4 @@ event_inherited();
 dialogue = instance_create_depth(x, y, LAYER_DIALOGUES, o_dialogue);
 message = "DEFAULT INTERACT MESAGE.";
 message_set = false;
+interactions = 0; // number of times interacted with
