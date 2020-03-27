@@ -42,3 +42,10 @@ Checked by the hurt state.
 */
 invulnerable = false;
 state_act_alpha = 1; // used by some states to determine actor alpha
+
+/*
+This is how we're going to implement unlockable abilities. The character will be fully coded
+with all states properly attached, but this variable will be set to false for anything that
+should start out locked away. See scr_actor_changestate to see how this is used. 
+*/
+unlocked = true;

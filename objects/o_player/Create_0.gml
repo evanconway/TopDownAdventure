@@ -100,3 +100,7 @@ scr_state_addconnect(player_state_dodge, player_state_idle);
 
 scr_state_addconnect(player_state_hurt, player_state_walk);
 scr_state_addconnect(player_state_hurt, player_state_idle);
+
+player_state_attack.unlocked = false;
+player_state_defend.unlocked = false;
+player_state_dodge.unlocked = false;
