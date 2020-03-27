@@ -5,14 +5,9 @@ event_inherited();
 
 name = "Dodge";
 invulnerable = true;
+state_act_alpha = 0;
 
-/* Defined in dodge rigid
-enum DODGE {
-	ACTIVE,
-	DONE,
-}
-*/
-
+// enum defined in dodge rigid
 stage = DODGE.ACTIVE;
 
 dodge_speed = 2;

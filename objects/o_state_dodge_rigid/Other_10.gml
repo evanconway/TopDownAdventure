@@ -4,8 +4,6 @@ switch (stage) {
 	case DODGE.ACTIVE:
 	// move actor
 	with (actor) {
-		//shader = sh_white;
-		//act_alpha = 0;
 		var _velx = other.dodge_vel_x;
 		var _vely = other.dodge_vel_y;
 		x = act_x;
@@ -32,8 +30,6 @@ switch (stage) {
 	if (++dodge_time >= dodge_time_max) {
 		stage++;
 		dodge_cooldown = dodge_cooldown_max;
-		//shader = undefined;
-		//actor.act_alpha = 1;
 	}
 	break;
 	case DODGE.DONE:

@@ -17,7 +17,6 @@ if (ds_grid_get(actor.ai.controller.buttons, INPUT.BACK, 1)) {
 	change = true;
 	stage = DODGE.ACTIVE;
 	dodge_time = 0;
-	actor.act_alpha = 0;
 	scr_state_spritechange();
 	if (dodge_fx_vanish != undefined) instance_create_depth(actor.x, actor.y, LAYER_PLAYER, dodge_fx_vanish);
 	if (dodge_snd != undefined) {

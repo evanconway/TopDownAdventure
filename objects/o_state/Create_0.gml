@@ -41,3 +41,4 @@ Determines if the actor can be hit by hitboxes while in this state.
 Checked by the hurt state.
 */
 invulnerable = false;
+state_act_alpha = 1; // used by some states to determine actor alpha

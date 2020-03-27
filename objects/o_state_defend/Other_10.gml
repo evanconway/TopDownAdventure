@@ -132,8 +132,9 @@ for (var i = 0; i < ds_list_size(_hits); i++) {
 		var _scale = _hit.knockback/_magnitude;
 		var _velx = _vectorx * _scale;
 		var _vely = _vectory * _scale;
-		velx += _velx; // add instead of set so multiple attacks hitting at once register
-		vely += _vely;
+		// experimenting with set instead of add
+		velx = _velx;
+		vely = _vely;
 	}
 }
 
@@ -156,4 +157,9 @@ if (block_stuntime > 0) {
 	velx = 0;
 	vely = 0;
 	with (actor) actor_setsprite(other.block_sprite);
+}
+
+if (block_barrier_fx_id != undefined && instance_exists(block_barrier_fx_id)) {
+	block_barrier_fx_id.x = actor.x;
+	block_barrier_fx_id.y = actor.y;
 }

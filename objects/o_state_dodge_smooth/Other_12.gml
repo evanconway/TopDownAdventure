@@ -3,7 +3,6 @@
 remain = true;
 if (stage == DODGE.DONE) {
 	remain = false;
-	actor.act_alpha = 1;
 	// Set logged button presses
 	for (var i = 0; i < ds_list_size(dodge_buffer_buttons); i++) {
 		if (ds_list_find_value(dodge_buffer_pressed, i)) {
