@@ -4,7 +4,7 @@
 if (permenant) exit;
 
 if (timed) {
-	if (time++ >= time_max) instance_destroy(id);
+	if (time-- <= 0) instance_destroy(id);
 } else if (image_index >= image_number - 1) instance_destroy(id);
 
 /*

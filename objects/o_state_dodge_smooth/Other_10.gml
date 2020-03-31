@@ -2,6 +2,11 @@
 
 switch (stage) {
 	case DODGE.ACTIVE:
+	with (instance_create_depth(0, 0, 0, o_event_actor_alpha)) {
+		id_actor = other.actor;
+		alpha = 0;
+	}
+	
 	// this movement code is take from the walk state
 	var _speed = dodge_speed;
 	var _vely = 0;

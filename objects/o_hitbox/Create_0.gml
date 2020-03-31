@@ -24,6 +24,6 @@ that has no need for that data.
 damage = 1;
 knockback = 1.6;
 invisible = false;
-freeze_frames = 15;
+freeze_frames = global.hitfreezeframes;
 freeze_targetonly = false;
 actor = undefined;

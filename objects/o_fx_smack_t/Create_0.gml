@@ -3,4 +3,5 @@
 // Inherit the parent event
 event_inherited();
 
-time_max = global.hitfreezeframes;
+time = global.hitfreezeframes;
+anim_speed = 0;

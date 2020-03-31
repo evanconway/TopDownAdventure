@@ -5,16 +5,6 @@
     "name": "o_hitbox_enemy",
     "eventList": [
         {
-            "id": "2c4d33e3-ec76-4edd-83fd-16c44bb68fd7",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "d812a658-830c-4c1c-86a4-5aa9e8e04bc1"
-        },
-        {
             "id": "4ecfc297-ad5e-456e-980c-9941f04914b3",
             "modelName": "GMEvent",
             "mvc": "1.0",
