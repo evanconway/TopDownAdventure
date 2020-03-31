@@ -2,6 +2,7 @@
 
 // the logic for this state is a lot like the hurt state
 
+/*
 if (ds_grid_get(actor.ai.controller.buttons, block_button, 0)) {
 	change = true;
 	block_stuntime = 0;

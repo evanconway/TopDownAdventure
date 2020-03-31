@@ -1,4 +1,4 @@
-/// @description
+/// @description Event Handling
 
 // this auto-resets variables when they're not needed
 if (id != focus_cur()) {

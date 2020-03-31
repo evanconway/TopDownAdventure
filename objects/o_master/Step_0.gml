@@ -40,6 +40,3 @@ with (o_camera) event_user(EVENT_LOGIC);
 
 // set previous asix values for input
 with (o_input) event_user(EVENT_LOGICEND);
-
-// delete all events
-with (o_event) instance_destroy(id);

@@ -1,4 +1,4 @@
 /// @description 
 
-xoffset = 0;
-yoffset = 0;
+// This is the type of hitbox that can hurt this hurtbox
+vulnerable = undefined;

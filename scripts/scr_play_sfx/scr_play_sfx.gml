@@ -12,7 +12,7 @@ volume we should play the sound at. This system lets us control sfx balance by s
 values in the game maker editor.
 */
 
-if (argument[0] == undefined) return;
+if (argument[0] == undefined) return undefined;
 
 var _id = undefined;
 
@@ -22,3 +22,5 @@ if (argument_count == 1) _id = audio_play_sound(argument[0], 1, false);
 else _id = audio_play_sound(argument[0], 1, argument[1]);
 
 audio_sound_gain(_id, audio_sound_get_gain(_id) * o_sound.volume_sfx / 10, 0);
+
+return _id;

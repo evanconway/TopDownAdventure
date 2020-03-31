@@ -15,5 +15,5 @@ global.player = undefined; // this is the ID of the actor that is the player cha
 global.wallsvisible = false;
 global.hitfreezeframes = 10;
 global.invul_alpha = 0.5; // see actor_drawself
-firstroom = room_cave;
+firstroom = room_wasteland1;
 global.spawn_room = firstroom;

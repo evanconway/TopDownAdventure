@@ -1,6 +1,6 @@
 /// @description Update Gameworld
 
-// this section deals with allowing us to change with actor the user controls. 
+// this section deals with allowing us to change which actor the user controls. 
 // assign player if possible
 findplayer();
 
@@ -27,14 +27,7 @@ We ran into a bug where, once an interact object takes focus, the dialogues can'
 update if their logic is here. We're trying a radical idea. Dialogues are updated
 discretly by whatever object needs them. Most of the time that will be interact 
 objects
-
-for (var i = 0; i < instance_number(o_dialogue); i++) {
-	with (instance_find(o_dialogue, i)) event_user(EVENT_LOGIC);
-}
 */
-
-// delete hitboxes (marked for deletion from previous frame)
-//if (focus_cur() == global.gameworld)with (o_hitbox) event_user(2);
 
 // run actor logic
 with (o_actor) event_user(EVENT_LOGIC);
@@ -42,31 +35,43 @@ with (o_actor) event_user(EVENT_LOGIC);
 // reset state values
 with (o_state) event_user(EVENT_LOGICEND);
 
-// update hitboxes
-with (o_hitbox) event_user(EVENT_LOGIC);
-
-// fx (this should go before anything that creates them)
+// fx 
 with (o_fx) event_user(EVENT_LOGIC);
 
-// the defend state
 /*
-Normally we want actors to update all their positions before everything else, which
-happens in the actor update. However the defend state is unique in that we want it
-to update after the hitboxes have updated. We can't have hitboxes update after 
-states, because there are states that create hitboxes. So the defend state is 
-uniquely updated here.
-*/
-with (o_actor) if (state.object_index == o_state_defend) scr_state_run(state);
+29th of March, 2020
+What used to be here is code updating specifically the defend state, then an update 
+for all "always check" states. We are making a big change by making more things 
+event driven. The defend state needed to run after the other states, and hitbox 
+updates, because the state responded to the position of actors and hitboxes. But
+since we are now using events from guard boxes and such, the defend state can update
+along with the rest, and guard boxes are "updated" after everything else. The guard
+boxes will tell the actor how to behave. 
 
-// handle always check states
-with (o_actor) {
-	for (var k = 0; k < ds_list_size(always_check); k++) {
-		if (scr_actor_changestate(always_check[|k])) {
-			state = always_check[|k];
-			k = ds_list_size(always_check);
-		}
-	}
-}
+The same logic applies for the hurt state, which was originally an "always check"
+state. Now hurtboxes check if they've been hit, which drops "hurt" events.
+
+We do still need to specially check the guard state, and hurt state, however they're
+now lumped into a list of "guard_event_listeners" or "hurt_event_listeners.
+*/
+
+// update hitboxes 
+with (o_hitbox) event_user(EVENT_LOGIC);
+
+// update hurtboxes
+with (o_hurtbox) event_user(EVENT_LOGIC);
+
+// update guardboxes
+with (o_guardbox) event_user(EVENT_LOGIC);
+
+// handle guard events
+with (o_state_defend) event_user(4);
+
+// handle hurt events
+with (o_state_hurt) event_user(4);
+
+// hitbox event handling
+with (o_hitbox) event_user(4);
 
 // delete hitboxes
 if (focus_cur() == global.gameworld)with (o_hitbox) event_user(2);
@@ -77,17 +82,30 @@ if (focus_cur() == global.gameworld) with (o_interact) event_user(1);
 // doors
 if (focus_cur() == global.gameworld) with (o_door) event_user(1);
 
+// actor event handling
+with (o_actor) event_user(4);
+
 // destroy killed actors
-with(o_actor) {
-	if (killed) {
-		if (id != global.player) instance_destroy(id);
-		else if (focus_cur() == other) playerdied();
-		/* We to explain that ^^^
-		We want our player death scene to start after the hitstun and shader effects
-		have finished. The code that removes those effects are in the actor update
-		and the fx update. If we want those effects to go away, we have to wait
-		for the game focus to finish with the actor freezer object, and return to
-		the game world.
-		*/
+with (o_event_actor_killed) {
+	if (id_actor != global.player) instance_destroy(id_actor);
+	else if (focus_cur() == global.gameworld) playerdied();
+	/* We need to explain that ^^^
+	We want our player death scene to start after the hitstun and shader effects
+	have finished. The code that removes those effects are in the actor update
+	and the fx update. If we want those effects to go away, we have to wait
+	for the game focus to finish with the actor freezer object, and return to
+	the game world.
+	*/
+}
+
+// game freeze (hitstun)
+var _freeze_time_global = 0;
+with (o_event_game_freeze) {
+	if (freeze_time > _freeze_time_global) _freeze_time_global = freeze_time;
+}
+if (_freeze_time_global > 0) {
+	with (instance_create_depth(x, y, LAYER_MASTER, o_gameworld_freeze)) {
+		freeze_time = _freeze_time_global;
+		focus_push(id);
 	}
 }

@@ -7,3 +7,24 @@ But regarding hitbox events... when does the event get deleted? Hitboxes will us
 Oh wait! I just had a thought... We could indeed make one event object for everything, and have an enumerator that defines what type of event it is. So the only 3 variables events should need are type, ID of instance making event, ID of instance event targets. And we should be able to leave some of those as undefined most of the time.
 
 We left off having just written the code in o_hitbox that generates hit events. Next we should probably program the hurt state. 
+
+28th of March, 2020
+
+We just finished rambling to ourselves about how to do a spider boss, and it's become clear that our code doesn't easily accommodate the behavior we want. I have more ideas on how to make a crude event system that will give us the flexibility and reliability to make any kind of boss/enemy, and do whatever we want. 
+
+Basically, we're going to make a bunch of different events, and loads of things are going to generate and handles these various events. We're going to try and list out what we think we'll need for our current system, and in the order we think we'll need it. 
+
+Hitboxes
+Updates position and animation, or whatever.
+
+Hurtboxes
+Detects hitboxes. Hurtboxes will have a "target" field, or something to indicate what kind of hitbox they're looking for. Throws event_hurt.
+
+Guardboxes:
+Detects hitboxes same as hurtboxes. And possibly handles hurtboxes. See we need different "guards" to do different things. For example, a directional shield used by the player needs to block attacks, but only if the shield is oriented correctly relative to the attack. In this instance, the guardbox is going to need to know the position of the hurtbox it's protecting. On the other hand, for our spider boss idea, the legs are going to be covered in guard boxes, but they're not guarding anything. They're just there to let the player know the legs are not vulnerable. There doesn't need to be a hurtbox connected to it. In the former case, the guardbox will delete the event_hurt, and create an event_guard if the attack is successfully guarded. In the latter case, an event_guard will be created. We can change this on a case by case basis. 
+
+Event_Guard Handle
+Anything that should respond to an event guard will be handled here. For the most part, that'll be states like defending or whatever. 
+
+Event_Hurt Handle
+Anything that should respond to event_hurt events is handled here. For the most part, that will be hurt states. 

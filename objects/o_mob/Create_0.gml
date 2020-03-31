@@ -5,6 +5,16 @@ event_inherited();
 
 ai_default = o_ai_wander
 ai = scr_actor_createai(ai_default);
+hurtbox = instance_create_depth(x, y, LAYER_ATTACKS, o_hurtbox_actor);
+with (hurtbox) {
+	mask_index = other.mask_index;
+	actor = other;
+	vulnerable = o_hitbox_player;
+}
+with (instance_create_depth(x, y, LAYER_ATTACKS, o_hitbox_enemy_body)) {
+	mask_index = other.mask_index;
+	actor = other;
+}
 state = scr_actor_createstate(o_state_idle);
 mob_state_idle = state;
 with (mob_state_idle) {

@@ -1,0 +1,19 @@
+27th of March, 2020
+
+I want to add a boss to this game, and I think we want to try some interesting stuff with it. First off, I want the middle of it to be a hitbox, but not the rest of it. I believe our current system does not permit for that... so how do we handle this? Do we redo how we're handling hitboxes? Do we make something specific for this? Both? 
+
+I want it's big legs on either side to be invulnerable to damage. When the player hits them with whatever attack they're using, the hitbox should make a "clunk" sound, or something to indicate it had no effect. This means we need something that detects the hitbox, but that isn't a hurtstate. 
+
+Perhaps we do need to redo how things work. Maybe hurtstates shouldn't be checking hitboxes? I know it is very common to use something called an event handler system to deal with collisions. Perhaps it makes more sense for different kinds of objects to detect hitbox collision, and they throw an event. Then a special kind of event handler makes all the changes that are supposed to happen when that thing is hit. 
+
+Consider these thoughts I just had for a redesign:
+
+Hitboxes update their own position/animation/state. They also detect if they have hit their target, if they have, they create a relevant event_hit.
+
+Guardboxes update their own position/animation/state. They look for hit events targeting the instance they're protecting. If such an event is found, the ID of the hitboxs is added to a list in the guardbox, guard code is executed (changing actor states or whatever), and the event is deleted... or maybe not? We could change it depending on what we want. Perhaps guardboxes should throw "guard" events, which could then be handled by:
+
+Hurtboxes update their own position/animation/state. They look for hit events targeting them. I suppose they could also process guard events if we decide to have those, or any kind of event. That's the beauty of this system right? We can have hurtboxes do what we want. Depending on the hurtbox, it could send an actor into a specific state like the hurt state. Or we could just make a specific thing flash pretty colors. Like guard events, I think we'll have to store the ID of the hitbox that created the event to avoid the same hurtbox getting hurt every frame the hitbox is touching it (if it's the kind of hitbox that doesn't delete itself right away).
+
+And the hurtboxes themselves could create event_hurt events. Which could then be processed by things later in the game step, like scenes. So for our boss... for example, the spider boss hurbox could create an event_hurt, which the scene_boss_spider object would detect, and set the bosses state to something special like reel back in pain and get angry. Or maybe the hurtbox should do that? Again, that's kind of the beauty of this. We could be very flexible with how we handle it. 
+
+I think we need to think this through even more. Let's create a new text document... and come back to the spider boss when we've thought this out better. 

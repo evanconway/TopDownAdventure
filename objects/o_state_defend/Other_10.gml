@@ -11,25 +11,8 @@ The first step is to make a list of all hitboxes targetting this actor.
 No point iterating over everything if nothing's attacking this actor right?
 */
 var _hitboxes = ds_list_create();
-for (var i = 0; i < instance_number(o_hitbox); i++) {
-	var _hit = instance_find(o_hitbox, i)
+with (o_hitbox) {
 	
-	if (_hit.target_ins != undefined && actor == _hit.target_ins) ds_list_add(_hitboxes, _hit);
-	
-	if (_hit.target_obj != undefined && 
-		(actor.object_index == _hit.target_obj || object_is_ancestor(actor.object_index, _hit.target_obj))) {
-		// one extra check to make sure the hitbox wasn't already added for having target_ins defined as well
-		if (ds_list_find_index(_hitboxes, _hit) < 0) ds_list_add(_hitboxes, _hit);
-	}
-}
-
-/*
-Next, we delete any hitboxes from this list that aren't "active". Active is a variable
-in the hitbox object. We determine if a hitbox is active by checking if its frame 
-count is less than its active counter.
-*/
-for (var i = 0; i < ds_list_size(_hitboxes); i++) {
-	if (!hitbox_active(_hitboxes[|i])) ds_list_delete(_hitboxes, i--);
 }
 
 /*

@@ -3,8 +3,8 @@
 // Inherit the parent event
 event_inherited();
 name = "Defend";
-// we're going to be stealing a lot of code from the hurt state since they're so similar
 
+blocking = undefined; // the hitbox type to defend against
 block_button = INPUT.MAP;
 
 block_stuntime = 0; // we set this based on damage and hitstun of move
@@ -20,3 +20,5 @@ block_stun_sprite = undefined;
 
 block_barrier_fx = undefined;
 block_barrier_fx_id = undefined;
+
+hitboxes_blocked = ds_list_create();

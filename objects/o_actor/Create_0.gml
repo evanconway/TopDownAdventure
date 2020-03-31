@@ -17,11 +17,6 @@ act_y = y;
 
 if (ds_list_find_index(global.actors_list, id) < 0) ds_list_add(global.actors_list, id);
 
-// list of states that are always checked. Beware, order added matters!
-always_check = ds_list_create();
-// This list is only needed by hurt and defend
-act_hitboxes_struck = ds_list_create();
-
 ai = undefined;
 ai_default = o_ai; // ai switched to when resetting ai
 state = undefined; // state actor is currently in/running
@@ -32,17 +27,12 @@ enum DIR {
 	LEFT,
 	RIGHT
 }
+
 actdirection = DIR.DOWN;
 
 bbox_color = c_lime;
 origin_color = c_fuchsia;
 
-killed = false;
-
-// set by hurt states after getting hit. 
-invul_time = 0;
-invul_time_max = 0; // leave 0 if you want actor to never be invulnerable
-
 shader = undefined;
 
-act_freezetime = 0;
+hurtbox = undefined;

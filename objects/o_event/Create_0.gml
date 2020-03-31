@@ -9,7 +9,4 @@ What we need this for in this game, is our menus. They are becoming far too spag
 our tastes, and we need a non-spaghetti way for various menus to tell other menus what to
 do. All our events are going to do are exist, get read, and get deleted. They may contain
 some variables. 
-
-The master object deletes all events at the beginning of the master step. That way we can
-the gamemaker end event for dealing with menus. 
 */

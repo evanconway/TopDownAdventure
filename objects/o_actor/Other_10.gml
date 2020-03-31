@@ -1,20 +1,10 @@
 /// @description Update Actor
 
-if (act_freezetime-- > 0) {
-	image_speed = 0;
-	exit;
-} else image_speed = 1;
-
-if (invul_time > 0) invul_time--;
+image_speed = 1;
 
 // update ai (ai determines controller inputs)
 with (ai) if (global.ai_active) event_user(0);
 else with (ai.controller) resetcontroller();
-
-// delete hitboxes from struck list if they no longer exist in the game world
-for (var i = 0; i < ds_list_size(act_hitboxes_struck); i++) {
-	if (!instance_exists(act_hitboxes_struck[|i])) ds_list_delete(act_hitboxes_struck, i--);
-}
 	
 /*
 Although this code is fairly readable, it still can't hurt to leave an 
@@ -35,14 +25,7 @@ if (!scr_state_remain(state)) {
 	}
 }
 
-/*
-There are some states we want to update at a different time, or do something different
-with. The first notable example of this is the defend state. We only update the actor
-state if it is not one of these special cases.
-*/
-var _special_case_state = false;
-if (state.object_index == o_state_defend) _special_case_state = true;
-if (!_special_case_state) scr_state_run(state);
+scr_state_run(state);
 
 // reset pressed values
 /*

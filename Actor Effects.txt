@@ -1,0 +1,11 @@
+26/3/2020
+
+There is a bug in the code right now:
+
+If the player is hit, they become transparent for a second. When they dodge, they become invisible. If they are hit and then dodge, they do not turn invisible, but remain transparent like they've been hit.
+
+It would not be hard to solve this, but it's making me consider what other effects we may put into the game. Like what if the player can be set on fire? What if then can be stuck in slime, which slows their movement? 
+
+I'd like to develop a system that allows for more fluid, and more bug free effects on an actor.
+
+Of course... perhaps we should just move forward with making something, instead of agonizing over making more systems?

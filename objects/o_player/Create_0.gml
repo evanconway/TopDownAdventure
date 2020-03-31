@@ -4,13 +4,17 @@
 event_inherited();
 
 draw_black_box = false; // literally only used for death scene
-invul_time_max = 60;
 /*
 We're not setting a default ai for the player because we don't want it doing 
 anything if we cycle global.player to different actors.
 */
 ai = scr_actor_createai(o_ai_polluser);
-
+hurtbox = instance_create_depth(x, y, LAYER_ATTACKS, o_hurtbox_actor);
+with (hurtbox) {
+	mask_index = other.mask_index;
+	actor = other;
+	vulnerable = o_hitbox_enemy;
+}
 // starting state
 player_state_idle = scr_actor_createstate(o_state_idle);
 with (player_state_idle) {
@@ -30,10 +34,8 @@ with (player_state_walk) {
 	sprite_right = s_plr_walk_right;
 	walkspeed = 1.3;
 }
-player_state_attack = scr_actor_createstate(o_state_attack);
+player_state_attack = scr_actor_createstate(o_state_cast);
 with (player_state_attack) {
-	//attack_oneonly = true;
-	target_obj = o_enemy;
 	hitbox = o_hitbox_magicmissle;
 	var _atktime = 12; // note: this is frame time for the attack, not the hitbox
 	startup = _atktime;
@@ -64,16 +66,13 @@ with (player_state_dodge) {
 }
 player_state_hurt = scr_actor_createstate(o_state_hurt);
 with (player_state_hurt) {
-	death_snd = undefined;
-	time_hurt_max = 10;
+	time_hurt_max = 20;
 	hurt_health = 3;
-	hurt_shader = sh_red;
 	sprite_front = s_plr_hurt_front;
 	sprite_back = s_plr_hurt_back;
 	sprite_left = s_plr_hurt_left;
 	sprite_right = s_plr_hurt_right;
 }
-ds_list_add(always_check, player_state_hurt);
 
 scr_state_addconnect(player_state_idle, player_state_attack);
 scr_state_addconnect(player_state_idle, player_state_defend);
@@ -101,6 +100,8 @@ scr_state_addconnect(player_state_dodge, player_state_idle);
 scr_state_addconnect(player_state_hurt, player_state_walk);
 scr_state_addconnect(player_state_hurt, player_state_idle);
 
+/*
 player_state_attack.unlocked = false;
 player_state_defend.unlocked = false;
 player_state_dodge.unlocked = false;
+*/

@@ -1,9 +1,15 @@
 /// @description Logic
 
+if (time_freeze > 0) {
+	time_freeze--;
+	with (instance_create_depth(x, y, LAYER_MASTER, o_event_actor_shader)) {
+		id_actor = other.actor;
+		shader = other.hurt_shader;
+	}
+	exit;
+}
 time_hurt--;
-
 with (actor) {
-	shader = undefined;
 	x = act_x;
 	y = act_y;
 	x += approach_solid_x(other.velx);
