@@ -11,7 +11,8 @@
         "6175e269-72db-4b54-9fab-1d97cf0e174f",
         "f2a4ed53-9fe2-4289-a768-203ebc08809c",
         "ce74a774-29ac-4878-82a6-c77d7bd506ed",
-        "6f6a87f9-2de6-4139-801f-6c0fafaecb16"
+        "6f6a87f9-2de6-4139-801f-6c0fafaecb16",
+        "699ba625-43de-4f1c-9251-6007128006af"
     ],
     "filterType": "GMObject",
     "folderName": "hitboxes",

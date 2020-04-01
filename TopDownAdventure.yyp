@@ -1007,6 +1007,14 @@
             }
         },
         {
+            "Key": "4a8e851a-d559-47d2-99a3-8f2fd6b81fe4",
+            "Value": {
+                "id": "a700f1e8-c0ee-4fe1-99b2-91923ab2cd77",
+                "resourcePath": "objects\\o_event_guard_defend\\o_event_guard_defend.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "4c18470c-d35b-4d55-b284-56ffc09de1c9",
             "Value": {
                 "id": "98f6647f-7a3d-405c-9bc7-c97959a2ae12",
@@ -1391,6 +1399,14 @@
             }
         },
         {
+            "Key": "699ba625-43de-4f1c-9251-6007128006af",
+            "Value": {
+                "id": "33fcf1cf-dd37-4a95-ad2a-0d963c93a49d",
+                "resourcePath": "objects\\o_guardbox_magic_barrier\\o_guardbox_magic_barrier.yy",
+                "resourceType": "GMObject"
+            }
+        },
+        {
             "Key": "699dd168-bdac-4693-925c-d86f342dd2f2",
             "Value": {
                 "id": "f41674e7-5167-4785-a074-a23126ead6b0",
@@ -1668,6 +1684,14 @@
                 "id": "83d90d7c-53d7-4ad9-b82d-bacd0bc5ff59",
                 "resourcePath": "views\\8246c5d6-fc2b-4370-9918-766a6969b95b.yy",
                 "resourceType": "GMFolder"
+            }
+        },
+        {
+            "Key": "82879827-b8ce-43e2-a9e1-e2599eb3ee6a",
+            "Value": {
+                "id": "3354e388-b58e-4de3-b360-60bf8a6ed22c",
+                "resourcePath": "sprites\\s_magicbarrier_side\\s_magicbarrier_side.yy",
+                "resourceType": "GMSprite"
             }
         },
         {
