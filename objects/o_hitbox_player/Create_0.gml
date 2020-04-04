@@ -3,4 +3,4 @@
 // Inherit the parent event
 event_inherited();
 
-blocks = o_hitbox_enemy;
+freeze_frames = 10;

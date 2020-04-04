@@ -1,5 +1,7 @@
 /// @description Change
 
+if (dodge_cooldown > 0) exit;
+
 /*
 We're going to setup the pressed ds list here instead of at object creation. That way
 all we need to do is add the buttons we want logged, and this bit of code will take
@@ -10,8 +12,6 @@ as often as the other events, but is the first event called related to this stat
 if (ds_list_size(dodge_buffer_buttons) != ds_list_size(dodge_buffer_pressed)) {
 	for (var i = 0; i < ds_list_size(dodge_buffer_buttons); i++) ds_list_add(dodge_buffer_pressed, false);
 }
-
-if (dodge_cooldown > 0) exit;
 
 if (ds_grid_get(actor.ai.controller.buttons, INPUT.BACK, 1)) {
 	change = true;

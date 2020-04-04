@@ -49,9 +49,8 @@ with (player_state_attack) {
 player_state_defend = scr_actor_createstate(o_state_defend);
 with (player_state_defend) {
 	block_button = INPUT.MAP;
-	block_sprite = s_plr_defend;
-	block_stun_sprite = s_plr_defend_stun;
-	block_barrier_fx = o_fx_magicbarrier;
+	shield_fx = o_fx_magicbarrier;
+	block_snd = snd_bonk;
 }
 player_state_dodge = scr_actor_createstate(o_state_dodge_smooth);
 with (player_state_dodge) {

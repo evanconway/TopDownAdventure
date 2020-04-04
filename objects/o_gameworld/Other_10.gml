@@ -61,11 +61,9 @@ with (o_hitbox) event_user(EVENT_LOGIC);
 // update hurtboxes
 with (o_hurtbox) event_user(EVENT_LOGIC);
 
-// update guardboxes
-with (o_guardbox) event_user(EVENT_LOGIC);
-
-// handle guard events
+// hurt event interception
 with (o_state_defend) event_user(4);
+with (o_state_dodge_smooth) event_user(4);
 
 // handle hurt events
 with (o_state_hurt) event_user(4);
@@ -99,6 +97,10 @@ with (o_event_actor_killed) {
 }
 
 // game freeze (hitstun)
+/*
+Note that freeze time is only equal to the greatest freeze_time of all events checked.
+Feel free to make as many freeze events every frame. Only the largest value is used.
+*/
 var _freeze_time_global = 0;
 with (o_event_game_freeze) {
 	if (freeze_time > _freeze_time_global) _freeze_time_global = freeze_time;

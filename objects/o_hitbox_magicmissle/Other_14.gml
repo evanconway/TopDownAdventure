@@ -30,8 +30,9 @@ with (o_event_hitbox_solid) if (id_hitbox == other.id) {
 	_delete = true;
 }
 
+var _hit_id = id;
 with (o_event_hitbox_hit) if (id_hitbox == other.id) {
-	scr_fx_create(hit_x, hit_y, o_fx_smack_t);
+	with (scr_fx_create(hit_x, hit_y, o_fx_smack_t)) time = _hit_id.freeze_frames;
 	audio_stop_sound(other.miss_snd_id);
 	scr_play_sfx(snd_explosion2);
 	_delete = true;

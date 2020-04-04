@@ -116,10 +116,10 @@ for (var i = 0; i < ds_list_size(_hits); i++) {
 			hit_x = other.actor.hurtbox.x;
 			hit_y = other.actor.hurtbox.y;
 		}
-		with (instance_create_depth(x, y, LAYER_MASTER, o_event_actor_shader)) {
-			id_actor = other.actor;
-			shader = other.hurt_shader;
-		}
+	}
+	with (instance_create_depth(x, y, LAYER_MASTER, o_event_actor_shader)) {
+		id_actor = other.actor;
+		shader = other.hurt_shader;
 	}
 }
 
