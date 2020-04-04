@@ -28,14 +28,8 @@ if (++cur_time >= time_max) {
 }
 
 if (room == room_end && room_prev == room_start) {
-	/*
-	Recall that, although there may be a player object created in the new room, this is not
-	the player object we want to use, so we will destroy it, if it is not "our" player
-	ojbect.
-	*/
-	with (player_o_type) {
-		if (id != global.player) instance_destroy(id);
-	}
+	
+	with (o_player) global.player = id;
 	
 	scr_actor_setposition(global.player, door_end.exit_x, door_end.exit_y);
 	with (global.player) {
@@ -55,8 +49,6 @@ if (room == room_end && room_prev == room_start) {
 			break;
 		}
 	}
-	
-	global.player.persistent = false;
 }
 
 room_prev = room;

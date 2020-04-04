@@ -1,5 +1,12 @@
 /// @description 
 switch (state) {
+	case PLRDEAD.SETUP:
+	global.player.draw_black_box = true;
+	global.player.sprite_index = s_plr_idle_front;
+	global.player.shader = undefined;
+	with (o_fx) instance_destroy(id);
+	state++;
+	break;
 	case PLRDEAD.SHOCK:
 	if (--counter <= 0) {
 		state++;

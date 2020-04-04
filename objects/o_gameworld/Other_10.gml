@@ -86,7 +86,7 @@ with (o_actor) event_user(4);
 // destroy killed actors
 with (o_event_actor_killed) {
 	if (id_actor != global.player) instance_destroy(id_actor);
-	else if (focus_cur() == global.gameworld) playerdied();
+	else playerdied();
 	/* We need to explain that ^^^
 	We want our player death scene to start after the hitstun and shader effects
 	have finished. The code that removes those effects are in the actor update
