@@ -1,6 +1,5 @@
 /// @description Change
 
-
 if (down(block_button, actor.ai.controller)) {
 	change = true;
 	time_stun = 0;
