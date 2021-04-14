@@ -103,6 +103,6 @@ player_state_defend.unlocked = global.player_stats[?PLR_UNLOCKS.DEFEND];
 player_state_dodge.unlocked = global.player_stats[?PLR_UNLOCKS.DODGE];
 
 // for debugging
-player_state_attack.unlocked = true;
-player_state_defend.unlocked = true;
-player_state_dodge.unlocked = true;
+//player_state_attack.unlocked = true;
+//player_state_defend.unlocked = true;
+//player_state_dodge.unlocked = true;
